@@ -1,4 +1,4 @@
-name: Verificación de Integridad - BioAves Quilichao
+name: "Verificacion de Integridad - BioAves Quilichao"
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
       - master
       - dev
       - develop
-      - 'feature/**'
-      - 'fix/**'
+      - "feature/**"
+      - "fix/**"
   pull_request:
     branches:
       - main
@@ -18,38 +18,38 @@ on:
 
 jobs:
   verify-and-test:
-    name: Verificación de Integridad y Sintaxis
+    name: "Verificacion de Integridad y Sintaxis"
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Clonar repositorio
+      - name: "Clonar repositorio"
         uses: actions/checkout@v4
 
-      - name: ⚙️ Configurar Node.js (Entorno de Validación)
+      - name: "Configurar Node.js (Entorno de Validacion)"
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: 📁 Paso 1: Verificar presencia e integridad de archivos esenciales
+      - name: "Paso 1: Verificar presencia e integridad de archivos esenciales"
         run: node scripts/verify-files.js
 
-      - name: ⚡ Paso 2: Validar sintaxis estricta de JavaScript
+      - name: "Paso 2: Validar sintaxis estricta de JavaScript"
         run: |
           echo "Validando sintaxis de archivos JS..."
           node --check js/birds-data.js
           node --check js/app.js
           node --check js/catalogo.js
-          echo "✅ Todos los archivos JavaScript tienen sintaxis 100% válida."
+          echo "Todos los archivos JavaScript tienen sintaxis 100% valida."
 
-      - name: 🔗 Paso 3: Verificar enlaces y referencias internas
+      - name: "Paso 3: Verificar enlaces y referencias internas"
         run: node scripts/verify-links.js
 
-      - name: 📄 Paso 4: Validar estructura y etiquetas HTML
+      - name: "Paso 4: Validar estructura y etiquetas HTML"
         run: |
           echo "Ejecutando linter HTML (HTMLHint)..."
           npx --yes htmlhint index.html catalogo.html
 
-      - name: 📊 Paso 5: Generar resumen de verificación en GitHub
+      - name: "Paso 5: Generar resumen de verificacion en GitHub"
         if: always()
         run: |
           echo "### 🛡️ Reporte de Verificación de Integridad - BioAves Quilichao" >> $GITHUB_STEP_SUMMARY
