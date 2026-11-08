@@ -325,14 +325,14 @@ function openDetailModal(bird) {
   const statusBadgeEl = document.getElementById("modal-status-badge");
   const descriptionEl = document.getElementById("modal-description");
   const physicalEl = document.getElementById("modal-physical");
-  const habitatTextEl = document.getElementById("modal-habitat-text");
-  const dietTextEl = document.getElementById("modal-diet-text");
-  const behaviorTextEl = document.getElementById("modal-behavior-text");
-  const distributionTextEl = document.getElementById("modal-distribution-text");
+  const habitatTextEl = document.getElementById("modal-habitat-text") || document.getElementById("modal-habitat");
+  const dietTextEl = document.getElementById("modal-diet-text") || document.getElementById("modal-diet");
+  const behaviorTextEl = document.getElementById("modal-behavior-text") || document.getElementById("modal-behavior");
+  const distributionTextEl = document.getElementById("modal-distribution-text") || document.getElementById("modal-distribution");
   const videoLabelEl = document.getElementById("modal-video-label");
 
   // Ubicación
-  const locEl = document.getElementById("modal-sighting-loc");
+  const locEl = document.getElementById("modal-sighting-loc") || document.getElementById("modal-sighting-location");
   const dateEl = document.getElementById("modal-sighting-date");
   const notesEl = document.getElementById("modal-sighting-notes");
   const coordsEl = document.getElementById("modal-sighting-coords");
@@ -340,24 +340,28 @@ function openDetailModal(bird) {
 
   if (!modal) return;
 
-  commonNameEl.textContent = bird.commonName;
-  scientificNameEl.textContent = `${bird.scientificName} • Familia: ${bird.family}`;
-  statusBadgeEl.textContent = bird.status;
-  descriptionEl.textContent = bird.description;
-  physicalEl.textContent = bird.physicalCharacteristics;
-  habitatTextEl.textContent = bird.habitatLabel;
-  dietTextEl.textContent = bird.diet;
-  behaviorTextEl.textContent = bird.behavior;
-  distributionTextEl.textContent = bird.distribution;
+  if (commonNameEl) commonNameEl.textContent = bird.commonName || "";
+  if (scientificNameEl) scientificNameEl.textContent = `${bird.scientificName} • Familia: ${bird.family}`;
+  if (statusBadgeEl) statusBadgeEl.textContent = bird.status || "";
+  if (descriptionEl) descriptionEl.textContent = bird.description || "";
+  if (physicalEl) physicalEl.textContent = bird.physicalCharacteristics || "";
+  if (habitatTextEl) habitatTextEl.textContent = bird.habitatLabel || bird.habitat || "";
+  if (dietTextEl) dietTextEl.textContent = bird.diet || "";
+  if (behaviorTextEl) behaviorTextEl.textContent = bird.behavior || "";
+  if (distributionTextEl) distributionTextEl.textContent = bird.distribution || "";
 
-  videoLabelEl.textContent = bird.multimedia.videoPlaceholder;
+  if (videoLabelEl && bird.multimedia) {
+    videoLabelEl.textContent = bird.multimedia.videoPlaceholder || "[PLACEHOLDER DE VIDEO]";
+  }
 
   if (bird.sighting) {
-    locEl.textContent = bird.sighting.locationName;
-    dateEl.textContent = bird.sighting.date;
-    notesEl.textContent = bird.sighting.notes;
-    coordsEl.textContent = `Coordenadas: ${bird.sighting.coords[0].toFixed(4)}° N, ${bird.sighting.coords[1].toFixed(4)}° W`;
-    elevationEl.textContent = `Altitud: ${bird.sighting.elevation}`;
+    if (locEl) locEl.textContent = bird.sighting.locationName || "";
+    if (dateEl) dateEl.textContent = bird.sighting.date || "";
+    if (notesEl) notesEl.textContent = bird.sighting.notes || "";
+    if (coordsEl && Array.isArray(bird.sighting.coords)) {
+      coordsEl.textContent = `Coordenadas: ${bird.sighting.coords[0].toFixed(4)}° N, ${bird.sighting.coords[1].toFixed(4)}° W`;
+    }
+    if (elevationEl) elevationEl.textContent = `Altitud: ${bird.sighting.elevation || ""}`;
   }
 
   if (modalAudioEl) {

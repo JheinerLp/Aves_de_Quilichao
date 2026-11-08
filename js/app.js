@@ -62,15 +62,19 @@ function initNavbar() {
    2. CARRUSEL DE AVES DESTACADAS
    ========================================================================== */
 function initCarousel() {
-  const track = document.getElementById("carousel-track");
-  const container = document.getElementById("carousel-container");
+  const track = document.getElementById("carousel-track") || document.getElementById("carousel-track-container");
+  const container = document.getElementById("carousel-container") || document.getElementById("carousel-outer");
   const prevBtn = document.getElementById("carousel-prev-btn");
   const nextBtn = document.getElementById("carousel-next-btn");
   const statusIndicator = document.getElementById("carousel-status-indicator");
 
   if (!track || !container) return;
 
-  const demoBirds = BIOAVES_DATA;
+  const demoBirds = (typeof BIOAVES_DATA !== "undefined" && Array.isArray(BIOAVES_DATA)) ? BIOAVES_DATA : [];
+  if (demoBirds.length === 0) {
+    console.warn("BIOAVES_DATA no está disponible para el carrusel.");
+    return;
+  }
   const cardsHtml = [...demoBirds, ...demoBirds, ...demoBirds]
     .map((bird, idx) => `
       <div class="carousel-card flex-shrink-0 w-64 sm:w-72 p-4 rounded-sm flex flex-col justify-between select-none cursor-pointer group" data-bird-id="${bird.id}" data-index="${idx}">

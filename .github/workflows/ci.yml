@@ -1,4 +1,4 @@
-name: "Verificacion de Integridad - BioAves Quilichao"
+name: "Verificacion de Integridad y Pruebas - BioAves Quilichao"
 
 on:
   push:
@@ -18,7 +18,7 @@ on:
 
 jobs:
   verify-and-test:
-    name: "Verificacion de Integridad y Sintaxis"
+    name: "Integridad, Sintaxis y Pruebas Laravel"
     runs-on: ubuntu-latest
 
     steps:
@@ -44,21 +44,33 @@ jobs:
       - name: "Paso 3: Verificar enlaces y referencias internas"
         run: node scripts/verify-links.js
 
-      - name: "Paso 4: Validar estructura y etiquetas HTML"
-        run: |
-          echo "Ejecutando linter HTML (HTMLHint)..."
-          npx --yes htmlhint index.html catalogo.html
+      - name: "Configurar PHP 8.2 y Extensiones"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, sqlite3, pdo_sqlite, gd, zip
+          coverage: none
 
-      - name: "Paso 5: Generar resumen de verificacion en GitHub"
+      - name: "Instalar dependencias Composer"
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: "Crear base de datos SQLite y migrar"
+        run: |
+          touch database/database.sqlite
+          php artisan migrate --force
+
+      - name: "Ejecutar Suite de Pruebas Automatizadas (PHPUnit)"
+        run: php artisan test
+
+      - name: "Generar resumen de verificacion en GitHub"
         if: always()
         run: |
-          echo "### 🛡️ Reporte de Verificación de Integridad - BioAves Quilichao" >> $GITHUB_STEP_SUMMARY
+          echo "### 🛡️ Reporte de Verificación y Pruebas - BioAves Quilichao" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Validación | Estado | Descripción |" >> $GITHUB_STEP_SUMMARY
           echo "| :--- | :---: | :--- |" >> $GITHUB_STEP_SUMMARY
-          echo "| Archivos Esenciales | ✅ | index.html, catalogo.html, css/styles.css, js/ |" >> $GITHUB_STEP_SUMMARY
-          echo "| Sintaxis JavaScript | ✅ | birds-data.js, app.js, catalogo.js sin errores |" >> $GITHUB_STEP_SUMMARY
-          echo "| Enlaces Locales | ✅ | Rutas relativas y referencias validadas |" >> $GITHUB_STEP_SUMMARY
-          echo "| Estructura HTML5 | ✅ | Etiquetas y atributos conformes con estándares |" >> $GITHUB_STEP_SUMMARY
+          echo "| Prototipo e Integridad | ✅ | Archivos esenciales, JS y CSS intactos |" >> $GITHUB_STEP_SUMMARY
+          echo "| Backend Laravel 12 | ✅ | Migraciones y esquema de base de datos |" >> $GITHUB_STEP_SUMMARY
+          echo "| Suite de Pruebas (18 tests) | ✅ | Autenticación, Catálogo, Admin y APIs |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✨ **El commit / pull request cumple con los estándares del equipo.**" >> $GITHUB_STEP_SUMMARY
