@@ -1,0 +1,21 @@
+{
+  "name": "bioaves-quilichao",
+  "version": "1.0.0",
+  "description": "Prototipo web de baja fidelidad para observación y conservación de aves en Santander de Quilichao, Cauca.",
+  "scripts": {
+    "test": "npm run check:files && npm run check:js && npm run check:html",
+    "check:files": "node scripts/verify-files.js",
+    "check:js": "node --check js/birds-data.js && node --check js/app.js && node --check js/catalogo.js",
+    "check:html": "npx --yes htmlhint index.html catalogo.html",
+    "check:links": "node scripts/verify-links.js"
+  },
+  "keywords": [
+    "bioaves",
+    "santander-de-quilichao",
+    "cauca",
+    "aviturismo",
+    "wireframe"
+  ],
+  "author": "BioAves Quilichao Team",
+  "license": "MIT"
+}
