@@ -268,3 +268,4 @@ body { background: var(--paper) !important; }
 body.bv-inner { background: var(--paper) !important; }
 body.bv-inner > main { padding-top: 130px !important; }
 body.bv-inner .bv-footer { margin-top: 40px; }
+.bv-logo-text b { width: min-content; }
