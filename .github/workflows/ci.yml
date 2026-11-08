@@ -54,6 +54,11 @@ jobs:
       - name: "Instalar dependencias Composer"
         run: composer install --prefer-dist --no-interaction --no-progress
 
+      - name: "Preparar archivo de entorno y clave de aplicación"
+        run: |
+          cp .env.example .env
+          php artisan key:generate --force
+
       - name: "Crear base de datos SQLite y migrar"
         run: |
           touch database/database.sqlite
@@ -71,6 +76,6 @@ jobs:
           echo "| :--- | :---: | :--- |" >> $GITHUB_STEP_SUMMARY
           echo "| Prototipo e Integridad | ✅ | Archivos esenciales, JS y CSS intactos |" >> $GITHUB_STEP_SUMMARY
           echo "| Backend Laravel 12 | ✅ | Migraciones y esquema de base de datos |" >> $GITHUB_STEP_SUMMARY
-          echo "| Suite de Pruebas (18 tests) | ✅ | Autenticación, Catálogo, Admin y APIs |" >> $GITHUB_STEP_SUMMARY
+          echo "| Suite de Pruebas (19 tests) | ✅ | Autenticación, Catálogo, Admin y APIs |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✨ **El commit / pull request cumple con los estándares del equipo.**" >> $GITHUB_STEP_SUMMARY
