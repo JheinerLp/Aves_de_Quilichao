@@ -77,34 +77,12 @@ function initCarousel() {
   }
   const cardsHtml = [...demoBirds, ...demoBirds, ...demoBirds]
     .map((bird, idx) => `
-      <div class="carousel-card flex-shrink-0 w-64 sm:w-72 p-4 rounded-sm flex flex-col justify-between select-none cursor-pointer group" data-bird-id="${bird.id}" data-index="${idx}">
-        <div>
-          <div class="h-40 w-full wireframe-placeholder rounded-sm mb-3">
-            <span class="text-[10px] text-[#333333] font-bold text-center">
-              [PLACEHOLDER DE FOTOGRAFÍA]
-            </span>
-            <span class="text-[9px] text-[#777777] font-mono mt-1 line-clamp-1">
-              ${bird.commonName}
-            </span>
-          </div>
-
-          <div class="space-y-1">
-            <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 bg-[#D0D0D0] text-[#333333] border border-[#B0B0B0] inline-block">
-              ${bird.categoryLabel}
-            </span>
-            <h3 class="text-sm font-bold text-[#333333] line-clamp-1 group-hover:underline">
-              ${bird.commonName}
-            </h3>
-            <p class="text-xs italic font-mono text-[#777777]">
-              ${bird.scientificName}
-            </p>
-          </div>
-        </div>
-
-        <div class="pt-3 mt-3 border-t border-[#B0B0B0]">
-          <button type="button" class="btn-wireframe-secondary w-full text-xs py-1.5 open-species-btn" data-bird-id="${bird.id}">
-            Conocer especie →
-          </button>
+      <div class="carousel-card flex-shrink-0 w-64 sm:w-72 select-none cursor-pointer group" data-bird-id="${bird.id}" data-index="${idx}">
+        <div class="bv-photo"><img src="${bird.image || 'img/aves/' + bird.id + '.jpg'}" alt="${bird.commonName}" loading="lazy" onerror="this.remove()"><h3 class="bv-ribbon">${bird.commonName}</h3></div>
+        <div class="bv-card-body">
+          <span class="bv-badge">${bird.categoryLabel}</span>
+          <p>${bird.scientificName}</p>
+          <button type="button" class="bv-btn bv-btn-dark open-species-btn" data-bird-id="${bird.id}">Conocer especie →</button>
         </div>
       </div>
     `)

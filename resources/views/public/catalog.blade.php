@@ -12,47 +12,12 @@
   <!-- Estilos del Wireframe en escala de grises estricta -->
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
-<body class="bg-[#FFFFFF] text-[#333333] font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-[#D0D0D0] selection:text-[#333333]">
+<body class="bv-inner bg-[#FFFFFF] text-[#333333] font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-[#D0D0D0] selection:text-[#333333]">
 
   <!-- ======================================================================
        NAVBAR CATÁLOGO
        ====================================================================== -->
-  <header class="sticky top-0 z-40 bg-[#FFFFFF] border-b border-[#B0B0B0]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
-      
-      <div class="flex items-center gap-3 sm:gap-4">
-        <a href="{{ route('home') }}" class="btn-wireframe-secondary text-xs py-1.5 px-3 flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-          </svg>
-          <span>← Volver al Inicio</span>
-        </a>
-
-        <div class="hidden sm:block h-6 w-px bg-[#B0B0B0]"></div>
-
-        <div>
-          <span class="text-base font-black tracking-wider uppercase text-[#333333]">
-            BIOAVES QUILICHAO
-          </span>
-          <span class="hidden md:inline-block text-[11px] font-mono text-[#777777] ml-2">
-            • Catálogo General de Especies
-          </span>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <a href="{{ route('home') }}#mapa" class="btn-wireframe-ghost text-xs">
-          Ver Mapa de Avistamientos
-        </a>
-        @auth
-          <a href="{{ route('admin.dashboard') }}" class="btn-wireframe-primary text-xs">
-            [Panel Admin]
-          </a>
-        @endauth
-      </div>
-
-    </div>
-  </header>
+  @include('partials.header')
 
   <!-- ======================================================================
        CONTENIDO PRINCIPAL DEL CATÁLOGO
@@ -352,16 +317,7 @@
   </div>
 
   <!-- Pie de Página del Catálogo -->
-  <footer class="bg-[#111111] text-[#FFFFFF] py-6 border-t border-[#777777] mt-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#D0D0D0]">
-      <span>BioAves Quilichao • Catálogo Ornitológico Territorial</span>
-      <div class="flex items-center gap-4">
-        <a href="{{ route('home') }}" class="hover:underline text-[#FFFFFF]">Inicio</a>
-        <a href="{{ route('home') }}#mapa" class="hover:underline text-[#FFFFFF]">Mapa de Avistamientos</a>
-        <a href="{{ route('login') }}" class="hover:underline text-[#777777]">Acceso</a>
-      </div>
-    </div>
-  </footer>
+  @include('partials.footer')
 
   <!-- Scripts -->
   <script src="{{ asset('js/birds-data.js') }}"></script>

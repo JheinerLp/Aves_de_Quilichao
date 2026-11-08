@@ -8,28 +8,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
-<body class="bg-[#FFFFFF] text-[#333333] font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-[#D0D0D0] selection:text-[#333333]">
+<body class="bv-inner bg-[#FFFFFF] text-[#333333] font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-[#D0D0D0] selection:text-[#333333]">
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 bg-[#FFFFFF] border-b border-[#B0B0B0]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="{{ route('catalog.index') }}" class="btn-wireframe-secondary text-xs py-1.5 px-3 flex items-center gap-1.5">
-          <span>← Volver al Catálogo</span>
-        </a>
-        <div class="hidden sm:block h-6 w-px bg-[#B0B0B0]"></div>
-        <span class="text-base font-black tracking-wider uppercase text-[#333333]">
-          BIOAVES QUILICHAO
-        </span>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <a href="{{ route('home') }}#mapa" class="btn-wireframe-ghost text-xs">
-          Ver en el Mapa
-        </a>
-      </div>
-    </div>
-  </header>
+  @include('partials.header')
 
   <!-- Contenido de la Ficha -->
   <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-1 space-y-8">
@@ -143,12 +125,7 @@
 
   </main>
 
-  <footer class="bg-[#111111] text-[#FFFFFF] py-6 border-t border-[#777777]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#D0D0D0]">
-      <span>BioAves Quilichao • Santander de Quilichao, Cauca</span>
-      <a href="{{ route('catalog.index') }}" class="hover:underline text-[#FFFFFF]">Volver al Catálogo Completo ↗</a>
-    </div>
-  </footer>
+  @include('partials.footer')
 
 </body>
 </html>

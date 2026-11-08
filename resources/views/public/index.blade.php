@@ -3,304 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BioAves Quilichao - Prototipo web de baja fidelidad (Low-Fidelity Wireframe) para observación y conservación de aves en Santander de Quilichao, Cauca.">
-  <title>BioAves Quilichao | Prototipo de Baja Fidelidad</title>
-
-  <!-- Tailwind CSS CDN para composición de retículas -->
+  <meta name="description" content="BioAves Quilichao: observación, identificación y conservación de las aves de Santander de Quilichao, Cauca.">
+  <title>BioAves Quilichao | Descubre las aves de nuestro territorio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Leaflet CSS para el mapa -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
-  <!-- Estilos del Wireframe en escala de grises estricta -->
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
-<body class="bg-[#FFFFFF] text-[#333333] font-sans antialiased selection:bg-[#D0D0D0] selection:text-[#333333]">
+<body class="text-[#333333] antialiased">
 
-  <!-- ======================================================================
-       3. NAVBAR — NAVEGACIÓN PRINCIPAL
-       ====================================================================== -->
-  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-50 transition-colors duration-200 border-b border-[#B0B0B0] bg-[#FFFFFF]/90 backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
-      
-      <!-- Logotipo Textual -->
-      <a href="{{ route('home') }}#inicio" class="flex flex-col group text-decoration-none">
-        <span class="text-lg font-black tracking-widest text-[#333333] uppercase">
-          BIOAVES QUILICHAO
-        </span>
-        <span class="text-[10px] font-mono tracking-wider text-[#777777] uppercase -mt-0.5">
-          Santander de Quilichao • Prototipo Wireframe
-        </span>
-      </a>
+  @include('partials.header')
 
-      <!-- Navegación Escritorio -->
-      <nav class="hidden lg:flex items-center gap-1 sm:gap-2">
-        <a href="#inicio" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
-          Inicio
-        </a>
-        <a href="#carrusel" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
-          Aves Destacadas
-        </a>
-        <a href="#rutas" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
-          Rutas de Avistamiento
-        </a>
-        <a href="#mapa" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
-          Mapa de Avistamientos
-        </a>
-        <a href="#reportar-avistamiento" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
-          Reportar Avistamiento
-        </a>
-        <a href="#conservacion" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
-          Conservación
-        </a>
-        <a href="#sobre-nosotros" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
-          Sobre Nosotros
-        </a>
-        <!-- Enlace que lleva a la página independiente del Catálogo -->
-        <a href="{{ route('catalog.index') }}" class="ml-2 px-3.5 py-1.5 text-xs font-bold text-[#FFFFFF] bg-[#333333] hover:bg-[#000000] border border-[#333333] rounded-sm transition-all flex items-center gap-1">
-          <span>Catálogo</span>
-          <span class="text-[10px] font-mono">↗</span>
-        </a>
-        @auth
-          <a href="{{ route('admin.dashboard') }}" class="ml-1 px-3 py-1.5 text-xs font-bold text-[#333333] bg-[#E0E0E0] hover:bg-[#D0D0D0] border border-[#B0B0B0] rounded-sm transition-all">
-            [Panel Admin]
-          </a>
-        @else
-          <a href="{{ route('login') }}" class="ml-1 px-3 py-1.5 text-xs font-semibold text-[#777777] hover:text-[#333333] border border-dashed border-[#B0B0B0] rounded-sm transition-all">
-            Acceso
-          </a>
-        @endauth
-      </nav>
-
-      <!-- Botón móvil (Hamburguesa) -->
-      <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 border border-[#B0B0B0] bg-[#F2F2F2] text-[#333333] rounded-sm" aria-label="Abrir menú de navegación">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-
-    </div>
-
-    <!-- Menú Desplegable Móvil -->
-    <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-6 bg-[#FFFFFF] border-b border-[#B0B0B0] space-y-2">
-      <a href="#inicio" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
-        Inicio
-      </a>
-      <a href="#carrusel" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
-        Aves Destacadas
-      </a>
-      <a href="#rutas" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
-        Rutas de Avistamiento
-      </a>
-      <a href="#mapa" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
-        Mapa de Avistamientos
-      </a>
-      <a href="#reportar-avistamiento" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
-        Reportar Avistamiento
-      </a>
-      <a href="#conservacion" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
-        Conservación
-      </a>
-      <a href="#sobre-nosotros" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
-        Sobre Nosotros
-      </a>
-      <a href="{{ route('catalog.index') }}" class="block px-3 py-2 text-xs font-bold text-[#FFFFFF] bg-[#333333] border border-[#333333] rounded-sm text-center">
-        Abrir Catálogo de Aves (Página Completa ↗)
-      </a>
-      @auth
-        <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 text-xs font-bold text-[#333333] bg-[#E0E0E0] border border-[#B0B0B0] rounded-sm text-center">
-          Ir al Panel de Administración
-        </a>
-      @endauth
-    </div>
-  </header>
-
-  <!-- ======================================================================
-       4. HERO — PORTADA PRINCIPAL (85-100% de la altura inicial)
-          - Video panorámico en el fondo (Atrás)
-          - Cuadrito "Descubre las aves..." adelante y desplazado bien a la izquierda
-       ====================================================================== -->
-  <section id="inicio" class="min-h-[92vh] flex items-center relative overflow-hidden border-b border-[#B0B0B0] bg-[#333333]">
-    
-    <!-- Área de fondo completa reservada para video panorámico (Atrás) -->
-    <div class="absolute inset-0 w-full h-full wireframe-placeholder-dark flex flex-col items-center justify-center p-6 text-center select-none">
-      <div class="w-16 h-16 sm:w-20 sm:h-20 border-2 border-[#D0D0D0] bg-[#111111] flex items-center justify-center mb-4 rounded-sm">
-        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-[#D0D0D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-      </div>
-      <span class="text-base sm:text-xl font-bold tracking-widest text-[#FFFFFF] max-w-2xl px-4">
-        [VIDEO DE AVE VOLANDO SOBRE SANTANDER DE QUILICHAO]
-      </span>
-      <span class="text-xs text-[#D0D0D0] mt-2 font-mono max-w-lg px-4">
-        Espacio panorámico de fondo en loop (1080p, paisaje de montaña, río y avifauna en vuelo)
-      </span>
-      
-      <!-- Indicador de formato en esquina inferior derecha -->
-      <div class="absolute bottom-6 right-6 px-3 py-1 bg-[#111111] border border-[#777777] text-[11px] font-mono text-[#D0D0D0] rounded-sm">
-        [PLACEHOLDER DE VIDEO: FONDO COMPLETO]
+  <!-- HERO: video en video/hero.mp4, foto en img/hero-ave.jpg -->
+  <section id="inicio" class="bv-hero">
+    <video class="bv-video" autoplay muted loop playsinline preload="metadata" poster="{{ asset('img/hero-ave.jpg') }}"><source src="{{ asset('video/hero.mp4') }}" type="video/mp4"></video>
+    <div class="bv-hero-in">
+      <h1>Descubre las aves de nuestro <span class="bv-script">territorio</span></h1>
+      <p>Plataforma dedicada a la observación, identificación, registro cartográfico y conservación de la avifauna en el municipio de Santander de Quilichao, Cauca.</p>
+      <div class="bv-btns">
+        <a href="{{ route('catalog.index') }}" class="bv-btn bv-btn-fill">🔭 Explorar catálogo de aves</a>
+        <a href="{{ route('home') }}#sobre-nosotros" class="bv-btn bv-btn-line">🍃 Conoce nuestra misión</a>
       </div>
     </div>
-
-    <!-- Contenedor en primer plano (Adelante y desplazado a la izquierda) -->
-    <div class="relative z-10 w-full px-4 sm:px-8 lg:px-16 py-28 sm:py-36 flex justify-start">
-      
-      <!-- Cuadrito "Descubre las aves de nuestro territorio" posicionado bien a la izquierda -->
-      <div class="w-full max-w-md lg:max-w-lg bg-[#FFFFFF] border-2 border-[#333333] p-7 sm:p-9 rounded-sm shadow-2xl space-y-5">
-        
-        <div class="inline-block px-3 py-1 bg-[#D0D0D0] text-[#333333] text-[11px] font-mono font-bold tracking-wider uppercase border border-[#B0B0B0]">
-          BioAves Quilichao • Santander de Quilichao
-        </div>
-        
-        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#333333] leading-tight">
-          Descubre las aves de nuestro territorio
-        </h1>
-
-        <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
-          Plataforma dedicada a la observación, identificación, registro cartográfico y conservación de la avifauna en el municipio de Santander de Quilichao, departamento del Cauca.
-        </p>
-
-        <!-- Botón Catálogo lleva a la página independiente catalogo.html -->
-        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <a href="{{ route('catalog.index') }}" class="btn-wireframe-primary text-center">
-            <span>Explorar catálogo de aves ↗</span>
-          </a>
-          <a href="#sobre-nosotros" class="btn-wireframe-secondary text-center">
-            <span>Conoce nuestra misión</span>
-          </a>
-        </div>
-
-        <div class="pt-3 border-t border-[#B0B0B0] text-[11px] font-mono text-[#777777] flex items-center justify-between">
-          <span>Eslogan: Descubre. Escucha. Explora. Conserva.</span>
-        </div>
-
-      </div>
-
-    </div>
+    <svg class="bv-wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C300 120 600 110 900 70s400-40 540 10v60H0z" fill="#f4f9e6"/><path d="M0 70C300 150 620 140 920 100s400-40 520 0" fill="none" stroke="#ffd21f" stroke-width="7"/><path d="M0 100C280 160 600 150 900 120s400-30 540-10" fill="none" stroke="#2e9b3a" stroke-width="12"/></svg>
   </section>
 
-  <!-- ======================================================================
-       5. SECCIÓN — INTRODUCCIÓN A LA BIODIVERSIDAD (Indicadores estadísticos)
-       ====================================================================== -->
-  <section id="introduccion" class="py-16 bg-[#F2F2F2] border-b border-[#B0B0B0]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-      
-      <div class="max-w-3xl space-y-3">
-        <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
-          Contexto Biogeográfico
-        </span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#333333]">
-          Un territorio lleno de vida
-        </h2>
-        <p class="text-sm sm:text-base text-[#777777] leading-relaxed">
-          Santander de Quilichao confluye entre los pisos térmicos cálidos del valle geográfico del Río Cauca y las estribaciones de la Cordillera Central. Esta gradiente altitudinal origina diversos ecosistemas que albergan aves endémicas, residentes y migratorias de gran valor ecológico.
-        </p>
-      </div>
-
-      <!-- Tres indicadores estadísticos -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2">
-          <div class="flex items-baseline gap-2">
-            <span class="text-4xl sm:text-5xl font-black text-[#333333]">{{ $species->count() }}</span>
-            <span class="text-xs font-mono text-[#777777]">[Catálogo activo]</span>
-          </div>
-          <h3 class="text-base font-bold text-[#333333]">Especies registradas</h3>
-          <p class="text-xs text-[#777777] leading-relaxed">
-            Diversidad catalogada con fichas biológicas completas entre áreas urbanas, cuencas hídricas y reservas de montaña.
-          </p>
-        </div>
-
-        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2">
-          <div class="flex items-baseline gap-2">
-            <span class="text-4xl sm:text-5xl font-black text-[#333333]">{{ $locations->count() }}</span>
-            <span class="text-xs font-mono text-[#777777]">[Sectores muestreados]</span>
-          </div>
-          <h3 class="text-base font-bold text-[#333333]">Lugares de avistamiento</h3>
-          <p class="text-xs text-[#777777] leading-relaxed">
-            Sectores georreferenciados: humedales, senderos ribereños, bosques de niebla y agroecosistemas cafeteros.
-          </p>
-        </div>
-
-        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2">
-          <div class="flex items-baseline gap-2">
-            <span class="text-4xl sm:text-5xl font-black text-[#333333]">{{ $sightings->count() }}</span>
-            <span class="text-xs font-mono text-[#777777]">[Validación biológica]</span>
-          </div>
-          <h3 class="text-base font-bold text-[#333333]">Observaciones verificadas</h3>
-          <p class="text-xs text-[#777777] leading-relaxed">
-            Registros ornitológicos geolocalizados validados por el equipo curador de la plataforma.
-          </p>
-        </div>
-
-      </div>
-
+  <!-- CONTEXTO + INDICADORES -->
+  <section id="introduccion" class="bv-wrap bv-contexto">
+    <div class="bv-context-text">
+      <span class="bv-tag">Contexto biogeográfico</span>
+      <h2>Un territorio lleno de vida</h2>
+      <p>Santander de Quilichao confluye entre los pisos térmicos cálidos del valle geográfico del Río Cauca y las estribaciones de la Cordillera Central. Esta gradiente altitudinal origina diversos ecosistemas que albergan aves endémicas, residentes y migratorias de gran valor ecológico.</p>
     </div>
+    <div class="bv-stat"><span class="bv-ico c1">🐦</span><b>{{ $species->count() }}</b><h3>Especies registradas</h3><p>Diversidad acumulada de aves reportadas entre áreas urbanas, cuencas y reservas.</p></div>
+    <div class="bv-stat"><span class="bv-ico c2">📍</span><b>{{ $locations->count() }}</b><h3>Lugares de avistamiento</h3><p>Rutas y puntos geográficos en el municipio.</p></div>
+    <div class="bv-stat"><span class="bv-ico c3">📊</span><b>{{ $sightings->count() }}</b><h3>Registros de observación</h3><p>Fichas documentadas por expertos y comunidad.</p></div>
   </section>
 
-  <!-- ======================================================================
-       6. CARRUSEL AUTOMÁTICO DE AVES DESTACADAS
-          - Borde animado con doble línea gris en la tarjeta central
-          - Desplazamiento automático pausado en hover
-       ====================================================================== -->
-  <section id="carrusel" class="py-20 bg-[#FFFFFF] border-b border-[#B0B0B0] overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div>
-          <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
-            Galería Dinámica
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-black text-[#333333]">
-            Aves representativas de Santander de Quilichao
-          </h2>
-          <p class="text-xs sm:text-sm text-[#777777] mt-1">
-            Carrusel continuo de especies. La tarjeta central se resalta con doble línea de contorno. Pasa el cursor para pausar el movimiento.
-          </p>
-        </div>
-
-        <!-- Controles manuales y acceso al catálogo completo -->
-        <div class="flex items-center gap-3">
-          <a href="{{ route('catalog.index') }}" class="hidden sm:inline-block px-3 py-1 bg-[#FFFFFF] border border-[#B0B0B0] text-[11px] font-mono text-[#333333] hover:bg-[#F2F2F2]">
-            Ver Catálogo Completo ↗
-          </a>
-
-          <span id="carousel-status-indicator" class="px-3 py-1 bg-[#F2F2F2] border border-[#B0B0B0] text-[11px] font-mono text-[#333333]">
-            Auto-Desplazamiento Activo
-          </span>
-
-          <div class="flex items-center gap-1">
-            <button id="carousel-prev-btn" type="button" class="w-9 h-9 border border-[#B0B0B0] bg-[#F2F2F2] hover:bg-[#D0D0D0] text-[#333333] flex items-center justify-center rounded-sm transition-colors" aria-label="Anterior ave">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-              </svg>
-            </button>
-            <button id="carousel-next-btn" type="button" class="w-9 h-9 border border-[#B0B0B0] bg-[#F2F2F2] hover:bg-[#D0D0D0] text-[#333333] flex items-center justify-center rounded-sm transition-colors" aria-label="Siguiente ave">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </button>
-          </div>
-        </div>
+  <!-- CARRUSEL -->
+  <section id="carrusel" class="bv-carousel-sec">
+    <div class="bv-wrap">
+      <div class="bv-head">
+        <div><span class="bv-tag bv-tag-sun">Muestreo representativo</span><h2><i>🌿</i> Descubre nuestras aves <i>🌿</i></h2></div>
+        <a href="{{ route('catalog.index') }}" class="bv-btn bv-btn-fill bv-small">Ver Catálogo Completo →</a>
       </div>
-
-      <!-- Contenedor del Carrusel Horizontal Centrado -->
+      <div class="bv-controls">
+        <span id="carousel-status-indicator">Auto-desplazamiento activo</span>
+        <button id="carousel-prev-btn" type="button" aria-label="Anterior ave">‹</button>
+        <button id="carousel-next-btn" type="button" aria-label="Siguiente ave">›</button>
+      </div>
       <div id="carousel-container" class="w-full overflow-x-auto no-scrollbar py-8 px-2 cursor-grab active:cursor-grabbing">
-        <div id="carousel-track" class="flex gap-6 items-center w-max">
-          <!-- Inyectado por JavaScript mediante BIOAVES_DATA -->
-        </div>
+        <div id="carousel-track" class="flex gap-6 items-center w-max"></div>
       </div>
-
-      <div class="flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#777777] pt-2 border-t border-[#B0B0B0]">
-        <span>Pasa el cursor para pausar • En móvil desplaza con el dedo • Clic en "Conocer especie" para ver ficha</span>
-        <span class="mt-2 sm:mt-0">[Efecto Arcoíris Wireframe: Borde doble línea gris en tarjeta central]</span>
-      </div>
-
     </div>
   </section>
 
-  <!-- ======================================================================
+  <!-- MISIÓN (foto: img/mision.jpg) -->
+  <section class="bv-mision bv-wrap">
+    <div class="bv-mision-img"></div>
+    <div class="bv-mision-text">
+      <span class="bv-tag bv-tag-sun">Nuestra misión</span>
+      <h2>Conservar para el futuro</h2>
+      <p>Trabajamos por la protección de las aves y sus hábitats en Santander de Quilichao, promoviendo el conocimiento, la educación ambiental y la participación ciudadana.</p>
+      <a href="{{ route('home') }}#sobre-nosotros" class="bv-btn bv-btn-fill">Conoce más →</a>
+    </div>
+    <div class="bv-lema">Descubre.<br>Escucha.<br>Explora.<br>Conserva.</div>
+  </section>
+
+<!-- ======================================================================
        7. SECCIÓN — RUTAS Y PUNTOS DE OBSERVACIÓN
        ====================================================================== -->
   <section id="rutas" class="py-20 bg-[#F2F2F2] border-b border-[#B0B0B0]">
@@ -831,61 +600,7 @@
   <!-- ======================================================================
        11. FOOTER — PIE DE PÁGINA
        ====================================================================== -->
-  <footer class="bg-[#111111] text-[#FFFFFF] py-12 border-t border-[#777777]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        
-        <div class="space-y-3 md:col-span-2">
-          <span class="text-lg font-black tracking-widest uppercase block">
-            BIOAVES QUILICHAO
-          </span>
-          <p class="text-xs text-[#D0D0D0] max-w-md leading-relaxed">
-            Plataforma digital para la observación, monitoreo participativo y conservación de las aves de Santander de Quilichao, Cauca, Colombia.
-          </p>
-          <span class="text-[11px] font-mono text-[#777777] block">
-            Descubre. Escucha. Explora. Conserva.
-          </span>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-[#FFFFFF]">Enlaces Rápidos</h4>
-          <ul class="space-y-1.5 text-xs text-[#D0D0D0]">
-            <li><a href="#inicio" class="hover:underline">Inicio</a></li>
-            <li><a href="#carrusel" class="hover:underline">Aves Destacadas</a></li>
-            <li><a href="{{ route('catalog.index') }}" class="hover:underline">Catálogo General</a></li>
-            <li><a href="#mapa" class="hover:underline">Mapa de Avistamientos</a></li>
-            <li><a href="#conservacion" class="hover:underline">Conservación</a></li>
-          </ul>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-[#FFFFFF]">Acceso Privado</h4>
-          <ul class="space-y-1.5 text-xs text-[#D0D0D0]">
-            @auth
-              <li><a href="{{ route('admin.dashboard') }}" class="hover:underline font-bold text-[#FFFFFF]">[Panel de Administración]</a></li>
-              <li>
-                <form method="POST" action="{{ route('logout') }}">
-                  @csrf
-                  <button type="submit" class="hover:underline text-[#D0D0D0] text-xs">Cerrar Sesión</button>
-                </form>
-              </li>
-            @else
-              <li><a href="{{ route('login') }}" class="hover:underline">Inicio de Sesión Administrativo</a></li>
-            @endauth
-            <li><span class="text-[11px] text-[#777777]">Santander de Quilichao, Cauca</span></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="pt-6 border-t border-[#333333] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-[#777777]">
-        <span>© 2026 BioAves Quilichao • Prototipo de Baja Fidelidad</span>
-        <span>Escala de Grises Monocromática Estricta</span>
-      </div>
-
-    </div>
-  </footer>
+  @include('partials.footer')
 
   <!-- ======================================================================
        FICHA DETALLADA MODAL EN INDEX (Para abrir especies desde el carrusel y mapa)
