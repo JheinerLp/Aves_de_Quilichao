@@ -156,4 +156,4 @@ node scripts/verify-links.js
 ## 7. Licencia y Créditos
 - **Proyecto:** BioAves Quilichao (2026).
 - **Municipio:** Santander de Quilichao, Departamento del Cauca, Colombia.
-- **Audios:** Colección Xeno-Canto y Wikimedia Commons bajo licencias libres Creative Commons.
+- **Audios:** Colección Xeno-Canto y Wikimedia Commons bajo licencias libres Creative Commons. 
