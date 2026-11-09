@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Catálogo Completo de Aves de Santander de Quilichao - BioAves Quilichao. Prototipo de baja fidelidad en escala de grises.">
   <title>Catálogo Completo de Aves | BioAves Quilichao (Low-Fidelity Wireframe)</title>
+  <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ $species->common_name }} ({{ $species->scientific_name }}) - Ficha biológica de BioAves Quilichao, Cauca.">
   <title>{{ $species->common_name }} | BioAves Quilichao</title>
+  <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
