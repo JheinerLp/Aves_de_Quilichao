@@ -7,6 +7,9 @@
 const BIOAVES_DATA = [
   {
     id: "momoto-andino",
+    image: "img/aves/momoto-andino.png",
+    imageFit: "cover",
+    imagePosition: "center",
     commonName: "Momoto Andino (Barranquero)",
     scientificName: "Momotus aequatorialis",
     family: "Momotidae",
@@ -22,7 +25,7 @@ const BIOAVES_DATA = [
     distribution: "Cordillera Central y Occidental de los Andes, entre 1.000 y 2.400 msnm.",
     multimedia: {
       photos: [
-        { id: 1, label: "[PLACEHOLDER DE FOTOGRAFÍA 1 DE 3: VISTA LATERAL EN PERCHA]" },
+        { id: 1, src: "img/aves/momoto-andino.png", label: "Momoto Andino registrado en Santander de Quilichao. Foto: Litrato15 (iNaturalist, CC BY-NC); mejora técnica con IA." },
         { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE CORONA Y PICO]" },
         { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT RIBEREÑO]" }
       ],
@@ -40,7 +43,48 @@ const BIOAVES_DATA = [
     }
   },
   {
+    id: "chicao",
+    image: "img/aves/CHICAO.png",
+    commonName: "Chicao",
+    scientificName: "Icterus nigrogularis",
+    family: "Icteridae",
+    habitatType: "cafetal-agroecosistema",
+    habitatLabel: "Bordes de bosque, cultivos y arbolado urbano",
+    category: "residente",
+    categoryLabel: "Residente Emblemática",
+    status: "Preocupación Menor (LC)",
+    description: "Ave amarilla y negra conocida localmente como Chicao o Pájaro de Oro. Es una especie emblemática de Santander de Quilichao y suele observarse en árboles altos, bordes de bosque y zonas abiertas arboladas.",
+    physicalCharacteristics: "Ave mediana de plumaje amarillo intenso, alas y cola negras, con una máscara oscura alrededor del ojo y la garganta.",
+    diet: "Omnívora: consume insectos, frutos, néctar y flores.",
+    behavior: "Se desplaza en parejas o grupos pequeños y vocaliza con frecuencia desde perchas visibles.",
+    distribution: "Presente en zonas cálidas y premontanas del norte del Cauca, en ambientes abiertos con árboles y bordes de bosque.",
+    multimedia: {
+      photos: [
+        { id: 1, src: "img/aves/CHICAO.png", label: "Chicao posado entre el follaje" },
+        { id: 2, label: "[FOTOGRAFÍA PENDIENTE: DETALLE DEL PLUMAJE AMARILLO Y NEGRO]" },
+        { id: 3, label: "[FOTOGRAFÍA PENDIENTE: CHICAO EN SU HÁBITAT]" }
+      ],
+      videoPlaceholder: "Registros audiovisuales del Chicao",
+      videos: [
+        { src: "video/CHICAO HABLANDO.mp4", label: "Chicao vocalizando" },
+        { src: "video/CHICAO SONIDO.mp4", label: "Registro del canto del Chicao" }
+      ],
+      audioDuration: "0:08",
+      audioSample: "video/CHICAO SONIDO.mp4",
+      audioLocal: true
+    },
+    sighting: {
+      locationName: "Santander de Quilichao",
+      zone: "Zona Urbana y Agroecosistemas",
+      date: "Registro multimedia del equipo",
+      coords: [3.0094, -76.4847],
+      elevation: "1.056 msnm",
+      notes: "Registro audiovisual aportado para la colección BioAves Quilichao."
+    }
+  },
+  {
     id: "pava-caucana",
+    image: "img/aves/PAVA CAUCANA.png",
     commonName: "Pava Caucana",
     scientificName: "Penelope perspicax",
     family: "Cracidae",
@@ -56,11 +100,15 @@ const BIOAVES_DATA = [
     distribution: "Restringida a relictos de bosque de niebla de la vertiente occidental de la Cordillera Central (1.400 - 2.100 msnm).",
     multimedia: {
       photos: [
-        { id: 1, label: "[PLACEHOLDER DE FOTOGRAFÍA 1 DE 3: SILUETA EN DOSEL SUPERIOR]" },
+        { id: 1, src: "img/aves/PAVA CAUCANA.png", label: "Pava Caucana posada en el bosque" },
         { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE GOLA GULAR ROJA]" },
         { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: GRUPO FAMILIAR EN RAMAS]" }
       ],
       videoPlaceholder: "[PLACEHOLDER DE VIDEO: FORRAJEO EN ÁRBOL NATIVO]",
+      videos: [
+        { src: "video/PAVA CAUCANA HABLANDO.mp4", label: "Video del ave" },
+        { src: "video/PAVA CAUCANA SONIDO.mp4", label: "Sonido del ave" }
+      ],
       audioDuration: "0:34",
       audioSample: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Penelope_perspicax_-_Cauca_Guan_XC151978.ogg"
     },
@@ -75,6 +123,9 @@ const BIOAVES_DATA = [
   },
   {
     id: "tangara-rastrojera",
+    image: "img/aves/tangara-rastrojera.jpg",
+    imageFit: "cover",
+    imagePosition: "center",
     commonName: "Tangara Rastrojera (Matorralera)",
     scientificName: "Tangara vitriolina",
     family: "Thraupidae",
@@ -90,7 +141,7 @@ const BIOAVES_DATA = [
     distribution: "Valles del Río Cauca y Magdalena (500 a 2.200 msnm).",
     multimedia: {
       photos: [
-        { id: 1, label: "[PLACEHOLDER DE FOTOGRAFÍA 1 DE 3: VISTA DE PERFIL EN ARBUSTO]" },
+        { id: 1, src: "img/aves/tangara-rastrojera.jpg", label: "Tangara Rastrojera. Foto de referencia externa: olegvasiliev (iNaturalist, CC BY-NC), Valle del Cauca; no corresponde a un registro municipal de Santander de Quilichao." },
         { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE CORONA CASTAÑA]" },
         { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: FORRAJEANDO ENTRE MATORRALES]" }
       ],
@@ -109,6 +160,7 @@ const BIOAVES_DATA = [
   },
   {
     id: "colibri-colirrufo",
+    image: "img/aves/COLIBRI.png",
     commonName: "Colibrí Colirrufo",
     scientificName: "Amazilia tzacatl",
     family: "Trochilidae",
@@ -124,13 +176,18 @@ const BIOAVES_DATA = [
     distribution: "Desde el nivel del mar hasta 1.800 msnm en todo el territorio quilichagüeño.",
     multimedia: {
       photos: [
-        { id: 1, label: "[PLACEHOLDER DE FOTOGRAFÍA 1 DE 3: VUELO SUSPENDIDO ANTE FLOR]" },
+        { id: 1, src: "img/aves/COLIBRI.png", label: "Colibrí Colirrufo posado en una rama" },
         { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE PICO RECTO]" },
         { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: PERCHADO EN RAMA DELGADA]" }
       ],
       videoPlaceholder: "[PLACEHOLDER DE VIDEO: LIBACIÓN RÁPIDA DE NÉCTAR]",
+      videos: [
+        { src: "video/COLIBIRI HABLANDO.mp4", label: "Colibrí vocalizando" },
+        { src: "video/COLIBRI SONIDO.mp4", label: "Registro del canto del Colibrí" }
+      ],
       audioDuration: "0:15",
-      audioSample: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Amazilia_tzacatl_-_Rufous-tailed_Hummingbird_XC24361.ogg"
+      audioSample: "video/COLIBRI SONIDO.mp4",
+      audioLocal: true
     },
     sighting: {
       locationName: "Parque Principal Francisco de Paula Santander",
@@ -142,7 +199,50 @@ const BIOAVES_DATA = [
     }
   },
   {
+    id: "mirla-azul",
+    image: "img/aves/COLIBRI COLIRRUFO.png",
+    commonName: "Mirla Azul",
+    scientificName: "Turdus sp. (identificación pendiente)",
+    family: "Turdidae",
+    habitatType: "bosque-andino",
+    habitatLabel: "Bosques montanos y bordes arbolados",
+    category: "residente",
+    categoryLabel: "Registro por Identificar",
+    status: "Identificación taxonómica pendiente",
+    description: "Registro multimedia recibido con el nombre común Mirla Azul. La ficha conserva ese nombre y deja explícita la identificación taxonómica pendiente para evitar asignar una especie científica sin verificación.",
+    physicalCharacteristics: "Ave mediana de plumaje azul grisáceo, alas de azul más intenso, pico recto oscuro y cola alargada.",
+    diet: "Información pendiente de confirmación taxonómica.",
+    behavior: "En los registros se observa posada y vocalizando desde ramas expuestas.",
+    distribution: "Registro local en Santander de Quilichao; la distribución precisa depende de confirmar la especie.",
+    multimedia: {
+      photos: [
+        { id: 1, src: "img/aves/COLIBRI COLIRRUFO.png", label: "Registro fotográfico de la Mirla Azul" },
+        { id: 2, label: "[FOTOGRAFÍA PENDIENTE: VISTA FRONTAL]" },
+        { id: 3, label: "[FOTOGRAFÍA PENDIENTE: AVE EN SU HÁBITAT]" }
+      ],
+      videoPlaceholder: "Registros audiovisuales de la Mirla Azul",
+      videos: [
+        { src: "video/MIRLA AZUL HABLANDO.mp4", label: "Mirla Azul vocalizando" },
+        { src: "video/MIRLA AZUL SONIDO.mp4", label: "Registro del canto de la Mirla Azul" }
+      ],
+      audioDuration: "0:08",
+      audioSample: "video/MIRLA AZUL SONIDO.mp4",
+      audioLocal: true
+    },
+    sighting: {
+      locationName: "Santander de Quilichao",
+      zone: "Zona Andina",
+      date: "Registro multimedia del equipo",
+      coords: [3.0290, -76.4950],
+      elevation: "1.062 msnm",
+      notes: "El nombre común proviene del archivo recibido; la identificación científica requiere validación."
+    }
+  },
+  {
     id: "garza-tigre",
+    image: "img/aves/garza-tigre.jpg",
+    imageFit: "cover",
+    imagePosition: "center",
     commonName: "Garza Tigre Cuellifasta",
     scientificName: "Tigrisoma lineatum",
     family: "Ardeidae",
@@ -158,7 +258,7 @@ const BIOAVES_DATA = [
     distribution: "Humedales y ríos de tierras bajas hasta 1.200 msnm.",
     multimedia: {
       photos: [
-        { id: 1, label: "[PLACEHOLDER DE FOTOGRAFÍA 1 DE 3: POSTURA MIMÉTICA EN JUNCALES]" },
+        { id: 1, src: "img/aves/garza-tigre.jpg", label: "Garza Tigre Cuellifasta. Foto de referencia externa: andresftvera (iNaturalist, CC BY-NC), Florencia, Caquetá; no corresponde a un registro municipal de Santander de Quilichao." },
         { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DEL RAYADO DEL CUELLO]" },
         { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: CAZANDO EN EL ESPEJO DE AGUA]" }
       ],
@@ -177,6 +277,9 @@ const BIOAVES_DATA = [
   },
   {
     id: "carpintero-habado",
+    image: "img/aves/carpintero-habado.png",
+    imageFit: "cover",
+    imagePosition: "center top",
     commonName: "Carpintero Habado",
     scientificName: "Melanerpes rubricapillus",
     family: "Picidae",
@@ -192,7 +295,7 @@ const BIOAVES_DATA = [
     distribution: "Valles cálidos y zonas premontanas de Colombia (0 a 1.600 msnm).",
     multimedia: {
       photos: [
-        { id: 1, label: "[PLACEHOLDER DE FOTOGRAFÍA 1 DE 3: TREPANDO TALLO DE GUADUA]" },
+        { id: 1, src: "img/aves/carpintero-habado.png", label: "Carpintero Habado registrado en Santander de Quilichao. Foto: Litrato15 (iNaturalist, CC BY-NC); mejora técnica con IA." },
         { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE CORONA ROJA]" },
         { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: INSPECCIONANDO CAVIDAD DE NIDO]" }
       ],
@@ -211,6 +314,9 @@ const BIOAVES_DATA = [
   },
   {
     id: "azulejo-comun",
+    image: "img/aves/azulejo-comun.png",
+    imageFit: "cover",
+    imagePosition: "center",
     commonName: "Azulejo Común",
     scientificName: "Thraupis episcopus",
     family: "Thraupidae",
@@ -226,7 +332,7 @@ const BIOAVES_DATA = [
     distribution: "Ampliamente distribuido en Colombia por debajo de 2.200 msnm.",
     multimedia: {
       photos: [
-        { id: 1, label: "[PLACEHOLDER DE FOTOGRAFÍA 1 DE 3: PAREJA EN ÁRBOL FRUTAL]" },
+        { id: 1, src: "img/aves/azulejo-comun.png", label: "Azulejo Común registrado en Santander de Quilichao. Foto: Henry Dubán Alegría (iNaturalist, CC BY-NC); mejora técnica y reencuadre con IA." },
         { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE PLUMAJE CELESTE]" },
         { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: VOLANDO ENTRE JARDINES]" }
       ],
@@ -245,6 +351,9 @@ const BIOAVES_DATA = [
   },
   {
     id: "buho-currucutu",
+    image: "img/aves/currucutu-comun.jpg",
+    imageFit: "cover",
+    imagePosition: "center",
     commonName: "Currucutú Común (Búho Chillón)",
     scientificName: "Megascops choliba",
     family: "Strigidae",
@@ -260,7 +369,7 @@ const BIOAVES_DATA = [
     distribution: "Tierras bajas y medias andinas de todo el departamento del Cauca.",
     multimedia: {
       photos: [
-        { id: 1, label: "[PLACEHOLDER DE FOTOGRAFÍA 1 DE 3: MIMETISMO EN CORTEZA DE ÁRBOL]" },
+        { id: 1, src: "img/aves/currucutu-comun.jpg", label: "Currucutú Común. Foto de referencia externa: gabo_utria (iNaturalist, CC BY-NC), Jamundí, Valle del Cauca; no corresponde a un registro municipal de Santander de Quilichao." },
         { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: OJOS AMARILLOS Y PENACHOS]" },
         { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: SILUETA NOCTURNA EN RAMA SECA]" }
       ],

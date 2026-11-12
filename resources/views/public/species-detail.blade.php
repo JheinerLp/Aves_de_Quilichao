@@ -36,7 +36,28 @@
       </p>
     </div>
 
-    <!-- Galería Wireframe de la Ficha -->
+    @php
+      $localMedia = [
+        'pava-caucana' => [
+          'photo' => 'img/aves/PAVA CAUCANA.png',
+          'videos' => ['video/PAVA CAUCANA HABLANDO.mp4', 'video/PAVA CAUCANA SONIDO.mp4'],
+        ],
+        'colibri-colirrufo' => [
+          'photo' => 'img/aves/COLIBRI.png',
+          'videos' => ['video/COLIBIRI HABLANDO.mp4', 'video/COLIBRI SONIDO.mp4'],
+        ],
+        'chicao' => [
+          'photo' => 'img/aves/CHICAO.png',
+          'videos' => ['video/CHICAO HABLANDO.mp4', 'video/CHICAO SONIDO.mp4'],
+        ],
+        'mirla-azul' => [
+          'photo' => 'img/aves/COLIBRI COLIRRUFO.png',
+          'videos' => ['video/MIRLA AZUL HABLANDO.mp4', 'video/MIRLA AZUL SONIDO.mp4'],
+        ],
+      ][$species->slug] ?? null;
+    @endphp
+
+    <!-- Galería de la Ficha -->
     <div class="space-y-4">
       <h2 class="text-xs font-mono font-bold uppercase text-[#333333] border-b border-[#B0B0B0] pb-1">
         Galería de Registros (Wireframe Low-Fidelity)
@@ -44,10 +65,14 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @forelse($species->photos as $ph)
-          <div class="wireframe-placeholder h-56 rounded-sm p-4 flex flex-col justify-between text-center">
+          <div class="wireframe-placeholder h-56 rounded-sm p-4 flex flex-col justify-between text-center overflow-hidden">
             <span class="text-[10px] font-mono text-[#777777]">FOTOGRAFÍA #{{ $loop->iteration }}</span>
-            <strong class="text-xs font-mono text-[#333333]">{{ $ph->caption ?: $ph->file_name }}</strong>
-            <span class="text-[10px] font-mono text-[#777777]">[PLACEHOLDER DE FOTOGRAFÍA]</span>
+            @if($loop->first && $localMedia)
+              <img src="{{ asset($localMedia['photo']) }}" alt="{{ $species->common_name }}" class="w-full h-full object-cover">
+            @else
+              <strong class="text-xs font-mono text-[#333333]">{{ $ph->caption ?: $ph->file_name }}</strong>
+              <span class="text-[10px] font-mono text-[#777777]">[PLACEHOLDER DE FOTOGRAFÍA]</span>
+            @endif
           </div>
         @empty
           <div class="col-span-3 p-8 text-center text-xs font-mono text-[#777777] wireframe-placeholder">
@@ -55,6 +80,16 @@
           </div>
         @endforelse
       </div>
+      @if($localMedia && $localMedia['videos'])
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          @foreach($localMedia['videos'] as $video)
+            <div class="bg-[#F2F2F2] border border-[#B0B0B0] p-3">
+              <p class="text-xs font-bold mb-2">{{ $loop->first ? 'Ave vocalizando' : 'Registro del canto' }}</p>
+              <video controls preload="metadata" playsinline class="w-full aspect-video object-cover bg-black" src="{{ asset($video) }}" aria-label="{{ $species->common_name }}: {{ $loop->first ? 'video' : 'sonido' }}"></video>
+            </div>
+          @endforeach
+        </div>
+      @endif
     </div>
 
     <!-- Información Biológica en Detalle -->

@@ -15,6 +15,8 @@ class TaxonomySeeder extends Seeder
             ['name' => 'Cracidae', 'scientific_order' => 'Galliformes', 'description' => 'Pavas, guacharacas y paujiles frugívoros de bosque'],
             ['name' => 'Thraupidae', 'scientific_order' => 'Passeriformes', 'description' => 'Tangaras, azulejos y semilleros neotropicales'],
             ['name' => 'Trochilidae', 'scientific_order' => 'Apodiformes', 'description' => 'Colibríes y ermitaños nectarívoros'],
+            ['name' => 'Icteridae', 'scientific_order' => 'Passeriformes', 'description' => 'Turpiales, chicales y caciques de plumaje contrastante'],
+            ['name' => 'Turdidae', 'scientific_order' => 'Passeriformes', 'description' => 'Mirlas y zorzales frugívoros e insectívoros'],
             ['name' => 'Ardeidae', 'scientific_order' => 'Pelecaniformes', 'description' => 'Garzas, garzones y avetoros de humedal'],
             ['name' => 'Picidae', 'scientific_order' => 'Piciformes', 'description' => 'Pájaros carpinteros trepadores de troncos'],
             ['name' => 'Strigidae', 'scientific_order' => 'Strigiformes', 'description' => 'Búhos y mochuelos rapaces nocturnos'],

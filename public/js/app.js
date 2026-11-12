@@ -1,3 +1,22 @@
+function speciesMediaUrl(path) {
+  const prefix = window.location.pathname.endsWith(".html") ? "public/" : "/";
+  return prefix + path.split("/").map(encodeURIComponent).join("/");
+}
+
+function renderSpeciesVideos(bird) {
+  const panel = document.getElementById("modal-video-panel");
+  if (!panel) return;
+  if (!panel.dataset.placeholderMarkup) panel.dataset.placeholderMarkup = panel.innerHTML;
+  const videos = bird.multimedia?.videos || [];
+  panel.innerHTML = videos.length
+    ? `<span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registros de video</span>${videos.map(video => `
+        <div class="w-full text-left">
+          <span class="text-[10px] text-[#FFFFFF]">${video.label}</span>
+          <video controls preload="metadata" playsinline class="w-full aspect-video object-cover bg-black" src="${speciesMediaUrl(video.src)}" aria-label="${video.label} de ${bird.commonName}"></video>
+        </div>`).join("")}`
+    : panel.dataset.placeholderMarkup;
+}
+
 /**
  * app.js - BioAves Quilichao (Página Principal: index.html)
  * Lógica de interacción frontend para Prototipo de Baja Fidelidad.
@@ -78,7 +97,7 @@ function initCarousel() {
   const cardsHtml = [...demoBirds, ...demoBirds, ...demoBirds]
     .map((bird, idx) => `
       <div class="carousel-card flex-shrink-0 w-64 sm:w-72 select-none cursor-pointer group" data-bird-id="${bird.id}" data-index="${idx}">
-        <div class="bv-photo"><img src="${bird.image || 'img/aves/' + bird.id + '.jpg'}" alt="${bird.commonName}" loading="lazy" onerror="this.remove()"><h3 class="bv-ribbon">${bird.commonName}</h3></div>
+        <div class="bv-photo"><img src="${bird.image ? speciesMediaUrl(bird.image) : speciesMediaUrl('img/aves/' + bird.id + '.jpg')}" alt="${bird.commonName}" loading="lazy" style="object-fit:${bird.imageFit || "cover"};object-position:${bird.imagePosition || "center"}" onerror="this.remove()"><h3 class="bv-ribbon">${bird.commonName}</h3></div>
         <div class="bv-card-body">
           <span class="bv-badge">${bird.categoryLabel}</span>
           <p>${bird.scientificName}</p>
@@ -231,6 +250,7 @@ function initDetailModal() {
   if (!modal) return;
 
   function closeModal() {
+  document.querySelectorAll('#modal-video-panel video').forEach(video => video.pause());
     modal.classList.add("hidden");
     document.body.classList.remove("overflow-hidden");
     if (modalAudio && !modalAudio.paused) {
@@ -340,10 +360,27 @@ function updateModalPhoto() {
   const total = activeBirdForModal.multimedia.photos.length;
 
   const photoLabel = document.getElementById("modal-photo-label");
+  const placeholderNote = document.getElementById("modal-photo-placeholder-note");
   const photoIndicator = document.getElementById("modal-photo-indicator");
   const dots = document.querySelectorAll(".photo-dot-indicator");
 
-  if (photoLabel) photoLabel.textContent = photo.label;
+  const photoImage = document.getElementById("modal-photo-image");
+  if (photoImage) {
+    photoImage.classList.toggle("hidden", !photo.src);
+    if (photo.src) {
+      photoImage.src = speciesMediaUrl(photo.src);
+      photoImage.alt = `${currentSelectedBird.commonName}: ${photo.label}`;
+      photoImage.style.objectFit = currentSelectedBird.imageFit || "cover";
+      photoImage.style.objectPosition = currentSelectedBird.imagePosition || "center";
+    } else {
+      photoImage.removeAttribute("src");
+    }
+  }
+  if (photoLabel) {
+    photoLabel.textContent = photo.label;
+    photoLabel.classList.toggle("hidden", !!photo.src);
+  }
+  if (placeholderNote) placeholderNote.classList.toggle("hidden", !!photo.src);
   if (photoIndicator) photoIndicator.textContent = `Foto ${currentModalPhotoIdx + 1} de ${total}`;
 
   dots.forEach((dot, idx) => {
@@ -435,11 +472,14 @@ function openDetailModal(bird) {
   }
 
   if (modalAudio) {
-    modalAudio.src = bird.multimedia.audioSample;
+    modalAudio.src = bird.multimedia.audioLocal
+      ? speciesMediaUrl(bird.multimedia.audioSample)
+      : bird.multimedia.audioSample;
     resetAudioUI();
   }
 
   updateModalPhoto();
+  renderSpeciesVideos(bird);
 
   modal.classList.remove("hidden");
   document.body.classList.add("overflow-hidden");

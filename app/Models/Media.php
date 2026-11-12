@@ -54,6 +54,10 @@ class Media extends Model
 
     public function getUrlAttribute(): string
     {
+        if (str_starts_with($this->storage_path, 'asset:')) {
+            return asset(substr($this->storage_path, 6));
+        }
+
         if (filter_var($this->storage_path, FILTER_VALIDATE_URL)) {
             return $this->storage_path;
         }
