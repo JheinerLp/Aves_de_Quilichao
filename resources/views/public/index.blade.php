@@ -189,19 +189,54 @@
         </div>
       </div>
 
+      <!-- Filtros del mapa -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm text-xs">
+        <div>
+          <label for="map-filter-zone" class="block font-mono font-bold text-[#333333] mb-1">Zona:</label>
+          <select id="map-filter-zone" class="w-full bg-[#FFFFFF] border border-[#B0B0B0] p-1.5 rounded-sm">
+            <option value="all">Todas las zonas</option>
+            <option value="Cuenca">Cuencas fluviales</option>
+            <option value="Vereda">Veredas de montaña</option>
+            <option value="Humedal">Humedales</option>
+            <option value="Urbana">Área urbana y parques</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="map-filter-species" class="block font-mono font-bold text-[#333333] mb-1">Especie:</label>
+          <select id="map-filter-species" class="w-full bg-[#FFFFFF] border border-[#B0B0B0] p-1.5 rounded-sm">
+            <option value="all">Todas las especies</option>
+          </select>
+        </div>
+
+        <div>
+          <span class="block font-mono font-bold text-[#333333] mb-1">Cobertura Territorial:</span>
+          <div class="p-1.5 bg-[#FFFFFF] border border-[#B0B0B0] text-zinc-600 text-[11px] font-mono">
+            Santander de Quilichao, Cauca
+          </div>
+        </div>
+
+        <div>
+          <span class="block font-mono font-bold text-[#333333] mb-1">Tipo de Registro:</span>
+          <div class="p-1.5 bg-[#FFFFFF] border border-[#B0B0B0] text-zinc-600 text-[11px] font-mono">
+            Avistamiento Visual y Sonoro
+          </div>
+        </div>
+      </div>
+
       <!-- Contenedor del Mapa en dos columnas: Mapa y Panel de detalle -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         <!-- Contenedor Leaflet (8 columnas) -->
         <div class="lg:col-span-8 bg-[#F2F2F2] border-2 border-[#B0B0B0] rounded-sm overflow-hidden shadow-sm relative">
           
-          <div id="map-container" class="w-full h-[450px] sm:h-[520px] bg-[#E0E0E0]">
+          <div id="leaflet-map-element" class="w-full h-[450px] sm:h-[520px] bg-[#E0E0E0] relative z-0">
             <!-- Leaflet JS inyecta el mapa en este contenedor -->
           </div>
 
           <div class="p-3 bg-[#FFFFFF] border-t border-[#B0B0B0] flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-[#777777]">
-            <span>Centro: Santander de Quilichao (3.0094° N, 76.4847° W)</span>
-            <span>Marcadores interactivos activos: 8 puntos</span>
+            <span>📍 Centro: Santander de Quilichao (3.0094° N, 76.4847° W)</span>
+            <span id="records-counter" class="font-bold text-[#333333]">8 registros activos</span>
           </div>
 
         </div>
@@ -221,11 +256,11 @@
           <!-- Información dinámica del ave del marcador -->
           <div id="map-point-details" class="space-y-4">
             
-            <div class="wireframe-placeholder-dark h-36 flex flex-col items-center justify-center p-3 text-center rounded-sm">
-              <span id="map-point-img-label" class="text-xs font-bold font-mono text-[#FFFFFF] text-center">
-                [PLACEHOLDER DE FOTOGRAFÍA: MOMOTO EN SENDERO FLUVIAL]
+            <div class="h-36 overflow-hidden rounded-sm border border-[#B0B0B0] bg-[#333333] relative">
+              <img id="map-point-img" src="{{ asset('img/aves/momoto-andino.png') }}" alt="Ave observada" class="w-full h-full object-cover">
+              <span id="map-point-img-label" class="absolute bottom-2 left-2 bg-[#333333]/80 text-[#FFFFFF] text-[10px] font-mono px-2 py-0.5 rounded">
+                Registro fotográfico del punto
               </span>
-              <span class="text-[10px] text-[#D0D0D0] mt-1 font-mono">Registro fotográfico del punto</span>
             </div>
 
             <div class="space-y-1">
@@ -267,9 +302,9 @@
             </div>
 
             <div class="pt-2">
-              <a href="{{ route('catalog.index') }}" class="w-full btn-wireframe-primary text-center block text-xs">
+              <button id="map-point-view-btn" type="button" class="w-full btn-wireframe-primary text-center block text-xs py-2">
                 Ver ficha completa en el catálogo ↗
-              </a>
+              </button>
             </div>
 
           </div>
@@ -788,6 +823,10 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    window.DB_SPECIES = @json($species);
+    window.DB_SIGHTINGS = @json($sightings);
+  </script>
   <script src="{{ asset('js/birds-data.js') }}"></script>
   <script src="{{ asset('js/app.js') }}"></script>
   <script>

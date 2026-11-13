@@ -14,7 +14,7 @@ class CatalogController extends Controller
     public function index(Request $request): View|JsonResponse
     {
         $query = Species::active()
-            ->with(['family', 'habitat', 'photos', 'audios', 'videos']);
+            ->with(['family', 'habitat', 'photos', 'audios', 'videos', 'approvedSightings.location']);
 
         if ($search = $request->input('search')) {
             $query->search($search);

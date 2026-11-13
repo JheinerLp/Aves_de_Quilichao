@@ -15,12 +15,12 @@ class HomeController extends Controller
     {
         // Active species for carousel & previews
         $species = Species::active()
-            ->with(['family', 'habitat', 'photos', 'audios', 'videos'])
+            ->with(['family', 'habitat', 'photos', 'audios', 'videos', 'approvedSightings.location'])
             ->get();
 
         // Featured sightings for map
         $sightings = Sighting::approved()
-            ->with(['species', 'location', 'habitat'])
+            ->with(['species.photos', 'location', 'habitat'])
             ->get();
 
         // Conservation contents
