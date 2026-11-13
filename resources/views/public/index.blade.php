@@ -61,7 +61,7 @@
     </div>
   </section>
 
-  <!-- MISIÓN (foto: img/mision.jpg) -->
+  <!-- MISIÓN (foto: Chicao) -->
   <section class="bv-mision bv-wrap">
     <div class="bv-mision-img"></div>
     <div class="bv-mision-text">
@@ -689,7 +689,7 @@
               Ficha del Avistamiento Seleccionado
             </span>
             <span id="map-point-counter" class="text-[10px] font-mono bg-[#D0D0D0] px-2 py-0.5 rounded-sm text-[#333333]">
-              1 / 8
+              1 / 25
             </span>
           </div>
 
@@ -697,7 +697,7 @@
           <div id="map-point-details" class="space-y-4">
             
             <div class="h-36 overflow-hidden rounded-sm border border-[#B0B0B0] bg-[#333333] relative">
-              <img id="map-point-img" src="{{ asset('img/aves/momoto-andino.png') }}" alt="Ave observada" class="w-full h-full object-cover">
+              <img id="map-point-img" src="{{ asset('img/aves/chicao-panoramica.png') }}" alt="Chicao" class="w-full h-full object-cover" style="object-position: center 30%;">
               <span id="map-point-img-label" class="absolute bottom-2 left-2 bg-[#333333]/80 text-[#FFFFFF] text-[10px] font-mono px-2 py-0.5 rounded">
                 Registro fotográfico del punto
               </span>
@@ -705,39 +705,39 @@
 
             <div class="space-y-1">
               <span id="map-point-zone" class="text-[10px] font-mono text-[#777777] uppercase block">
-                Zona Urbana y Ribereña
+                Zona Urbana y Agroecosistemas
               </span>
               <h3 id="map-point-bird-name" class="text-lg font-bold text-[#333333]">
-                Momoto Andino (Barranquero)
+                Chicao
               </h3>
               <p id="map-point-scientific" class="text-xs italic font-serif text-[#777777]">
-                Momotus aequatorialis
+                Icterus nigrogularis
               </p>
             </div>
 
             <div class="p-3 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2 text-xs">
               <div class="flex justify-between">
                 <span class="font-bold text-[#777777]">Lugar:</span>
-                <span id="map-point-location" class="text-[#333333] font-medium text-right">Cuenca Río Quilichao</span>
+                <span id="map-point-location" class="text-[#333333] font-medium text-right">Santander de Quilichao</span>
               </div>
               <div class="flex justify-between">
                 <span class="font-bold text-[#777777]">Coordenadas:</span>
-                <span id="map-point-coords" class="text-[#333333] font-mono text-right">3.0145, -76.4880</span>
+                <span id="map-point-coords" class="text-[#333333] font-mono text-right">3.0094, -76.4847</span>
               </div>
               <div class="flex justify-between">
                 <span class="font-bold text-[#777777]">Elevación:</span>
-                <span id="map-point-elevation" class="text-[#333333] font-mono text-right">1.060 msnm</span>
+                <span id="map-point-elevation" class="text-[#333333] font-mono text-right">1.056 msnm</span>
               </div>
               <div class="flex justify-between">
                 <span class="font-bold text-[#777777]">Fecha del registro:</span>
-                <span id="map-point-date" class="text-[#333333] text-right">14 Ene 2026</span>
+                <span id="map-point-date" class="text-[#333333] text-right">Registro multimedia del equipo</span>
               </div>
             </div>
 
             <div class="space-y-1">
               <span class="text-[11px] font-bold text-[#333333]">Notas de observación:</span>
               <p id="map-point-notes" class="text-xs text-[#777777] leading-relaxed bg-[#FFFFFF] p-2.5 border border-[#B0B0B0] rounded-sm">
-                Ejemplar adulto observado posado sobre rama de sauce a 3 metros sobre el cauce del río.
+                Registro audiovisual aportado para la colección BioAves Quilichao.
               </p>
             </div>
 

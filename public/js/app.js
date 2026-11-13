@@ -709,6 +709,8 @@ function initMap() {
     if (imgEl) {
       imgEl.src = speciesMediaUrl(bird.image);
       imgEl.alt = bird.commonName;
+      imgEl.style.objectFit = bird.imageFit || "cover";
+      imgEl.style.objectPosition = bird.imagePosition || "center";
     }
 
     const zoneEl = document.getElementById("map-point-zone");
@@ -749,6 +751,12 @@ function initMap() {
       const matchSpecies = selectedSpecies === "all" || bird.id === selectedSpecies;
       return matchZone && matchSpecies;
     });
+
+    // El Chicao es el registro emblemático que se muestra primero al abrir el mapa.
+    const chicaoIndex = filtered.findIndex((bird) => bird.id === "chicao");
+    if (selectedSpecies === "all" && chicaoIndex > 0) {
+      filtered.unshift(...filtered.splice(chicaoIndex, 1));
+    }
 
     if (recordsCounter) {
       recordsCounter.textContent = `${filtered.length} registro(s) activo(s)`;

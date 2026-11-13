@@ -307,7 +307,7 @@ body { background: var(--paper) !important; }
 
 /* Misión */
 .bv-mision { position: relative; display: grid; grid-template-columns: 1.1fr 1fr .6fr; gap: 30px; align-items: center; padding: 44px 0; }
-.bv-mision-img { min-height: 260px; border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%; box-shadow: 0 14px 34px rgba(15,90,42,.25); background: url('../img/mision.jpg') center / cover, linear-gradient(135deg, #2aa7e6, #4cc15a 60%, #ffd21f); }
+.bv-mision-img { min-height: 260px; border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%; box-shadow: 0 14px 34px rgba(15,90,42,.25); background: url('../img/aves/chicao-panoramica.png') center 35% / cover, linear-gradient(135deg, #2aa7e6, #4cc15a 60%, #ffd21f); }
 .bv-mision-text h2 { font-size: clamp(28px, 3vw, 40px) !important; margin: 12px 0 10px; color: var(--deep) !important; }
 .bv-mision-text p { margin: 0 0 18px; color: #274436; }
 .bv-lema { font-family: 'Kaushan Script', cursive; font-size: 30px; line-height: 1.15; text-align: center; color: var(--deep); padding: 26px 10px; border-radius: 50%; background: radial-gradient(circle, #fff 55%, #fff3a8); box-shadow: 0 10px 26px rgba(255,210,31,.45); transform: rotate(-5deg); }
