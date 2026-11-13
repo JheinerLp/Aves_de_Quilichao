@@ -40,9 +40,20 @@ const BIOAVES_DATA = [
           "label": "Composición contextual del Momoto Andino derivada de la fotografía principal mediante IA; no es un registro independiente."
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: COMPORTAMIENTO DE BALANCEO DE COLA]",
-      "audioDuration": "0:28",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Momotus_aequatorialis_-_Blue-crowned_Motmot_XC28717.ogg"
+      "videoPlaceholder": "Registros audiovisuales del Momoto Andino",
+      "videos": [
+        {
+          "src": "video/momoto - hablando.mp4",
+          "label": "Momoto Andino vocalizando"
+        },
+        {
+          "src": "video/momoto - cantando.mp4",
+          "label": "Registro del canto del Momoto Andino"
+        }
+      ],
+      "audioDuration": "0:08",
+      "audioSample": "video/momoto - cantando.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Cuenca del Río Quilichao - Sendero Fluvial",
@@ -571,9 +582,20 @@ const BIOAVES_DATA = [
           "label": "Versión nocturna contextual derivada con IA de la fotografía externa; no corresponde a un registro municipal."
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: LLAMADO NOCTURNO 'CURRU-CU-TÚ']",
-      "audioDuration": "0:21",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Megascops_choliba_-_Tropical_Screech-Owl_XC61291.ogg"
+      "videoPlaceholder": "Registros audiovisuales del Currucutú Común",
+      "videos": [
+        {
+          "src": "video/currucutu-hablando.mp4",
+          "label": "Currucutú Común vocalizando"
+        },
+        {
+          "src": "video/currucutu - cantando.mp4",
+          "label": "Registro del canto del Currucutú Común"
+        }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/currucutu - cantando.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Cerro y Mirador de Belén",

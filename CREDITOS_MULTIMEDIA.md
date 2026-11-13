@@ -38,6 +38,6 @@ El conjunto de la Garza Tigre usa `garza-tigre-principal-v2.png`, `garza-tigre-d
 
 ## Videos y cantos aportados al repositorio
 
-Los archivos `TANGARA HABLANDO.mp4`, `TANGARA SONIDO.mp4`, `COLIBRI HABADO HABLANDO.mp4`, `COLIBRI HABADO SONIDO.mp4`, `Garza_tigre_hablando.mp4`, `_GARZA_canto.mp4`, `Azulejo_común_hablando.mp4` y `_AZULEJO_canto.mp4` fueron aportados directamente al repositorio. Los dos archivos cuyo nombre comienza por `COLIBRI HABADO` muestran un Carpintero Habado y se vinculan a esa ficha. La autoría y licencia de estos ocho registros quedan pendientes de documentación por parte del equipo.
+Los archivos `TANGARA HABLANDO.mp4`, `TANGARA SONIDO.mp4`, `COLIBRI HABADO HABLANDO.mp4`, `COLIBRI HABADO SONIDO.mp4`, `Garza_tigre_hablando.mp4`, `_GARZA_canto.mp4`, `Azulejo_común_hablando.mp4`, `_AZULEJO_canto.mp4`, `momoto - hablando.mp4`, `momoto - cantando.mp4`, `currucutu-hablando.mp4` y `currucutu - cantando.mp4` fueron aportados directamente al repositorio. Los dos archivos cuyo nombre comienza por `COLIBRI HABADO` muestran un Carpintero Habado y se vinculan a esa ficha. La autoría y licencia de estos doce registros quedan pendientes de documentación por parte del equipo.
 
 Los archivos con autoría o licencia pendientes no deben redistribuirse fuera del proyecto hasta completar esa documentación.

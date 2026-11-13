@@ -36,13 +36,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => 'Composición contextual del Momoto Andino derivada de la fotografía principal mediante IA; no es un registro independiente.', 'file' => 'momoto-andino-entorno.png', 'asset' => 'img/aves/momoto-andino-entorno.png'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Momotus_aequatorialis_-_Blue-crowned_Motmot_XC28717.ogg',
-                    'caption' => 'Canto territorial del Momoto Andino',
-                    'duration' => 28,
+                    'asset' => 'video/momoto - cantando.mp4',
+                    'file' => 'momoto - cantando.mp4',
+                    'caption' => 'Registro del canto del Momoto Andino',
+                    'duration' => 8,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: COMPORTAMIENTO DE BALANCEO DE COLA]',
-                    'file' => 'video-momoto.mp4',
+                'videos' => [
+                    ['caption' => 'Momoto Andino vocalizando', 'file' => 'momoto - hablando.mp4', 'asset' => 'video/momoto - hablando.mp4', 'duration' => 7],
+                    ['caption' => 'Registro del canto del Momoto Andino', 'file' => 'momoto - cantando.mp4', 'asset' => 'video/momoto - cantando.mp4', 'duration' => 8],
                 ],
             ],
             [
@@ -293,13 +294,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => 'Versión nocturna contextual derivada con IA de la fotografía externa; no corresponde a un registro municipal.', 'file' => 'currucutu-comun-entorno.png', 'asset' => 'img/aves/currucutu-comun-entorno.png'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Megascops_choliba_-_Tropical_Screech-Owl_XC61291.ogg',
-                    'caption' => 'Llamado nocturno del Currucutú Común',
-                    'duration' => 21,
+                    'asset' => 'video/currucutu - cantando.mp4',
+                    'file' => 'currucutu - cantando.mp4',
+                    'caption' => 'Registro del canto del Currucutú Común',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: LLAMADO NOCTURNO "CURRU-CU-TÚ"]',
-                    'file' => 'video-currucutu.mp4',
+                'videos' => [
+                    ['caption' => 'Currucutú Común vocalizando', 'file' => 'currucutu-hablando.mp4', 'asset' => 'video/currucutu-hablando.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto del Currucutú Común', 'file' => 'currucutu - cantando.mp4', 'asset' => 'video/currucutu - cantando.mp4', 'duration' => 10],
                 ],
             ],
             [
