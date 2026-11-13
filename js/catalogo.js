@@ -285,6 +285,21 @@ function updatePhotoView() {
   const photoIndicator = document.getElementById("modal-photo-indicator");
   const dots = document.querySelectorAll(".photo-dot-indicator");
 
+  const photoBackdrop = document.getElementById("modal-photo-backdrop");
+  if (photoBackdrop) {
+    photoBackdrop.classList.toggle("hidden", !photo.src);
+    if (photo.src) {
+      photoBackdrop.src = speciesMediaUrl(photo.src);
+    } else {
+      photoBackdrop.removeAttribute("src");
+    }
+  }
+
+  const photoFallbackBox = document.getElementById("modal-photo-fallback-box");
+  if (photoFallbackBox) {
+    photoFallbackBox.classList.toggle("hidden", !!photo.src);
+  }
+
   const photoImage = document.getElementById("modal-photo-image");
   if (photoImage) {
     photoImage.classList.toggle("hidden", !photo.src);

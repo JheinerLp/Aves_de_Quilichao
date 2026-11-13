@@ -363,6 +363,23 @@ function updateModalPhoto() {
   const photoIndicator = document.getElementById("modal-photo-indicator");
   const dots = document.querySelectorAll(".photo-dot-indicator");
 
+  const photoBackdrop = document.getElementById("modal-photo-backdrop");
+  if (photoBackdrop) {
+    const src = photo.src ? speciesMediaUrl(photo.src) : (activeBirdForModal.image ? speciesMediaUrl(activeBirdForModal.image) : null);
+    photoBackdrop.classList.toggle("hidden", !src);
+    if (src) {
+      photoBackdrop.src = src;
+    } else {
+      photoBackdrop.removeAttribute("src");
+    }
+  }
+
+  const photoFallbackBox = document.getElementById("modal-photo-fallback-box");
+  if (photoFallbackBox) {
+    const src = photo.src ? speciesMediaUrl(photo.src) : (activeBirdForModal.image ? speciesMediaUrl(activeBirdForModal.image) : null);
+    photoFallbackBox.classList.toggle("hidden", !!src);
+  }
+
   const photoImage = document.getElementById("modal-photo-image");
   if (photoImage) {
     photoImage.classList.toggle("hidden", !photo.src);

@@ -152,34 +152,39 @@
 
           <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
             
-            <!-- Visor de Fotos con botones Prev y Next (8 cols) -->
-            <div class="md:col-span-8 relative h-72 sm:h-80 wireframe-placeholder rounded-sm flex flex-col items-center justify-center p-3 bg-[#F2F2F2] overflow-hidden">
-              <img id="modal-photo-image" class="hidden absolute inset-0 w-full h-full object-contain p-2 pb-12" alt="">
-              <span id="modal-photo-label" class="text-sm font-bold text-[#333333] text-center max-w-sm">
-                [PLACEHOLDER DE FOTOGRAFÍA 1 DE 3]
-              </span>
-              <span id="modal-photo-placeholder-note" class="text-[11px] text-[#777777] font-mono mt-1">
-                Representación wireframe sin imágenes reales
-              </span>
+            <!-- Visor de Fotos LIMPIO (8 cols): La foto grande y suelta, botones fuera debajo -->
+            <div class="md:col-span-8 flex flex-col items-center justify-between gap-3">
+              <!-- Área de la fotografía sola, grande y prominente -->
+              <div class="w-full flex-1 min-h-[300px] sm:min-h-[360px] flex flex-col items-center justify-center">
+                <img id="modal-photo-image" class="hidden max-h-[340px] sm:max-h-[390px] w-auto max-w-full object-contain rounded-2xl shadow-md transition-all duration-300" alt="">
+                <div id="modal-photo-fallback-box" class="w-full h-72 sm:h-80 wireframe-placeholder rounded-2xl flex flex-col items-center justify-center p-4">
+                  <span id="modal-photo-label" class="text-sm font-bold text-[#333333] text-center max-w-sm">
+                    [PLACEHOLDER DE FOTOGRAFÍA 1 DE 3]
+                  </span>
+                  <span id="modal-photo-placeholder-note" class="text-[11px] text-[#777777] font-mono mt-1">
+                    Representación wireframe sin imágenes reales
+                  </span>
+                </div>
+              </div>
 
-              <!-- Botones de navegación de fotografías -->
-              <div class="absolute z-10 bottom-3 left-4 right-4 flex items-center justify-between">
-                <button id="modal-photo-prev" type="button" class="btn-wireframe-secondary text-xs py-1 px-3 shadow-xs">
+              <!-- Botones de navegación afuera del cuadro de la foto -->
+              <div class="w-full flex items-center justify-between pt-1 px-1">
+                <button id="modal-photo-prev" type="button" class="btn-wireframe-secondary text-xs py-1.5 px-4 shadow-xs rounded-full">
                   ← Anterior
                 </button>
-                <div class="flex gap-1.5 bg-[#FFFFFF]/80 px-2 py-1 rounded-sm border border-[#B0B0B0]">
-                  <span class="photo-dot-indicator w-3 h-3 bg-[#333333] rounded-xs inline-block"></span>
-                  <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-xs inline-block"></span>
-                  <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-xs inline-block"></span>
+                <div class="flex gap-2 items-center bg-[#FFFFFF] px-3 py-1.5 rounded-full border border-[#B0B0B0]/60 shadow-xs">
+                  <span class="photo-dot-indicator w-3 h-3 bg-[#333333] rounded-full inline-block"></span>
+                  <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-full inline-block"></span>
+                  <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-full inline-block"></span>
                 </div>
-                <button id="modal-photo-next" type="button" class="btn-wireframe-secondary text-xs py-1 px-3 shadow-xs">
+                <button id="modal-photo-next" type="button" class="btn-wireframe-secondary text-xs py-1.5 px-4 shadow-xs rounded-full">
                   Siguiente →
                 </button>
               </div>
             </div>
 
             <!-- Placeholder de Video (4 cols) -->
-            <div id="modal-video-panel" class="md:col-span-4 min-h-72 sm:min-h-80 wireframe-placeholder-dark rounded-sm p-4 flex flex-col justify-between text-center">
+            <div id="modal-video-panel" class="md:col-span-4 min-h-[350px] sm:min-h-[415px] wireframe-placeholder-dark rounded-2xl p-4 flex flex-col justify-between text-center">
               <span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registro de Video</span>
               <span id="modal-video-label" class="text-xs font-bold text-[#FFFFFF]">
                 [PLACEHOLDER DE VIDEO: COMPORTAMIENTO]
