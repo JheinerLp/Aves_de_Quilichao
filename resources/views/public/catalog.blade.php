@@ -322,6 +322,9 @@
   @include('partials.footer')
 
   <!-- Scripts -->
+  <script>
+    window.DB_SPECIES = @json($species);
+  </script>
   <script src="{{ asset('js/birds-data.js') }}"></script>
   <script src="{{ asset('js/catalogo.js') }}"></script>
 </body>

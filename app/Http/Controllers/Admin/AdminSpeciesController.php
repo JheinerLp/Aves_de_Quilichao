@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateSpeciesRequest;
 use App\Models\AuditLog;
 use App\Models\Family;
 use App\Models\Habitat;
+use App\Models\Location;
+use App\Models\Sighting;
 use App\Models\Species;
 use App\Services\MediaUploadService;
 use Illuminate\Http\RedirectResponse;
@@ -75,10 +77,32 @@ class AdminSpeciesController extends Controller
             );
         }
 
-        AuditLog::log('created', $species, "Especie {$species->common_name} registrada en el catálogo.");
+        // Create an automatic initial territorial sighting in Santander de Quilichao
+        $location = Location::first();
+        if ($location) {
+            $latJitter = (mt_rand(-20, 20) / 10000.0);
+            $lngJitter = (mt_rand(-20, 20) / 10000.0);
+            Sighting::create([
+                'species_id' => $species->id,
+                'location_id' => $location->id,
+                'habitat_id' => $species->habitat_id ?? $location->habitat_id,
+                'user_id' => auth()->id(),
+                'sighting_date' => now()->toDateString(),
+                'sighting_time' => now()->toTimeString(),
+                'individuals_count' => 1,
+                'description' => "Registro territorial inicial de {$species->common_name} en {$location->name}.",
+                'latitude' => ((float) $location->latitude) + $latJitter,
+                'longitude' => ((float) $location->longitude) + $lngJitter,
+                'status' => 'approved',
+                'reviewed_at' => now(),
+                'reviewer_id' => auth()->id(),
+            ]);
+        }
+
+        AuditLog::log('created', $species, "Especie {$species->common_name} registrada en el catálogo con avistamiento inicial georreferenciado.");
 
         return redirect()->route('admin.species.index')
-            ->with('success', "Especie '{$species->common_name}' registrada exitosamente.");
+            ->with('success', "Especie '{$species->common_name}' registrada exitosamente y mapeada en el territorio.");
     }
 
     public function edit(Species $species): View
