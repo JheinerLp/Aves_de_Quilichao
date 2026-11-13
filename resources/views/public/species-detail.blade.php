@@ -44,13 +44,17 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @forelse($species->photos as $ph)
-          <div class="wireframe-placeholder h-56 rounded-sm p-4 flex flex-col justify-between text-center overflow-hidden">
-            <span class="text-[10px] font-mono text-[#777777]">FOTOGRAFÍA #{{ $loop->iteration }}</span>
+          <div class="wireframe-placeholder h-64 sm:h-72 rounded-sm p-3 flex flex-col justify-between text-center overflow-hidden bg-[#F2F2F2]">
+            <span class="text-[10px] font-mono text-[#777777] mb-1">FOTOGRAFÍA #{{ $loop->iteration }}</span>
             @if(!str_starts_with($ph->storage_path, 'placeholders/'))
-              <img src="{{ $ph->url }}" alt="{{ $species->common_name }}" class="w-full h-full object-cover">
+              <div class="flex-1 w-full h-full flex items-center justify-center overflow-hidden">
+                <img src="{{ $ph->url }}" alt="{{ $species->common_name }}" class="max-w-full max-h-full object-contain rounded-xs" loading="lazy">
+              </div>
             @else
-              <strong class="text-xs font-mono text-[#333333]">{{ $ph->caption ?: $ph->file_name }}</strong>
-              <span class="text-[10px] font-mono text-[#777777]">[PLACEHOLDER DE FOTOGRAFÍA]</span>
+              <div class="flex-1 flex flex-col items-center justify-center">
+                <strong class="text-xs font-mono text-[#333333]">{{ $ph->caption ?: $ph->file_name }}</strong>
+                <span class="text-[10px] font-mono text-[#777777] mt-1">[PLACEHOLDER DE FOTOGRAFÍA]</span>
+              </div>
             @endif
           </div>
         @empty

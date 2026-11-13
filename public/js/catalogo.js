@@ -292,8 +292,8 @@ function updatePhotoView() {
     if (photo.src) {
       photoImage.src = speciesMediaUrl(photo.src);
       photoImage.alt = `${currentSelectedBird.commonName}: ${photo.label}`;
-      photoImage.style.objectFit = currentSelectedBird.imageFit || "cover";
-      photoImage.style.objectPosition = currentSelectedBird.imagePosition || "center";
+      photoImage.style.objectFit = "contain";
+      photoImage.style.objectPosition = "center";
     } else {
       photoImage.removeAttribute("src");
     }

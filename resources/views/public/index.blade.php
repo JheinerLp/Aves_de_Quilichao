@@ -673,8 +673,8 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-8 relative h-64 sm:h-72 wireframe-placeholder rounded-sm flex flex-col items-center justify-center p-4">
-              <img id="modal-photo-image" class="hidden absolute inset-0 w-full h-full object-cover" alt="">
+            <div class="md:col-span-8 relative h-72 sm:h-80 wireframe-placeholder rounded-sm flex flex-col items-center justify-center p-3 bg-[#F2F2F2] overflow-hidden">
+              <img id="modal-photo-image" class="hidden absolute inset-0 w-full h-full object-contain p-2 pb-12" alt="">
               <span id="modal-photo-label" class="text-sm font-bold text-[#333333] text-center max-w-sm">
                 [PLACEHOLDER DE FOTOGRAFÍA 1 DE 3]
               </span>
@@ -683,21 +683,21 @@
               </span>
 
               <div class="absolute z-10 bottom-3 left-4 right-4 flex items-center justify-between">
-                <button id="modal-photo-prev" type="button" class="btn-wireframe-secondary text-xs py-1 px-3">
+                <button id="modal-photo-prev" type="button" class="btn-wireframe-secondary text-xs py-1 px-3 shadow-xs">
                   ← Anterior
                 </button>
-                <div class="flex gap-1.5">
+                <div class="flex gap-1.5 bg-[#FFFFFF]/80 px-2 py-1 rounded-sm border border-[#B0B0B0]">
                   <span class="photo-dot-indicator w-3 h-3 bg-[#333333] rounded-xs inline-block"></span>
                   <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-xs inline-block"></span>
                   <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-xs inline-block"></span>
                 </div>
-                <button id="modal-photo-next" type="button" class="btn-wireframe-secondary text-xs py-1 px-3">
+                <button id="modal-photo-next" type="button" class="btn-wireframe-secondary text-xs py-1 px-3 shadow-xs">
                   Siguiente →
                 </button>
               </div>
             </div>
 
-            <div id="modal-video-panel" class="md:col-span-4 min-h-64 sm:min-h-72 wireframe-placeholder-dark rounded-sm p-4 flex flex-col justify-between text-center">
+            <div id="modal-video-panel" class="md:col-span-4 min-h-72 sm:min-h-80 wireframe-placeholder-dark rounded-sm p-4 flex flex-col justify-between text-center">
               <span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registro de Video</span>
               <span id="modal-video-label" class="text-xs font-bold text-[#FFFFFF]">
                 [PLACEHOLDER DE VIDEO: COMPORTAMIENTO]

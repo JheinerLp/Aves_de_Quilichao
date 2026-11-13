@@ -26,6 +26,13 @@ body {
   padding: 0;
 }
 
+#modal-photo-image {
+  object-fit: contain !important;
+  object-position: center !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
 /* Scroll suave */
 html {
   scroll-behavior: smooth;

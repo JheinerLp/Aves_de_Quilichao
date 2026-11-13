@@ -483,8 +483,8 @@ function updateModalPhoto() {
     if (src) {
       photoImage.src = src;
       photoImage.alt = `${activeBirdForModal.commonName || ""}: ${photo.label || ""}`;
-      photoImage.style.objectFit = activeBirdForModal.imageFit || "cover";
-      photoImage.style.objectPosition = activeBirdForModal.imagePosition || "center";
+      photoImage.style.objectFit = "contain";
+      photoImage.style.objectPosition = "center";
     } else {
       photoImage.removeAttribute("src");
     }

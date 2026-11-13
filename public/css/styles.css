@@ -129,6 +129,12 @@ select:focus, input:focus, textarea:focus { outline: 2px solid var(--g500); outl
 #modal-detalle-ave h3 { font-family: 'Nunito', sans-serif !important; color: var(--g600) !important; letter-spacing: .1em; }
 #modal-close-btn { border-radius: 999px !important; background: var(--mint) !important; border: 0 !important; }
 #audio-progress-bar { background: var(--g500) !important; }
+#modal-photo-image {
+  object-fit: contain !important;
+  object-position: center !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
 
 /* Botón volver arriba y accesibilidad */
 a, button { -webkit-tap-highlight-color: transparent; }

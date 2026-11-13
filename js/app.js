@@ -1,3 +1,22 @@
+function speciesMediaUrl(path) {
+  const prefix = window.location.pathname.endsWith(".html") ? "public/" : "/";
+  return prefix + path.split("/").map(encodeURIComponent).join("/");
+}
+
+function renderSpeciesVideos(bird) {
+  const panel = document.getElementById("modal-video-panel");
+  if (!panel) return;
+  if (!panel.dataset.placeholderMarkup) panel.dataset.placeholderMarkup = panel.innerHTML;
+  const videos = bird.multimedia?.videos || [];
+  panel.innerHTML = videos.length
+    ? `<span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registros de video</span>${videos.map(video => `
+        <div class="w-full text-left">
+          <span class="text-[10px] text-[#FFFFFF]">${video.label}</span>
+          <video controls preload="metadata" playsinline class="w-full aspect-video object-cover bg-black" src="${speciesMediaUrl(video.src)}" aria-label="${video.label} de ${bird.commonName}"></video>
+        </div>`).join("")}`
+    : panel.dataset.placeholderMarkup;
+}
+
 /**
  * app.js - BioAves Quilichao (Página Principal: index.html)
  * Lógica de interacción frontend para Prototipo de Baja Fidelidad.
@@ -77,34 +96,12 @@ function initCarousel() {
   }
   const cardsHtml = [...demoBirds, ...demoBirds, ...demoBirds]
     .map((bird, idx) => `
-      <div class="carousel-card flex-shrink-0 w-64 sm:w-72 p-4 rounded-sm flex flex-col justify-between select-none cursor-pointer group" data-bird-id="${bird.id}" data-index="${idx}">
-        <div>
-          <div class="h-40 w-full wireframe-placeholder rounded-sm mb-3">
-            <span class="text-[10px] text-[#333333] font-bold text-center">
-              [PLACEHOLDER DE FOTOGRAFÍA]
-            </span>
-            <span class="text-[9px] text-[#777777] font-mono mt-1 line-clamp-1">
-              ${bird.commonName}
-            </span>
-          </div>
-
-          <div class="space-y-1">
-            <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 bg-[#D0D0D0] text-[#333333] border border-[#B0B0B0] inline-block">
-              ${bird.categoryLabel}
-            </span>
-            <h3 class="text-sm font-bold text-[#333333] line-clamp-1 group-hover:underline">
-              ${bird.commonName}
-            </h3>
-            <p class="text-xs italic font-mono text-[#777777]">
-              ${bird.scientificName}
-            </p>
-          </div>
-        </div>
-
-        <div class="pt-3 mt-3 border-t border-[#B0B0B0]">
-          <button type="button" class="btn-wireframe-secondary w-full text-xs py-1.5 open-species-btn" data-bird-id="${bird.id}">
-            Conocer especie →
-          </button>
+      <div class="carousel-card flex-shrink-0 w-64 sm:w-72 select-none cursor-pointer group" data-bird-id="${bird.id}" data-index="${idx}">
+        <div class="bv-photo"><img src="${bird.image ? speciesMediaUrl(bird.image) : speciesMediaUrl('img/aves/' + bird.id + '.jpg')}" alt="${bird.commonName}" loading="lazy" style="object-fit:${bird.imageFit || "cover"};object-position:${bird.imagePosition || "center"}" onerror="this.remove()"><h3 class="bv-ribbon">${bird.commonName}</h3></div>
+        <div class="bv-card-body">
+          <span class="bv-badge">${bird.categoryLabel}</span>
+          <p>${bird.scientificName}</p>
+          <button type="button" class="bv-btn bv-btn-dark open-species-btn" data-bird-id="${bird.id}">Conocer especie →</button>
         </div>
       </div>
     `)
@@ -362,10 +359,27 @@ function updateModalPhoto() {
   const total = activeBirdForModal.multimedia.photos.length;
 
   const photoLabel = document.getElementById("modal-photo-label");
+  const placeholderNote = document.getElementById("modal-photo-placeholder-note");
   const photoIndicator = document.getElementById("modal-photo-indicator");
   const dots = document.querySelectorAll(".photo-dot-indicator");
 
-  if (photoLabel) photoLabel.textContent = photo.label;
+  const photoImage = document.getElementById("modal-photo-image");
+  if (photoImage) {
+    photoImage.classList.toggle("hidden", !photo.src);
+    if (photo.src) {
+      photoImage.src = speciesMediaUrl(photo.src);
+      photoImage.alt = `${activeBirdForModal.commonName}: ${photo.label}`;
+      photoImage.style.objectFit = "contain";
+      photoImage.style.objectPosition = "center";
+    } else {
+      photoImage.removeAttribute("src");
+    }
+  }
+  if (photoLabel) {
+    photoLabel.textContent = photo.label;
+    photoLabel.classList.toggle("hidden", !!photo.src);
+  }
+  if (placeholderNote) placeholderNote.classList.toggle("hidden", !!photo.src);
   if (photoIndicator) photoIndicator.textContent = `Foto ${currentModalPhotoIdx + 1} de ${total}`;
 
   dots.forEach((dot, idx) => {

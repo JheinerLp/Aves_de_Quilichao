@@ -8,7 +8,7 @@ const BIOAVES_DATA = [
     "id": "momoto-andino",
     "image": "img/aves/momoto-andino.png",
     "imageFit": "cover",
-    "imagePosition": "center",
+    "imagePosition": "center 25%",
     "commonName": "Momoto Andino (Barranquero)",
     "scientificName": "Momotus aequatorialis",
     "family": "Momotidae",
@@ -57,6 +57,8 @@ const BIOAVES_DATA = [
   {
     "id": "chicao",
     "image": "img/aves/CHICAO.png",
+    "imageFit": "cover",
+    "imagePosition": "center 15%",
     "commonName": "Chicao",
     "scientificName": "Icterus nigrogularis",
     "family": "Icteridae",
@@ -116,6 +118,8 @@ const BIOAVES_DATA = [
   {
     "id": "pava-caucana",
     "image": "img/aves/PAVA CAUCANA.png",
+    "imageFit": "cover",
+    "imagePosition": "center 15%",
     "commonName": "Pava Caucana",
     "scientificName": "Penelope perspicax",
     "family": "Cracidae",
@@ -175,7 +179,7 @@ const BIOAVES_DATA = [
     "id": "tangara-rastrojera",
     "image": "img/aves/tangara-rastrojera.jpg",
     "imageFit": "cover",
-    "imagePosition": "center",
+    "imagePosition": "center 25%",
     "commonName": "Tangara Rastrojera (Matorralera)",
     "scientificName": "Tangara vitriolina",
     "family": "Thraupidae",
@@ -224,6 +228,8 @@ const BIOAVES_DATA = [
   {
     "id": "colibri-colirrufo",
     "image": "img/aves/COLIBRI.png",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Colibrí Colirrufo",
     "scientificName": "Amazilia tzacatl",
     "family": "Trochilidae",
@@ -283,6 +289,8 @@ const BIOAVES_DATA = [
   {
     "id": "mirla-azul",
     "image": "img/aves/COLIBRI COLIRRUFO.png",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Mirla Azul",
     "scientificName": "Turdus sp. (identificación pendiente)",
     "family": "Turdidae",
@@ -343,7 +351,7 @@ const BIOAVES_DATA = [
     "id": "garza-tigre",
     "image": "img/aves/garza-tigre.jpg",
     "imageFit": "cover",
-    "imagePosition": "center",
+    "imagePosition": "center 20%",
     "commonName": "Garza Tigre Cuellifasta",
     "scientificName": "Tigrisoma lineatum",
     "family": "Ardeidae",
@@ -541,6 +549,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "carrao",
+    "image": "img/aves/carrao.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center 25%",
     "commonName": "Carrao",
     "scientificName": "Aramus guarauna",
     "family": "Aramidae",
@@ -554,9 +565,6 @@ const BIOAVES_DATA = [
     "diet": "Caracoles de agua dulce, especialmente grandes caracoles acuáticos; ocasionalmente otros invertebrados.",
     "behavior": "Busca moluscos en el agua somera y los extrae con el pico; su dieta lo vincula estrechamente con los humedales. Nido de material vegetal, generalmente sobre vegetación próxima al agua.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/carrao.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -588,6 +596,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "ciguenuela-cuellinegra",
+    "image": "img/aves/ciguenuela-cuellinegra.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center 20%",
     "commonName": "Cigüeñuela Cuellinegra",
     "scientificName": "Himantopus mexicanus",
     "family": "Recurvirostridae",
@@ -601,9 +612,6 @@ const BIOAVES_DATA = [
     "diet": "Insectos acuáticos, larvas, crustáceos y otros invertebrados.",
     "behavior": "Explora aguas poco profundas; suele emitir llamadas de alarma cerca del nido. Pone huevos sobre el suelo o pequeñas elevaciones próximas al agua.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/ciguenuela-cuellinegra.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -635,6 +643,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "garceta-nivea",
+    "image": "img/aves/garceta-nivea.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Garceta Nívea",
     "scientificName": "Egretta thula",
     "family": "Ardeidae",
@@ -648,9 +659,6 @@ const BIOAVES_DATA = [
     "diet": "Peces pequeños, camarones, insectos acuáticos y anfibios.",
     "behavior": "Puede mover los pies para hacer salir presas del fondo; controla poblaciones de animales acuáticos pequeños. Anida colonialmente en árboles o arbustos próximos al agua.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/garceta-nivea.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -682,6 +690,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "garceta-azul",
+    "image": "img/aves/garceta-azul.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Garceta Azul",
     "scientificName": "Egretta caerulea",
     "family": "Ardeidae",
@@ -695,9 +706,6 @@ const BIOAVES_DATA = [
     "diet": "Peces, crustáceos, insectos acuáticos y anfibios.",
     "behavior": "Camina despacio y captura presas con movimientos rápidos del pico. Suele anidar en colonias, con nidos de ramas en árboles o arbustos.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/garceta-azul.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -729,6 +737,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "morito-comun",
+    "image": "img/aves/morito-comun.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center 25%",
     "commonName": "Morito Común",
     "scientificName": "Plegadis falcinellus",
     "family": "Threskiornithidae",
@@ -742,9 +753,6 @@ const BIOAVES_DATA = [
     "diet": "Insectos, larvas, moluscos, gusanos y otros invertebrados.",
     "behavior": "Sondea el lodo con el pico; conecta ambientes acuáticos y terrestres. Construye nidos de vegetación en colonias de humedales.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/morito-comun.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -776,6 +784,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "caracolero-comun",
+    "image": "img/aves/caracolero-comun.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Caracolero Común",
     "scientificName": "Rostrhamus sociabilis",
     "family": "Accipitridae",
@@ -789,9 +800,6 @@ const BIOAVES_DATA = [
     "diet": "Principalmente caracoles acuáticos del género Pomacea.",
     "behavior": "Captura caracoles y extrae el cuerpo de la concha; es un depredador especializado. Nido de ramas y vegetación en árboles o plantas emergentes.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/caracolero-comun.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -823,6 +831,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "bandurria-comun",
+    "image": "img/aves/bandurria-comun.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Bandurria Común",
     "scientificName": "Theristicus caudatus",
     "family": "Threskiornithidae",
@@ -836,9 +847,6 @@ const BIOAVES_DATA = [
     "diet": "Insectos, lombrices y pequeños vertebrados.",
     "behavior": "Busca presas caminando sobre el suelo; puede observarse en parejas o grupos. Nido voluminoso de ramas en árboles, según disponibilidad del entorno.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/bandurria-comun.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -870,6 +878,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "golondrina-pechigris",
+    "image": "img/aves/golondrina-pechigris.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Golondrina Pechigrís",
     "scientificName": "Progne chalybea",
     "family": "Hirundinidae",
@@ -883,9 +894,6 @@ const BIOAVES_DATA = [
     "diet": "Insectos voladores capturados en el aire.",
     "behavior": "Vuelo rápido y maniobrable; contribuye al consumo de insectos aéreos. Puede usar cavidades y estructuras construidas para anidar.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/golondrina-pechigris.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -917,6 +925,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "piojito-pardo",
+    "image": "img/aves/piojito-pardo.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Piojito Pardo",
     "scientificName": "Nesotriccus murinus",
     "family": "Tyrannidae",
@@ -930,9 +941,6 @@ const BIOAVES_DATA = [
     "diet": "Insectos y otros artrópodos pequeños.",
     "behavior": "Se posa en ramas y hace vuelos cortos para atrapar presas. Nido pequeño de fibras vegetales, normalmente oculto entre ramas.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sinónimo taxonómico previo: Phaeomyias murina. Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/piojito-pardo.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -964,6 +972,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "suiriri-piquirrojo",
+    "image": "img/aves/suiriri-piquirrojo.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Suirirí Piquirrojo",
     "scientificName": "Dendrocygna autumnalis",
     "family": "Anatidae",
@@ -977,9 +988,6 @@ const BIOAVES_DATA = [
     "diet": "Semillas, plantas acuáticas y algunos invertebrados.",
     "behavior": "Gregario, activo en grupos; consume material vegetal en ambientes acuáticos. A menudo anida en cavidades de árboles o sitios protegidos.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/suiriri-piquirrojo.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -1011,6 +1019,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "elanio-enano",
+    "image": "img/aves/elanio-enano.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Elanio Enano",
     "scientificName": "Gampsonyx swainsonii",
     "family": "Accipitridae",
@@ -1024,9 +1035,6 @@ const BIOAVES_DATA = [
     "diet": "Insectos grandes, lagartijas y pequeños vertebrados.",
     "behavior": "Acecha desde perchas y desciende rápidamente sobre sus presas. Nido pequeño de ramas colocado en árboles.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/elanio-enano.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -1058,6 +1066,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "suiriri-cariblanco",
+    "image": "img/aves/suiriri-cariblanco.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center 20%",
     "commonName": "Suirirí Cariblanco",
     "scientificName": "Dendrocygna viduata",
     "family": "Anatidae",
@@ -1071,9 +1082,6 @@ const BIOAVES_DATA = [
     "diet": "Semillas, plantas acuáticas e invertebrados pequeños.",
     "behavior": "Forma grupos y se comunica mediante silbidos. Anida entre vegetación densa, normalmente cerca del agua.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/suiriri-cariblanco.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -1105,6 +1113,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "anhinga-americana",
+    "image": "img/aves/anhinga-americana.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Anhinga Americana",
     "scientificName": "Anhinga anhinga",
     "family": "Anhingidae",
@@ -1118,9 +1129,6 @@ const BIOAVES_DATA = [
     "diet": "Peces y otros pequeños animales acuáticos.",
     "behavior": "Nada y bucea con gran parte del cuerpo sumergido; captura peces bajo el agua. Nidos de ramas en árboles, con frecuencia cerca de otras aves acuáticas.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/anhinga-americana.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -1152,6 +1160,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "polluela-sora",
+    "image": "img/aves/polluela-sora.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Polluela Sora",
     "scientificName": "Porzana carolina",
     "family": "Rallidae",
@@ -1165,9 +1176,6 @@ const BIOAVES_DATA = [
     "diet": "Semillas, insectos, caracoles y pequeños invertebrados.",
     "behavior": "Se mueve entre vegetación densa y suele detectarse más por su voz que por observación directa. Nido oculto en vegetación palustre; reproducción principalmente en Norteamérica.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Migratoria boreal. Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/polluela-sora.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
@@ -1199,6 +1207,9 @@ const BIOAVES_DATA = [
   },
   {
     "id": "ermitano-hirsuto",
+    "image": "img/aves/ermitano-hirsuto.jpg",
+    "imageFit": "cover",
+    "imagePosition": "center",
     "commonName": "Ermitaño Hirsuto",
     "scientificName": "Glaucis hirsutus",
     "family": "Trochilidae",
@@ -1212,9 +1223,6 @@ const BIOAVES_DATA = [
     "diet": "Néctar floral y pequeños artrópodos.",
     "behavior": "Visita flores y participa en la polinización; también consume insectos. Nido colgante o adherido a vegetación, construido con fibras vegetales.",
     "distribution": "Mención nominal en inventario ornitológico municipal de Santander de Quilichao (UNAD, 2022). Sin registro individual con coordenadas verificables en fuentes primarias; localidad específica: No documentado.",
-    "image": "img/aves/ermitano-hirsuto.jpg",
-    "imageFit": "cover",
-    "imagePosition": "center",
     "multimedia": {
       "photos": [
         {
