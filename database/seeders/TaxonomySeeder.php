@@ -22,6 +22,14 @@ class TaxonomySeeder extends Seeder
             ['name' => 'Strigidae', 'scientific_order' => 'Strigiformes', 'description' => 'Búhos y mochuelos rapaces nocturnos'],
             ['name' => 'Falconidae', 'scientific_order' => 'Falconiformes', 'description' => 'Halcones y caracaras'],
             ['name' => 'Tyrannidae', 'scientific_order' => 'Passeriformes', 'description' => 'Atrapamoscas, siriríes y bichofués'],
+            ['name' => 'Aramidae', 'scientific_order' => 'Gruiformes', 'description' => 'Carraos zancudos de humedales neotropicales'],
+            ['name' => 'Recurvirostridae', 'scientific_order' => 'Charadriiformes', 'description' => 'Cigüeñuelas y avocetas de patas alargadas y picos especializados'],
+            ['name' => 'Threskiornithidae', 'scientific_order' => 'Pelecaniformes', 'description' => 'Ibis y espátulas de picos curvos o espatulados'],
+            ['name' => 'Accipitridae', 'scientific_order' => 'Accipitriformes', 'description' => 'Águilas, gavilanes, elanios y caracoleros rapaces'],
+            ['name' => 'Hirundinidae', 'scientific_order' => 'Passeriformes', 'description' => 'Golondrinas insectívoras de vuelo aéreo maniobrable'],
+            ['name' => 'Anatidae', 'scientific_order' => 'Anseriformes', 'description' => 'Patos silbadores, cercetas y aves acuáticas anseriformes'],
+            ['name' => 'Anhingidae', 'scientific_order' => 'Suliformes', 'description' => 'Aves acuáticas buceadoras de cuello serpentino'],
+            ['name' => 'Rallidae', 'scientific_order' => 'Gruiformes', 'description' => 'Rálidos, polluelas y fochas de vegetación palustre densa'],
         ];
 
         foreach ($families as $f) {

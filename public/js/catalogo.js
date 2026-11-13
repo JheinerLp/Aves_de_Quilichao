@@ -392,8 +392,10 @@ function openDetailModal(bird) {
     if (locEl) locEl.textContent = bird.sighting.locationName || "";
     if (dateEl) dateEl.textContent = bird.sighting.date || "";
     if (notesEl) notesEl.textContent = bird.sighting.notes || "";
-    if (coordsEl && Array.isArray(bird.sighting.coords)) {
-      coordsEl.textContent = `Coordenadas: ${bird.sighting.coords[0].toFixed(4)}° N, ${bird.sighting.coords[1].toFixed(4)}° W`;
+    if (coordsEl) {
+      coordsEl.textContent = Array.isArray(bird.sighting.coords)
+        ? `Coordenadas: ${bird.sighting.coords[0].toFixed(4)}° N, ${bird.sighting.coords[1].toFixed(4)}° W`
+        : "Coordenadas: No documentado";
     }
     if (elevationEl) elevationEl.textContent = `Altitud: ${bird.sighting.elevation || ""}`;
   }
