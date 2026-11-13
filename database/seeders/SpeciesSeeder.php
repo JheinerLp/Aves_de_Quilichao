@@ -31,9 +31,9 @@ class SpeciesSeeder extends Seeder
                 'behavior' => 'Solitario o en parejas. Permanece inmóvil en perchas sombreadas del estrato medio antes de lanzarse en vuelo directo hacia el suelo o follaje.',
                 'distribution' => 'Cordillera Central y Occidental de los Andes, entre 1.000 y 2.400 msnm.',
                 'photos' => [
-                    ['caption' => 'Momoto Andino registrado en Santander de Quilichao. Foto: Litrato15 (iNaturalist, CC BY-NC); mejora técnica con IA.', 'file' => 'momoto-andino.png', 'asset' => 'img/aves/momoto-andino.png'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE CORONA Y PICO]', 'file' => 'momoto-2.svg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT RIBEREÑO]', 'file' => 'momoto-3.svg'],
+                    ['caption' => 'Momoto Andino registrado en Santander de Quilichao. Foto base: Litrato15 (iNaturalist, CC BY-NC); reencuadre panorámico mediante IA.', 'file' => 'momoto-andino-panoramica.png', 'asset' => 'img/aves/momoto-andino-panoramica.png'],
+                    ['caption' => 'Detalle del Momoto Andino derivado de la fotografía principal mediante edición con IA.', 'file' => 'momoto-andino-detalle.png', 'asset' => 'img/aves/momoto-andino-detalle.png'],
+                    ['caption' => 'Composición contextual del Momoto Andino derivada de la fotografía principal mediante IA; no es un registro independiente.', 'file' => 'momoto-andino-entorno.png', 'asset' => 'img/aves/momoto-andino-entorno.png'],
                 ],
                 'audio' => [
                     'url' => 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Momotus_aequatorialis_-_Blue-crowned_Motmot_XC28717.ogg',
@@ -60,9 +60,9 @@ class SpeciesSeeder extends Seeder
                 'behavior' => 'Se desplaza en parejas o grupos pequeños y vocaliza con frecuencia desde perchas visibles.',
                 'distribution' => 'Presente en zonas cálidas y premontanas del norte del Cauca, en ambientes abiertos con árboles y bordes de bosque.',
                 'photos' => [
-                    ['caption' => 'Chicao posado entre el follaje', 'file' => 'CHICAO.png', 'asset' => 'img/aves/CHICAO.png'],
-                    ['caption' => '[FOTOGRAFÍA PENDIENTE: DETALLE DEL PLUMAJE AMARILLO Y NEGRO]', 'file' => 'chicao-2.svg'],
-                    ['caption' => '[FOTOGRAFÍA PENDIENTE: CHICAO EN SU HÁBITAT]', 'file' => 'chicao-3.svg'],
+                    ['caption' => 'Chicao posado entre el follaje; reencuadre panorámico mediante IA a partir de la fotografía aportada.', 'file' => 'chicao-panoramica.png', 'asset' => 'img/aves/chicao-panoramica.png'],
+                    ['caption' => 'Detalle del plumaje amarillo y negro del Chicao, derivado mediante edición con IA.', 'file' => 'chicao-detalle.png', 'asset' => 'img/aves/chicao-detalle.png'],
+                    ['caption' => 'Composición contextual del Chicao derivada de la fotografía principal mediante IA; no es un registro independiente.', 'file' => 'chicao-entorno.png', 'asset' => 'img/aves/chicao-entorno.png'],
                 ],
                 'audio' => null,
                 'videos' => [
@@ -85,9 +85,9 @@ class SpeciesSeeder extends Seeder
                 'behavior' => 'Habita el dosel superior en pequeños grupos familiares. Emite llamados guturales resonantes durante las primeras horas del amanecer.',
                 'distribution' => 'Restringida a relictos de bosque de niebla de la vertiente occidental de la Cordillera Central (1.400 - 2.100 msnm).',
                 'photos' => [
-                    ['caption' => 'Pava Caucana en bosque andino', 'file' => 'PAVA CAUCANA.png', 'asset' => 'img/aves/PAVA CAUCANA.png'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE GOLA GULAR ROJA]', 'file' => 'pava-2.svg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: GRUPO FAMILIAR EN RAMAS]', 'file' => 'pava-3.svg'],
+                    ['caption' => 'Pava Caucana en bosque andino; reencuadre panorámico mediante IA a partir de la fotografía aportada.', 'file' => 'pava-caucana-panoramica.png', 'asset' => 'img/aves/pava-caucana-panoramica.png'],
+                    ['caption' => 'Detalle de la gola gular roja de la Pava Caucana, derivado mediante edición con IA.', 'file' => 'pava-caucana-detalle.png', 'asset' => 'img/aves/pava-caucana-detalle.png'],
+                    ['caption' => 'Composición contextual de una Pava Caucana en bosque andino, derivada mediante IA; no es un registro independiente.', 'file' => 'pava-caucana-entorno.png', 'asset' => 'img/aves/pava-caucana-entorno.png'],
                 ],
                 'audio' => [
                     'url' => 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Penelope_perspicax_-_Cauca_Guan_XC151978.ogg',
@@ -115,17 +115,18 @@ class SpeciesSeeder extends Seeder
                 'distribution' => 'Valles del Río Cauca y Magdalena (500 a 2.200 msnm).',
                 'photos' => [
                     ['caption' => 'Tangara Rastrojera. Foto de referencia externa: olegvasiliev (iNaturalist, CC BY-NC), Valle del Cauca; no corresponde a un registro municipal de Santander de Quilichao.', 'file' => 'tangara-rastrojera.jpg', 'asset' => 'img/aves/tangara-rastrojera.jpg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE CORONA CASTAÑA]', 'file' => 'tangara-2.svg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: FORRAJEANDO ENTRE MATORRALES]', 'file' => 'tangara-3.svg'],
+                    ['caption' => 'Detalle derivado con IA de la fotografía externa de referencia; no corresponde a un registro municipal.', 'file' => 'tangara-rastrojera-detalle.png', 'asset' => 'img/aves/tangara-rastrojera-detalle.png'],
+                    ['caption' => 'Composición contextual derivada con IA de la fotografía externa de referencia; no corresponde a un registro municipal.', 'file' => 'tangara-rastrojera-entorno.png', 'asset' => 'img/aves/tangara-rastrojera-entorno.png'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Tangara_vitriolina_-_Scrub_Tanager_XC33502.ogg',
-                    'caption' => 'Trino rápido de la Tangara Rastrojera',
-                    'duration' => 19,
+                    'asset' => 'video/TANGARA SONIDO.mp4',
+                    'file' => 'TANGARA SONIDO.mp4',
+                    'caption' => 'Registro del canto de la Tangara Rastrojera',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: CANTO Y ALIMENTACIÓN EN CERCA VIVA]',
-                    'file' => 'video-tangara.mp4',
+                'videos' => [
+                    ['caption' => 'Tangara Rastrojera vocalizando', 'file' => 'TANGARA HABLANDO.mp4', 'asset' => 'video/TANGARA HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto de la Tangara Rastrojera', 'file' => 'TANGARA SONIDO.mp4', 'asset' => 'video/TANGARA SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -144,8 +145,8 @@ class SpeciesSeeder extends Seeder
                 'distribution' => 'Desde el nivel del mar hasta 1.800 msnm en todo el territorio quilichagüeño.',
                 'photos' => [
                     ['caption' => 'Colibrí Colirrufo posado en una rama', 'file' => 'COLIBRI.png', 'asset' => 'img/aves/COLIBRI.png'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE PICO RECTO]', 'file' => 'colibri-2.svg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: PERCHADO EN RAMA DELGADA]', 'file' => 'colibri-3.svg'],
+                    ['caption' => 'Detalle del pico y plumaje del Colibrí Colirrufo, derivado mediante edición con IA.', 'file' => 'colibri-colirrufo-detalle.png', 'asset' => 'img/aves/colibri-colirrufo-detalle.png'],
+                    ['caption' => 'Composición contextual del Colibrí Colirrufo derivada mediante IA; no es un registro independiente.', 'file' => 'colibri-colirrufo-entorno.png', 'asset' => 'img/aves/colibri-colirrufo-entorno.png'],
                 ],
                 'audio' => [
                     'url' => 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Amazilia_tzacatl_-_Rufous-tailed_Hummingbird_XC24361.ogg',
@@ -173,8 +174,8 @@ class SpeciesSeeder extends Seeder
                 'distribution' => 'Registro local en Santander de Quilichao; la distribución precisa depende de confirmar la especie.',
                 'photos' => [
                     ['caption' => 'Registro fotográfico de la Mirla Azul', 'file' => 'COLIBRI COLIRRUFO.png', 'asset' => 'img/aves/COLIBRI COLIRRUFO.png'],
-                    ['caption' => '[FOTOGRAFÍA PENDIENTE: VISTA FRONTAL]', 'file' => 'mirla-2.svg'],
-                    ['caption' => '[FOTOGRAFÍA PENDIENTE: AVE EN SU HÁBITAT]', 'file' => 'mirla-3.svg'],
+                    ['caption' => 'Detalle del ave registrada como Mirla Azul, derivado mediante edición con IA; identificación taxonómica pendiente.', 'file' => 'mirla-azul-detalle.png', 'asset' => 'img/aves/mirla-azul-detalle.png'],
+                    ['caption' => 'Composición contextual derivada mediante IA; identificación taxonómica pendiente y no corresponde a un registro independiente.', 'file' => 'mirla-azul-entorno.png', 'asset' => 'img/aves/mirla-azul-entorno.png'],
                 ],
                 'audio' => null,
                 'videos' => [
@@ -197,18 +198,19 @@ class SpeciesSeeder extends Seeder
                 'behavior' => 'Permanece quieta durante períodos prolongados en la orilla del agua esperando el paso de presas.',
                 'distribution' => 'Humedales y ríos de tierras bajas hasta 1.200 msnm.',
                 'photos' => [
-                    ['caption' => 'Garza Tigre Cuellifasta. Foto de referencia externa: andresftvera (iNaturalist, CC BY-NC), Florencia, Caquetá; no corresponde a un registro municipal de Santander de Quilichao.', 'file' => 'garza-tigre.jpg', 'asset' => 'img/aves/garza-tigre.jpg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DEL RAYADO DEL CUELLO]', 'file' => 'garza-2.svg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: CAZANDO EN EL ESPEJO DE AGUA]', 'file' => 'garza-3.svg'],
+                    ['caption' => 'Garza Tigre Cuellifasta. Fotografía aportada al proyecto; autoría, licencia y ubicación pendientes de documentación.', 'file' => 'garza-tigre-principal-v2.png', 'asset' => 'img/aves/garza-tigre-principal-v2.png'],
+                    ['caption' => 'Detalle de la cabeza y el pico de la Garza Tigre, derivado mediante edición con IA.', 'file' => 'garza-tigre-detalle-v2.png', 'asset' => 'img/aves/garza-tigre-detalle-v2.png'],
+                    ['caption' => 'Composición contextual de la Garza Tigre junto a un humedal, derivada mediante IA; no es un registro independiente.', 'file' => 'garza-tigre-entorno-v2.png', 'asset' => 'img/aves/garza-tigre-entorno-v2.png'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/8/87/Tigrisoma_lineatum_-_Rufescent_Tiger-Heron_XC14838.ogg',
-                    'caption' => 'Vocalización crepuscular de la Garza Tigre',
-                    'duration' => 22,
+                    'asset' => 'video/_GARZA_canto.mp4',
+                    'file' => '_GARZA_canto.mp4',
+                    'caption' => 'Registro del canto de la Garza Tigre',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: TÉCNICA DE PESCA SIGILOSA]',
-                    'file' => 'video-garza.mp4',
+                'videos' => [
+                    ['caption' => 'Garza Tigre vocalizando', 'file' => 'Garza_tigre_hablando.mp4', 'asset' => 'video/Garza_tigre_hablando.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto de la Garza Tigre', 'file' => '_GARZA_canto.mp4', 'asset' => 'video/_GARZA_canto.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -227,17 +229,18 @@ class SpeciesSeeder extends Seeder
                 'distribution' => 'Valles cálidos y zonas premontanas de Colombia (0 a 1.600 msnm).',
                 'photos' => [
                     ['caption' => 'Carpintero Habado registrado en Santander de Quilichao. Foto: Litrato15 (iNaturalist, CC BY-NC); mejora técnica con IA.', 'file' => 'carpintero-habado.png', 'asset' => 'img/aves/carpintero-habado.png'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE CORONA ROJA]', 'file' => 'carpintero-2.svg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: INSPECCIONANDO CAVIDAD DE NIDO]', 'file' => 'carpintero-3.svg'],
+                    ['caption' => 'Detalle de la corona roja del Carpintero Habado, derivado mediante edición con IA.', 'file' => 'carpintero-habado-detalle.png', 'asset' => 'img/aves/carpintero-habado-detalle.png'],
+                    ['caption' => 'Composición contextual del Carpintero Habado junto a una cavidad, derivada mediante IA; no es un registro independiente.', 'file' => 'carpintero-habado-entorno.png', 'asset' => 'img/aves/carpintero-habado-entorno.png'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Melanerpes_rubricapillus_-_Red-crowned_Woodpecker_XC33005.ogg',
-                    'caption' => 'Tamborileo y trino del Carpintero Habado',
-                    'duration' => 18,
+                    'asset' => 'video/COLIBRI HABADO SONIDO.mp4',
+                    'file' => 'COLIBRI HABADO SONIDO.mp4',
+                    'caption' => 'Registro del canto del Carpintero Habado',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: TAMBORILEO Y COMUNICACIÓN SONORA]',
-                    'file' => 'video-carpintero.mp4',
+                'videos' => [
+                    ['caption' => 'Carpintero Habado vocalizando', 'file' => 'COLIBRI HABADO HABLANDO.mp4', 'asset' => 'video/COLIBRI HABADO HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto del Carpintero Habado', 'file' => 'COLIBRI HABADO SONIDO.mp4', 'asset' => 'video/COLIBRI HABADO SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -255,18 +258,19 @@ class SpeciesSeeder extends Seeder
                 'behavior' => 'Gregarismo moderado. Frecuenta comederos comunitarios y árboles frutales en parejas.',
                 'distribution' => 'Ampliamente distribuido en Colombia por debajo de 2.200 msnm.',
                 'photos' => [
-                    ['caption' => 'Azulejo Común registrado en Santander de Quilichao. Foto: Henry Dubán Alegría (iNaturalist, CC BY-NC); mejora técnica y reencuadre con IA.', 'file' => 'azulejo-comun.png', 'asset' => 'img/aves/azulejo-comun.png'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE PLUMAJE CELESTE]', 'file' => 'azulejo-2.svg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: VOLANDO ENTRE JARDINES]', 'file' => 'azulejo-3.svg'],
+                    ['caption' => 'Azulejo Común registrado en Santander de Quilichao. Foto base: Henry Dubán Alegría (iNaturalist, CC BY-NC); composición sobre rama mediante IA.', 'file' => 'azulejo-comun-rama.png', 'asset' => 'img/aves/azulejo-comun-rama.png'],
+                    ['caption' => 'Detalle del plumaje celeste del Azulejo Común, derivado mediante edición con IA.', 'file' => 'azulejo-comun-detalle.png', 'asset' => 'img/aves/azulejo-comun-detalle.png'],
+                    ['caption' => 'Composición contextual del Azulejo Común sobre una rama, derivada mediante IA; no es un registro independiente.', 'file' => 'azulejo-comun-entorno.png', 'asset' => 'img/aves/azulejo-comun-entorno.png'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/9/90/Thraupis_episcopus_-_Blue-gray_Tanager_XC41982.ogg',
-                    'caption' => 'Pío matutino del Azulejo Común',
-                    'duration' => 25,
+                    'asset' => 'video/_AZULEJO_canto.mp4',
+                    'file' => '_AZULEJO_canto.mp4',
+                    'caption' => 'Registro del canto del Azulejo Común',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: VOCALIZACIONES MATUTINAS EN COPA]',
-                    'file' => 'video-azulejo.mp4',
+                'videos' => [
+                    ['caption' => 'Azulejo Común vocalizando', 'file' => 'Azulejo_común_hablando.mp4', 'asset' => 'video/Azulejo_común_hablando.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto del Azulejo Común', 'file' => '_AZULEJO_canto.mp4', 'asset' => 'video/_AZULEJO_canto.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -285,8 +289,8 @@ class SpeciesSeeder extends Seeder
                 'distribution' => 'Tierras bajas y medias andinas de todo el departamento del Cauca.',
                 'photos' => [
                     ['caption' => 'Currucutú Común. Foto de referencia externa: gabo_utria (iNaturalist, CC BY-NC), Jamundí, Valle del Cauca; no corresponde a un registro municipal de Santander de Quilichao.', 'file' => 'currucutu-comun.jpg', 'asset' => 'img/aves/currucutu-comun.jpg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: OJOS AMARILLOS Y PENACHOS]', 'file' => 'currucutu-2.svg'],
-                    ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: SILUETA NOCTURNA EN RAMA SECA]', 'file' => 'currucutu-3.svg'],
+                    ['caption' => 'Detalle facial del Currucutú derivado con IA de la fotografía externa; conserva los ojos entrecerrados de la toma original.', 'file' => 'currucutu-comun-detalle.png', 'asset' => 'img/aves/currucutu-comun-detalle.png'],
+                    ['caption' => 'Versión nocturna contextual derivada con IA de la fotografía externa; no corresponde a un registro municipal.', 'file' => 'currucutu-comun-entorno.png', 'asset' => 'img/aves/currucutu-comun-entorno.png'],
                 ],
                 'audio' => [
                     'url' => 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Megascops_choliba_-_Tropical_Screech-Owl_XC61291.ogg',
@@ -357,6 +361,10 @@ class SpeciesSeeder extends Seeder
 
             // Audio
             if (!empty($sData['audio'])) {
+                $isLocalAudio = isset($sData['audio']['asset']);
+                $audioFile = $sData['audio']['file'] ?? 'vocalizacion.ogg';
+                $audioExtension = strtolower(pathinfo($audioFile, PATHINFO_EXTENSION));
+
                 Media::updateOrCreate(
                     [
                         'mediable_type' => Species::class,
@@ -365,10 +373,19 @@ class SpeciesSeeder extends Seeder
                     ],
                     [
                         'disk' => 'public',
-                        'storage_path' => $sData['audio']['url'],
-                        'file_name' => 'vocalizacion.ogg',
-                        'mime_type' => 'audio/ogg',
-                        'file_size' => 204800,
+                        'storage_path' => $isLocalAudio
+                            ? 'asset:' . $sData['audio']['asset']
+                            : $sData['audio']['url'],
+                        'file_name' => $audioFile,
+                        'mime_type' => match ($audioExtension) {
+                            'mp3' => 'audio/mpeg',
+                            'mp4', 'm4a' => 'audio/mp4',
+                            'wav' => 'audio/wav',
+                            default => 'audio/ogg',
+                        },
+                        'file_size' => $isLocalAudio && is_file(public_path($sData['audio']['asset']))
+                            ? filesize(public_path($sData['audio']['asset']))
+                            : 204800,
                         'duration_seconds' => $sData['audio']['duration'],
                         'visibility' => 'public',
                         'order' => 1,

@@ -44,10 +44,17 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @forelse($species->photos as $ph)
-          <div class="wireframe-placeholder h-56 rounded-sm p-4 flex flex-col justify-between text-center overflow-hidden">
-            <span class="text-[10px] font-mono text-[#777777]">FOTOGRAFÍA #{{ $loop->iteration }}</span>
+          <div
+            class="wireframe-placeholder media-frame h-56 rounded-sm p-4 flex flex-col justify-between text-center overflow-hidden {{ !str_starts_with($ph->storage_path, 'placeholders/') ? 'media-photo-stage has-photo' : '' }}"
+          >
+            <span class="absolute z-10 top-2 left-1/2 -translate-x-1/2 px-2 py-1 rounded-full bg-white/80 text-[10px] font-mono text-[#31533b]">FOTOGRAFÍA #{{ $loop->iteration }}</span>
             @if(!str_starts_with($ph->storage_path, 'placeholders/'))
-              <img src="{{ $ph->url }}" alt="{{ $species->common_name }}" class="w-full h-full object-cover">
+              <img
+                src="{{ $ph->url }}"
+                alt="{{ $species->common_name }}"
+                class="absolute inset-0 w-full h-full object-cover"
+                style="object-position: {{ str_contains($ph->file_name, '-detalle') ? 'center top' : 'center 35%' }}"
+              >
             @else
               <strong class="text-xs font-mono text-[#333333]">{{ $ph->caption ?: $ph->file_name }}</strong>
               <span class="text-[10px] font-mono text-[#777777]">[PLACEHOLDER DE FOTOGRAFÍA]</span>
@@ -66,9 +73,9 @@
       @if($availableVideos->isNotEmpty())
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           @foreach($availableVideos as $video)
-            <div class="bg-[#F2F2F2] border border-[#B0B0B0] p-3">
-              <p class="text-xs font-bold mb-2">{{ $video->caption ?: ($loop->first ? 'Ave vocalizando' : 'Registro del canto') }}</p>
-              <video controls preload="metadata" playsinline class="w-full aspect-video object-cover bg-black" src="{{ $video->url }}" aria-label="{{ $species->common_name }}: {{ $video->caption ?: 'video' }}"></video>
+            <div class="media-video-card relative bg-black border border-[#B0B0B0]">
+              <p class="media-caption">{{ $video->caption ?: ($loop->first ? 'Ave vocalizando' : 'Registro del canto') }}</p>
+              <video controls preload="metadata" playsinline class="media-video w-full aspect-video object-cover bg-black" src="{{ $video->url }}" aria-label="{{ $species->common_name }}: {{ $video->caption ?: 'video' }}"></video>
             </div>
           @endforeach
         </div>

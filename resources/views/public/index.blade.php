@@ -638,7 +638,7 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-8 relative h-64 sm:h-72 wireframe-placeholder rounded-sm flex flex-col items-center justify-center p-4">
+            <div class="md:col-span-8 relative h-64 sm:h-72 wireframe-placeholder media-frame media-photo-stage media-modal-photo rounded-sm flex flex-col items-center justify-center p-4">
               <img id="modal-photo-image" class="hidden absolute inset-0 w-full h-full object-cover" alt="">
               <span id="modal-photo-label" class="text-sm font-bold text-[#333333] text-center max-w-sm">
                 [PLACEHOLDER DE FOTOGRAFÍA 1 DE 3]
@@ -662,7 +662,7 @@
               </div>
             </div>
 
-            <div id="modal-video-panel" class="md:col-span-4 min-h-64 sm:min-h-72 wireframe-placeholder-dark rounded-sm p-4 flex flex-col justify-between text-center">
+            <div id="modal-video-panel" class="md:col-span-4 wireframe-placeholder-dark media-frame media-video-panel rounded-sm flex flex-col text-left">
               <span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registro de Video</span>
               <span id="modal-video-label" class="text-xs font-bold text-[#FFFFFF]">
                 [PLACEHOLDER DE VIDEO: COMPORTAMIENTO]

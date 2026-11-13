@@ -106,6 +106,75 @@ section h2 { font-size: clamp(30px, 3.6vw, 44px) !important; font-weight: 800 !i
   border-radius: 18px;
 }
 
+/* Marcos multimedia: esquinas suaves y aves completas sin franjas vacías. */
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px !important;
+}
+.media-photo-stage {
+  isolation: isolate;
+  background: linear-gradient(135deg, var(--mint), #b9d19b) !important;
+}
+.media-photo-stage.has-photo {
+  min-height: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+.media-photo-stage.has-photo > img {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.media-modal-photo {
+  height: 16rem !important;
+}
+@media (min-width: 640px) {
+  .media-modal-photo {
+    height: 18rem !important;
+  }
+}
+.media-video-panel {
+  align-self: start;
+  min-height: 0 !important;
+  padding: 0 !important;
+  gap: 12px;
+  justify-content: flex-start !important;
+  background: transparent !important;
+}
+.media-video,
+.media-video-card {
+  overflow: hidden;
+  border-radius: 18px !important;
+}
+.media-video {
+  display: block;
+}
+.media-caption {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  width: max-content;
+  max-width: calc(100% - 16px);
+  padding: 4px 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(10, 61, 38, .82);
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  backdrop-filter: blur(5px);
+}
+
 /* ---------- Mapa (Leaflet) ---------- */
 .wireframe-map-container { border: 6px solid #fff !important; border-radius: 26px !important; box-shadow: var(--sh-md); overflow: hidden; }
 .wireframe-map-container .leaflet-tile-pane { filter: none !important; }
@@ -215,8 +284,8 @@ body { background: var(--paper) !important; }
 .bv-controls button { width: 40px; height: 40px; border-radius: 50%; border: 0; background: linear-gradient(135deg, #2fae3f, var(--deep)); color: #fff; font-size: 22px; cursor: pointer; }
 .carousel-card { background: #fff; border-radius: 28px !important; border: 0 !important; box-shadow: 0 12px 30px rgba(15,90,42,.2); overflow: hidden; padding: 0 !important; }
 .carousel-card.is-center-active { transform: scale(1.05); box-shadow: 0 0 0 4px var(--sun), 0 18px 40px rgba(15,90,42,.3); background: #fff !important; border: 0 !important; }
-.bv-photo { position: relative; height: 200px; background: linear-gradient(135deg, #7fd06a, #2aa7e6); }
-.bv-photo img { width: 100%; height: 100%; object-fit: cover; }
+.bv-photo { position: relative; height: 200px; overflow: hidden; border-radius: 22px 22px 0 0; background: linear-gradient(135deg, #7fd06a, #2aa7e6); }
+.bv-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
 .bv-ribbon { position: absolute; left: 14px; right: 14px; bottom: -16px; margin: 0; padding: 9px 12px; border-radius: 999px; text-align: center; font-family: 'Playfair Display', serif !important; font-size: 17px; font-weight: 800; color: #fff !important; background: linear-gradient(135deg, #2fae3f, var(--deep)); box-shadow: 0 6px 14px rgba(15,90,42,.4); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bv-card-body { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 28px 16px 20px; text-align: center; }
 .bv-badge { padding: 4px 14px; border-radius: 999px; background: #e8f9c8; border: 2px solid #8fd14a; color: var(--deep); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }

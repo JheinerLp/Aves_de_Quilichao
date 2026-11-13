@@ -7,7 +7,7 @@
 const BIOAVES_DATA = [
   {
     id: "momoto-andino",
-    image: "img/aves/momoto-andino.png",
+    image: "img/aves/momoto-andino-panoramica.png",
     imageFit: "cover",
     imagePosition: "center",
     commonName: "Momoto Andino (Barranquero)",
@@ -25,9 +25,9 @@ const BIOAVES_DATA = [
     distribution: "Cordillera Central y Occidental de los Andes, entre 1.000 y 2.400 msnm.",
     multimedia: {
       photos: [
-        { id: 1, src: "img/aves/momoto-andino.png", label: "Momoto Andino registrado en Santander de Quilichao. Foto: Litrato15 (iNaturalist, CC BY-NC); mejora técnica con IA." },
-        { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE CORONA Y PICO]" },
-        { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT RIBEREÑO]" }
+        { id: 1, src: "img/aves/momoto-andino-panoramica.png", label: "Momoto Andino registrado en Santander de Quilichao. Foto base: Litrato15 (iNaturalist, CC BY-NC); reencuadre panorámico mediante IA." },
+        { id: 2, src: "img/aves/momoto-andino-detalle.png", label: "Detalle del Momoto Andino derivado de la fotografía principal mediante edición con IA." },
+        { id: 3, src: "img/aves/momoto-andino-entorno.png", label: "Composición contextual del Momoto Andino derivada de la fotografía principal mediante IA; no es un registro independiente." }
       ],
       videoPlaceholder: "[PLACEHOLDER DE VIDEO: COMPORTAMIENTO DE BALANCEO DE COLA]",
       audioDuration: "0:28",
@@ -44,7 +44,7 @@ const BIOAVES_DATA = [
   },
   {
     id: "chicao",
-    image: "img/aves/CHICAO.png",
+    image: "img/aves/chicao-panoramica.png",
     commonName: "Chicao",
     scientificName: "Icterus nigrogularis",
     family: "Icteridae",
@@ -60,9 +60,9 @@ const BIOAVES_DATA = [
     distribution: "Presente en zonas cálidas y premontanas del norte del Cauca, en ambientes abiertos con árboles y bordes de bosque.",
     multimedia: {
       photos: [
-        { id: 1, src: "img/aves/CHICAO.png", label: "Chicao posado entre el follaje" },
-        { id: 2, label: "[FOTOGRAFÍA PENDIENTE: DETALLE DEL PLUMAJE AMARILLO Y NEGRO]" },
-        { id: 3, label: "[FOTOGRAFÍA PENDIENTE: CHICAO EN SU HÁBITAT]" }
+        { id: 1, src: "img/aves/chicao-panoramica.png", label: "Chicao posado entre el follaje; reencuadre panorámico mediante IA a partir de la fotografía aportada." },
+        { id: 2, src: "img/aves/chicao-detalle.png", label: "Detalle del plumaje amarillo y negro del Chicao, derivado mediante edición con IA." },
+        { id: 3, src: "img/aves/chicao-entorno.png", label: "Composición contextual del Chicao derivada de la fotografía principal mediante IA; no es un registro independiente." }
       ],
       videoPlaceholder: "Registros audiovisuales del Chicao",
       videos: [
@@ -84,7 +84,7 @@ const BIOAVES_DATA = [
   },
   {
     id: "pava-caucana",
-    image: "img/aves/PAVA CAUCANA.png",
+    image: "img/aves/pava-caucana-panoramica.png",
     commonName: "Pava Caucana",
     scientificName: "Penelope perspicax",
     family: "Cracidae",
@@ -100,9 +100,9 @@ const BIOAVES_DATA = [
     distribution: "Restringida a relictos de bosque de niebla de la vertiente occidental de la Cordillera Central (1.400 - 2.100 msnm).",
     multimedia: {
       photos: [
-        { id: 1, src: "img/aves/PAVA CAUCANA.png", label: "Pava Caucana posada en el bosque" },
-        { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE GOLA GULAR ROJA]" },
-        { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: GRUPO FAMILIAR EN RAMAS]" }
+        { id: 1, src: "img/aves/pava-caucana-panoramica.png", label: "Pava Caucana posada en el bosque; reencuadre panorámico mediante IA a partir de la fotografía aportada." },
+        { id: 2, src: "img/aves/pava-caucana-detalle.png", label: "Detalle de la gola gular roja de la Pava Caucana, derivado mediante edición con IA." },
+        { id: 3, src: "img/aves/pava-caucana-entorno.png", label: "Composición contextual de una Pava Caucana en bosque andino, derivada mediante IA; no es un registro independiente." }
       ],
       videoPlaceholder: "[PLACEHOLDER DE VIDEO: FORRAJEO EN ÁRBOL NATIVO]",
       videos: [
@@ -142,12 +142,17 @@ const BIOAVES_DATA = [
     multimedia: {
       photos: [
         { id: 1, src: "img/aves/tangara-rastrojera.jpg", label: "Tangara Rastrojera. Foto de referencia externa: olegvasiliev (iNaturalist, CC BY-NC), Valle del Cauca; no corresponde a un registro municipal de Santander de Quilichao." },
-        { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE CORONA CASTAÑA]" },
-        { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: FORRAJEANDO ENTRE MATORRALES]" }
+        { id: 2, src: "img/aves/tangara-rastrojera-detalle.png", label: "Detalle derivado con IA de la fotografía externa de referencia; no corresponde a un registro municipal." },
+        { id: 3, src: "img/aves/tangara-rastrojera-entorno.png", label: "Composición contextual derivada con IA de la fotografía externa de referencia; no corresponde a un registro municipal." }
       ],
-      videoPlaceholder: "[PLACEHOLDER DE VIDEO: CANTO Y ALIMENTACIÓN EN CERCA VIVA]",
-      audioDuration: "0:19",
-      audioSample: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Tangara_vitriolina_-_Scrub_Tanager_XC33502.ogg"
+      videoPlaceholder: "Registros audiovisuales de la Tangara Rastrojera",
+      videos: [
+        { src: "video/TANGARA HABLANDO.mp4", label: "Tangara Rastrojera vocalizando" },
+        { src: "video/TANGARA SONIDO.mp4", label: "Registro del canto de la Tangara Rastrojera" }
+      ],
+      audioDuration: "0:10",
+      audioSample: "video/TANGARA SONIDO.mp4",
+      audioLocal: true
     },
     sighting: {
       locationName: "Faldas de Mondomo - Finca Agroecológica",
@@ -177,8 +182,8 @@ const BIOAVES_DATA = [
     multimedia: {
       photos: [
         { id: 1, src: "img/aves/COLIBRI.png", label: "Colibrí Colirrufo posado en una rama" },
-        { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE PICO RECTO]" },
-        { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: PERCHADO EN RAMA DELGADA]" }
+        { id: 2, src: "img/aves/colibri-colirrufo-detalle.png", label: "Detalle del pico y plumaje del Colibrí Colirrufo, derivado mediante edición con IA." },
+        { id: 3, src: "img/aves/colibri-colirrufo-entorno.png", label: "Composición contextual del Colibrí Colirrufo derivada mediante IA; no es un registro independiente." }
       ],
       videoPlaceholder: "[PLACEHOLDER DE VIDEO: LIBACIÓN RÁPIDA DE NÉCTAR]",
       videos: [
@@ -217,8 +222,8 @@ const BIOAVES_DATA = [
     multimedia: {
       photos: [
         { id: 1, src: "img/aves/COLIBRI COLIRRUFO.png", label: "Registro fotográfico de la Mirla Azul" },
-        { id: 2, label: "[FOTOGRAFÍA PENDIENTE: VISTA FRONTAL]" },
-        { id: 3, label: "[FOTOGRAFÍA PENDIENTE: AVE EN SU HÁBITAT]" }
+        { id: 2, src: "img/aves/mirla-azul-detalle.png", label: "Detalle del ave registrada como Mirla Azul, derivado mediante edición con IA; identificación taxonómica pendiente." },
+        { id: 3, src: "img/aves/mirla-azul-entorno.png", label: "Composición contextual derivada mediante IA; identificación taxonómica pendiente y no corresponde a un registro independiente." }
       ],
       videoPlaceholder: "Registros audiovisuales de la Mirla Azul",
       videos: [
@@ -240,9 +245,9 @@ const BIOAVES_DATA = [
   },
   {
     id: "garza-tigre",
-    image: "img/aves/garza-tigre.jpg",
+    image: "img/aves/garza-tigre-principal-v2.png",
     imageFit: "cover",
-    imagePosition: "center",
+    imagePosition: "center 35%",
     commonName: "Garza Tigre Cuellifasta",
     scientificName: "Tigrisoma lineatum",
     family: "Ardeidae",
@@ -258,13 +263,18 @@ const BIOAVES_DATA = [
     distribution: "Humedales y ríos de tierras bajas hasta 1.200 msnm.",
     multimedia: {
       photos: [
-        { id: 1, src: "img/aves/garza-tigre.jpg", label: "Garza Tigre Cuellifasta. Foto de referencia externa: andresftvera (iNaturalist, CC BY-NC), Florencia, Caquetá; no corresponde a un registro municipal de Santander de Quilichao." },
-        { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DEL RAYADO DEL CUELLO]" },
-        { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: CAZANDO EN EL ESPEJO DE AGUA]" }
+        { id: 1, src: "img/aves/garza-tigre-principal-v2.png", label: "Garza Tigre Cuellifasta. Fotografía aportada al proyecto; autoría, licencia y ubicación pendientes de documentación." },
+        { id: 2, src: "img/aves/garza-tigre-detalle-v2.png", label: "Detalle de la cabeza y el pico de la Garza Tigre, derivado mediante edición con IA." },
+        { id: 3, src: "img/aves/garza-tigre-entorno-v2.png", label: "Composición contextual de la Garza Tigre junto a un humedal, derivada mediante IA; no es un registro independiente." }
       ],
-      videoPlaceholder: "[PLACEHOLDER DE VIDEO: TÉCNICA DE PESCA SIGILOSA]",
-      audioDuration: "0:22",
-      audioSample: "https://upload.wikimedia.org/wikipedia/commons/8/87/Tigrisoma_lineatum_-_Rufescent_Tiger-Heron_XC14838.ogg"
+      videoPlaceholder: "Registros audiovisuales de la Garza Tigre",
+      videos: [
+        { src: "video/Garza_tigre_hablando.mp4", label: "Garza Tigre vocalizando" },
+        { src: "video/_GARZA_canto.mp4", label: "Registro del canto de la Garza Tigre" }
+      ],
+      audioDuration: "0:10",
+      audioSample: "video/_GARZA_canto.mp4",
+      audioLocal: true
     },
     sighting: {
       locationName: "Humedal El Samán y Microcuenca Sur",
@@ -296,12 +306,17 @@ const BIOAVES_DATA = [
     multimedia: {
       photos: [
         { id: 1, src: "img/aves/carpintero-habado.png", label: "Carpintero Habado registrado en Santander de Quilichao. Foto: Litrato15 (iNaturalist, CC BY-NC); mejora técnica con IA." },
-        { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO DE CORONA ROJA]" },
-        { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: INSPECCIONANDO CAVIDAD DE NIDO]" }
+        { id: 2, src: "img/aves/carpintero-habado-detalle.png", label: "Detalle de la corona roja del Carpintero Habado, derivado mediante edición con IA." },
+        { id: 3, src: "img/aves/carpintero-habado-entorno.png", label: "Composición contextual del Carpintero Habado junto a una cavidad, derivada mediante IA; no es un registro independiente." }
       ],
-      videoPlaceholder: "[PLACEHOLDER DE VIDEO: TAMBORILEO Y COMUNICACIÓN SONORA]",
-      audioDuration: "0:18",
-      audioSample: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Melanerpes_rubricapillus_-_Red-crowned_Woodpecker_XC33005.ogg"
+      videoPlaceholder: "Registros audiovisuales del Carpintero Habado",
+      videos: [
+        { src: "video/COLIBRI HABADO HABLANDO.mp4", label: "Carpintero Habado vocalizando" },
+        { src: "video/COLIBRI HABADO SONIDO.mp4", label: "Registro del canto del Carpintero Habado" }
+      ],
+      audioDuration: "0:10",
+      audioSample: "video/COLIBRI HABADO SONIDO.mp4",
+      audioLocal: true
     },
     sighting: {
       locationName: "Guaduales de la Vereda Santa Inés",
@@ -314,7 +329,7 @@ const BIOAVES_DATA = [
   },
   {
     id: "azulejo-comun",
-    image: "img/aves/azulejo-comun.png",
+    image: "img/aves/azulejo-comun-rama.png",
     imageFit: "cover",
     imagePosition: "center",
     commonName: "Azulejo Común",
@@ -332,13 +347,18 @@ const BIOAVES_DATA = [
     distribution: "Ampliamente distribuido en Colombia por debajo de 2.200 msnm.",
     multimedia: {
       photos: [
-        { id: 1, src: "img/aves/azulejo-comun.png", label: "Azulejo Común registrado en Santander de Quilichao. Foto: Henry Dubán Alegría (iNaturalist, CC BY-NC); mejora técnica y reencuadre con IA." },
-        { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: DETALLE DE PLUMAJE CELESTE]" },
-        { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: VOLANDO ENTRE JARDINES]" }
+        { id: 1, src: "img/aves/azulejo-comun-rama.png", label: "Azulejo Común registrado en Santander de Quilichao. Foto base: Henry Dubán Alegría (iNaturalist, CC BY-NC); composición sobre rama mediante IA." },
+        { id: 2, src: "img/aves/azulejo-comun-detalle.png", label: "Detalle del plumaje celeste del Azulejo Común, derivado mediante edición con IA." },
+        { id: 3, src: "img/aves/azulejo-comun-entorno.png", label: "Composición contextual del Azulejo Común sobre una rama, derivada mediante IA; no es un registro independiente." }
       ],
-      videoPlaceholder: "[PLACEHOLDER DE VIDEO: VOCALIZACIONES MATUTINAS EN COPA]",
-      audioDuration: "0:25",
-      audioSample: "https://upload.wikimedia.org/wikipedia/commons/9/90/Thraupis_episcopus_-_Blue-gray_Tanager_XC41982.ogg"
+      videoPlaceholder: "Registros audiovisuales del Azulejo Común",
+      videos: [
+        { src: "video/Azulejo_común_hablando.mp4", label: "Azulejo Común vocalizando" },
+        { src: "video/_AZULEJO_canto.mp4", label: "Registro del canto del Azulejo Común" }
+      ],
+      audioDuration: "0:10",
+      audioSample: "video/_AZULEJO_canto.mp4",
+      audioLocal: true
     },
     sighting: {
       locationName: "Campus Universitario del Norte del Cauca",
@@ -370,8 +390,8 @@ const BIOAVES_DATA = [
     multimedia: {
       photos: [
         { id: 1, src: "img/aves/currucutu-comun.jpg", label: "Currucutú Común. Foto de referencia externa: gabo_utria (iNaturalist, CC BY-NC), Jamundí, Valle del Cauca; no corresponde a un registro municipal de Santander de Quilichao." },
-        { id: 2, label: "[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: OJOS AMARILLOS Y PENACHOS]" },
-        { id: 3, label: "[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: SILUETA NOCTURNA EN RAMA SECA]" }
+        { id: 2, src: "img/aves/currucutu-comun-detalle.png", label: "Detalle facial del Currucutú derivado con IA de la fotografía externa; conserva los ojos entrecerrados de la toma original." },
+        { id: 3, src: "img/aves/currucutu-comun-entorno.png", label: "Versión nocturna contextual derivada con IA de la fotografía externa; no corresponde a un registro municipal." }
       ],
       videoPlaceholder: "[PLACEHOLDER DE VIDEO: LLAMADO NOCTURNO 'CURRU-CU-TÚ']",
       audioDuration: "0:21",

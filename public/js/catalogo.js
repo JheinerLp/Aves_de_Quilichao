@@ -9,11 +9,11 @@ function renderSpeciesVideos(bird) {
   if (!panel.dataset.placeholderMarkup) panel.dataset.placeholderMarkup = panel.innerHTML;
   const videos = bird.multimedia?.videos || [];
   panel.innerHTML = videos.length
-    ? `<span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registros de video</span>${videos.map(video => `
-        <div class="w-full text-left">
-          <span class="text-[10px] text-[#FFFFFF]">${video.label}</span>
-          <video controls preload="metadata" playsinline class="w-full aspect-video object-cover bg-black" src="${speciesMediaUrl(video.src)}" aria-label="${video.label} de ${bird.commonName}"></video>
-        </div>`).join("")}`
+    ? videos.map(video => `
+        <div class="media-video-card relative w-full bg-black">
+          <span class="media-caption">${video.label}</span>
+          <video controls preload="metadata" playsinline class="media-video w-full aspect-video object-cover bg-black" src="${speciesMediaUrl(video.src)}" aria-label="${video.label} de ${bird.commonName}"></video>
+        </div>`).join("")
     : panel.dataset.placeholderMarkup;
 }
 
@@ -123,7 +123,7 @@ function initCatalogPage() {
         <div class="p-5 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm flex flex-col justify-between space-y-4 hover:border-[#333333] transition-colors" data-bird-id="${bird.id}">
           <div class="space-y-3">
             <div class="h-44 w-full wireframe-placeholder rounded-sm overflow-hidden">
-              ${bird.image ? `<img src="${speciesMediaUrl(bird.image)}" alt="${bird.commonName}" loading="lazy" class="w-full h-full" style="object-fit:${bird.imageFit || "cover"};object-position:${bird.imagePosition || "center"}">` : `
+              ${bird.image ? `<img src="${speciesMediaUrl(bird.image)}" alt="${bird.commonName}" loading="lazy" class="w-full h-full" style="object-fit:${bird.imageFit || "cover"};object-position:${bird.imagePosition && bird.imagePosition !== "center" ? bird.imagePosition : "center 35%"}">` : `
                 <span class="text-xs font-bold text-[#333333]">[PLACEHOLDER DE FOTOGRAFÍA]</span>
                 <span class="text-[10px] text-[#777777] font-mono mt-1">${bird.commonName}</span>`}
             </div>
@@ -288,14 +288,19 @@ function updatePhotoView() {
 
   const photoImage = document.getElementById("modal-photo-image");
   if (photoImage) {
+    const photoStage = photoImage.closest(".media-photo-stage");
     photoImage.classList.toggle("hidden", !photo.src);
     if (photo.src) {
-      photoImage.src = speciesMediaUrl(photo.src);
+      const photoUrl = speciesMediaUrl(photo.src);
+      photoImage.src = photoUrl;
       photoImage.alt = `${currentSelectedBird.commonName}: ${photo.label}`;
-      photoImage.style.objectFit = currentSelectedBird.imageFit || "cover";
-      photoImage.style.objectPosition = currentSelectedBird.imagePosition || "center";
+      photoImage.style.objectFit = photo.fit || "cover";
+      const preferredPosition = currentSelectedBird.imagePosition === "center" ? "center 35%" : currentSelectedBird.imagePosition;
+      photoImage.style.objectPosition = photo.position || (/-detalle\.[a-z]+$/i.test(photo.src) ? "center top" : (preferredPosition || "center 35%"));
+      photoStage?.classList.add("has-photo");
     } else {
       photoImage.removeAttribute("src");
+      photoStage?.classList.remove("has-photo");
     }
   }
   if (photoLabel) {
