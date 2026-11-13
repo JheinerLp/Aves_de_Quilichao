@@ -128,8 +128,10 @@
 
       </div>
 
+      @if(false)
       <!-- ======================================================================
            MÓDULO: SENDEROS Y RUTAS INTERACTIVAS
+           ARCHIVADO TEMPORALMENTE: cambiar la condición inferior de false a true para restaurarlo.
            ====================================================================== -->
       <div class="mt-16 pt-16 border-t border-[#B0B0B0] space-y-8">
         
@@ -599,6 +601,7 @@
         </div>
 
       </div>
+      @endif
 
     </div>
   </section>
@@ -1258,8 +1261,6 @@
   </script>
   <script src="{{ asset('js/birds-data.js') }}"></script>
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('js/routes-data.js') }}"></script>
-  <script src="{{ asset('js/routes-module.js') }}"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const heroVideo = document.querySelector('.bv-video');
