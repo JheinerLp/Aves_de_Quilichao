@@ -44,20 +44,20 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @forelse($species->photos as $ph)
-          <div
-            class="wireframe-placeholder media-frame h-56 rounded-sm p-4 flex flex-col justify-between text-center overflow-hidden {{ !str_starts_with($ph->storage_path, 'placeholders/') ? 'media-photo-stage has-photo' : '' }}"
-          >
-            <span class="absolute z-10 top-2 left-1/2 -translate-x-1/2 px-2 py-1 rounded-full bg-white/80 text-[10px] font-mono text-[#31533b]">FOTOGRAFÍA #{{ $loop->iteration }}</span>
+          <div class="wireframe-placeholder h-64 sm:h-72 rounded-2xl p-3 flex flex-col justify-between text-center overflow-hidden bg-[#F2F2F2] border border-[#B0B0B0]/40 shadow-xs relative group">
             @if(!str_starts_with($ph->storage_path, 'placeholders/'))
-              <img
-                src="{{ $ph->url }}"
-                alt="{{ $species->common_name }}"
-                class="absolute inset-0 w-full h-full object-cover"
-                style="object-position: {{ str_contains($ph->file_name, '-detalle') ? 'center top' : 'center 35%' }}"
-              >
+              <img src="{{ $ph->url }}" class="absolute inset-0 w-full h-full object-cover blur-xl opacity-30 scale-110 pointer-events-none select-none" alt="" aria-hidden="true">
+            @endif
+            <span class="text-[10px] font-mono text-[#777777] mb-1 relative z-1">FOTOGRAFÍA #{{ $loop->iteration }}</span>
+            @if(!str_starts_with($ph->storage_path, 'placeholders/'))
+              <div class="flex-1 w-full h-full flex items-center justify-center overflow-hidden relative z-1 p-1">
+                <img src="{{ $ph->url }}" alt="{{ $species->common_name }}" class="max-w-full max-h-full object-contain rounded-2xl shadow-md border border-white/60 transition-transform duration-200 group-hover:scale-[1.02]" loading="lazy">
+              </div>
             @else
-              <strong class="text-xs font-mono text-[#333333]">{{ $ph->caption ?: $ph->file_name }}</strong>
-              <span class="text-[10px] font-mono text-[#777777]">[PLACEHOLDER DE FOTOGRAFÍA]</span>
+              <div class="flex-1 flex flex-col items-center justify-center relative z-1">
+                <strong class="text-xs font-mono text-[#333333]">{{ $ph->caption ?: $ph->file_name }}</strong>
+                <span class="text-[10px] font-mono text-[#777777] mt-1">[PLACEHOLDER DE FOTOGRAFÍA]</span>
+              </div>
             @endif
           </div>
         @empty

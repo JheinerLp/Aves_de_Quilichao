@@ -286,6 +286,21 @@ function updatePhotoView() {
   const photoIndicator = document.getElementById("modal-photo-indicator");
   const dots = document.querySelectorAll(".photo-dot-indicator");
 
+  const photoBackdrop = document.getElementById("modal-photo-backdrop");
+  if (photoBackdrop) {
+    photoBackdrop.classList.toggle("hidden", !photo.src);
+    if (photo.src) {
+      photoBackdrop.src = speciesMediaUrl(photo.src);
+    } else {
+      photoBackdrop.removeAttribute("src");
+    }
+  }
+
+  const photoFallbackBox = document.getElementById("modal-photo-fallback-box");
+  if (photoFallbackBox) {
+    photoFallbackBox.classList.toggle("hidden", !!photo.src);
+  }
+
   const photoImage = document.getElementById("modal-photo-image");
   if (photoImage) {
     const photoStage = photoImage.closest(".media-photo-stage");
@@ -294,9 +309,8 @@ function updatePhotoView() {
       const photoUrl = speciesMediaUrl(photo.src);
       photoImage.src = photoUrl;
       photoImage.alt = `${currentSelectedBird.commonName}: ${photo.label}`;
-      photoImage.style.objectFit = photo.fit || "cover";
-      const preferredPosition = currentSelectedBird.imagePosition === "center" ? "center 35%" : currentSelectedBird.imagePosition;
-      photoImage.style.objectPosition = photo.position || (/-detalle\.[a-z]+$/i.test(photo.src) ? "center top" : (preferredPosition || "center 35%"));
+      photoImage.style.objectFit = "contain";
+      photoImage.style.objectPosition = "center";
       photoStage?.classList.add("has-photo");
     } else {
       photoImage.removeAttribute("src");

@@ -1,3 +1,22 @@
+function speciesMediaUrl(path) {
+  const prefix = window.location.pathname.endsWith(".html") ? "public/" : "/";
+  return prefix + path.split("/").map(encodeURIComponent).join("/");
+}
+
+function renderSpeciesVideos(bird) {
+  const panel = document.getElementById("modal-video-panel");
+  if (!panel) return;
+  if (!panel.dataset.placeholderMarkup) panel.dataset.placeholderMarkup = panel.innerHTML;
+  const videos = bird.multimedia?.videos || [];
+  panel.innerHTML = videos.length
+    ? `<span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registros de video</span>${videos.map(video => `
+        <div class="w-full text-left">
+          <span class="text-[10px] text-[#FFFFFF]">${video.label}</span>
+          <video controls preload="metadata" playsinline class="w-full aspect-video object-cover bg-black" src="${speciesMediaUrl(video.src)}" aria-label="${video.label} de ${bird.commonName}"></video>
+        </div>`).join("")}`
+    : panel.dataset.placeholderMarkup;
+}
+
 /**
  * catalogo.js - BioAves Quilichao
  * Lógica para la página independiente de Catálogo (catalogo.html).
@@ -103,13 +122,10 @@ function initCatalogPage() {
         (bird) => `
         <div class="p-5 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm flex flex-col justify-between space-y-4 hover:border-[#333333] transition-colors" data-bird-id="${bird.id}">
           <div class="space-y-3">
-            <div class="h-44 w-full wireframe-placeholder rounded-sm">
-              <span class="text-xs font-bold text-[#333333]">
-                [PLACEHOLDER DE FOTOGRAFÍA]
-              </span>
-              <span class="text-[10px] text-[#777777] font-mono mt-1">
-                ${bird.commonName}
-              </span>
+            <div class="h-44 w-full wireframe-placeholder rounded-sm overflow-hidden">
+              ${bird.image ? `<img src="${speciesMediaUrl(bird.image)}" alt="${bird.commonName}" loading="lazy" class="w-full h-full" style="object-fit:${bird.imageFit || "cover"};object-position:${bird.imagePosition || "center"}">` : `
+                <span class="text-xs font-bold text-[#333333]">[PLACEHOLDER DE FOTOGRAFÍA]</span>
+                <span class="text-[10px] text-[#777777] font-mono mt-1">${bird.commonName}</span>`}
             </div>
 
             <div class="space-y-1">
@@ -265,10 +281,42 @@ function updatePhotoView() {
   const total = currentSelectedBird.multimedia.photos.length;
 
   const photoLabel = document.getElementById("modal-photo-label");
+  const placeholderNote = document.getElementById("modal-photo-placeholder-note");
   const photoIndicator = document.getElementById("modal-photo-indicator");
   const dots = document.querySelectorAll(".photo-dot-indicator");
 
-  if (photoLabel) photoLabel.textContent = photo.label;
+  const photoBackdrop = document.getElementById("modal-photo-backdrop");
+  if (photoBackdrop) {
+    photoBackdrop.classList.toggle("hidden", !photo.src);
+    if (photo.src) {
+      photoBackdrop.src = speciesMediaUrl(photo.src);
+    } else {
+      photoBackdrop.removeAttribute("src");
+    }
+  }
+
+  const photoFallbackBox = document.getElementById("modal-photo-fallback-box");
+  if (photoFallbackBox) {
+    photoFallbackBox.classList.toggle("hidden", !!photo.src);
+  }
+
+  const photoImage = document.getElementById("modal-photo-image");
+  if (photoImage) {
+    photoImage.classList.toggle("hidden", !photo.src);
+    if (photo.src) {
+      photoImage.src = speciesMediaUrl(photo.src);
+      photoImage.alt = `${currentSelectedBird.commonName}: ${photo.label}`;
+      photoImage.style.objectFit = "contain";
+      photoImage.style.objectPosition = "center";
+    } else {
+      photoImage.removeAttribute("src");
+    }
+  }
+  if (photoLabel) {
+    photoLabel.textContent = photo.label;
+    photoLabel.classList.toggle("hidden", !!photo.src);
+  }
+  if (placeholderNote) placeholderNote.classList.toggle("hidden", !!photo.src);
   if (photoIndicator) photoIndicator.textContent = `Foto ${currentPhotoIdx + 1} de ${total}`;
 
   dots.forEach((dot, idx) => {

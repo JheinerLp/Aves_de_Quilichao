@@ -476,6 +476,23 @@ function updateModalPhoto() {
   const photoIndicator = document.getElementById("modal-photo-indicator");
   const dots = document.querySelectorAll(".photo-dot-indicator");
 
+  const photoBackdrop = document.getElementById("modal-photo-backdrop");
+  if (photoBackdrop) {
+    const src = photo.src ? speciesMediaUrl(photo.src) : (activeBirdForModal.image ? speciesMediaUrl(activeBirdForModal.image) : null);
+    photoBackdrop.classList.toggle("hidden", !src);
+    if (src) {
+      photoBackdrop.src = src;
+    } else {
+      photoBackdrop.removeAttribute("src");
+    }
+  }
+
+  const photoFallbackBox = document.getElementById("modal-photo-fallback-box");
+  if (photoFallbackBox) {
+    const src = photo.src ? speciesMediaUrl(photo.src) : (activeBirdForModal.image ? speciesMediaUrl(activeBirdForModal.image) : null);
+    photoFallbackBox.classList.toggle("hidden", !!src);
+  }
+
   const photoImage = document.getElementById("modal-photo-image");
   if (photoImage) {
     const photoStage = photoImage.closest(".media-photo-stage");
@@ -484,9 +501,8 @@ function updateModalPhoto() {
     if (src) {
       photoImage.src = src;
       photoImage.alt = `${activeBirdForModal.commonName || ""}: ${photo.label || ""}`;
-      photoImage.style.objectFit = photo.fit || "cover";
-      const preferredPosition = activeBirdForModal.imagePosition === "center" ? "center 35%" : activeBirdForModal.imagePosition;
-      photoImage.style.objectPosition = photo.position || (/-detalle\.[a-z]+$/i.test(photo.src || "") ? "center top" : (preferredPosition || "center 35%"));
+      photoImage.style.objectFit = "contain";
+      photoImage.style.objectPosition = "center";
       photoStage?.classList.add("has-photo");
     } else {
       photoImage.removeAttribute("src");
