@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BioAves Quilichao - Prototipo web de baja fidelidad (Low-Fidelity Wireframe) para observación y conservación de aves en Santander de Quilichao, Cauca.">
+  <title>BioAves Quilichao | Prototipo de Baja Fidelidad</title>
+
+  <!-- Tailwind CSS CDN para composición de retículas -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Leaflet CSS para el mapa -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <!-- Estilos del Wireframe en escala de grises estricta -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FFFFFF] text-[#333333] font-sans antialiased selection:bg-[#D0D0D0] selection:text-[#333333]">
+
+  <!-- ======================================================================
+       3. NAVBAR — NAVEGACIÓN PRINCIPAL
+       ====================================================================== -->
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-50 transition-colors duration-200 border-b border-[#B0B0B0] bg-[#FFFFFF]/90 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
+      
+      <!-- Logotipo Textual -->
+      <a href="#inicio" class="flex flex-col group text-decoration-none">
+        <span class="text-lg font-black tracking-widest text-[#333333] uppercase">
+          BIOAVES QUILICHAO
+        </span>
+        <span class="text-[10px] font-mono tracking-wider text-[#777777] uppercase -mt-0.5">
+          Santander de Quilichao • Prototipo Wireframe
+        </span>
+      </a>
+
+      <!-- Navegación Escritorio -->
+      <nav class="hidden lg:flex items-center gap-1 sm:gap-2">
+        <a href="#inicio" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
+          Inicio
+        </a>
+        <a href="#carrusel" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
+          Aves Destacadas
+        </a>
+        <a href="#rutas" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
+          Rutas de Avistamiento
+        </a>
+        <a href="#mapa" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
+          Mapa de Avistamientos
+        </a>
+        <a href="#conservacion" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
+          Conservación
+        </a>
+        <a href="#sobre-nosotros" class="px-3 py-1.5 text-xs font-semibold text-[#333333] hover:bg-[#F2F2F2] border border-transparent hover:border-[#B0B0B0] rounded-sm transition-all">
+          Sobre Nosotros
+        </a>
+        <!-- Enlace que lleva a la página independiente del Catálogo -->
+        <a href="catalogo.html" class="ml-2 px-3.5 py-1.5 text-xs font-bold text-[#FFFFFF] bg-[#333333] hover:bg-[#000000] border border-[#333333] rounded-sm transition-all flex items-center gap-1">
+          <span>Catálogo</span>
+          <span class="text-[10px] font-mono">↗</span>
+        </a>
+      </nav>
+
+      <!-- Botón móvil (Hamburguesa) -->
+      <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 border border-[#B0B0B0] bg-[#F2F2F2] text-[#333333] rounded-sm" aria-label="Abrir menú de navegación">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-6 bg-[#FFFFFF] border-b border-[#B0B0B0] space-y-2">
+      <a href="#inicio" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+        Inicio
+      </a>
+      <a href="#carrusel" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+        Aves Destacadas
+      </a>
+      <a href="#rutas" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+        Rutas de Avistamiento
+      </a>
+      <a href="#mapa" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+        Mapa de Avistamientos
+      </a>
+      <a href="#conservacion" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+        Conservación
+      </a>
+      <a href="#sobre-nosotros" class="block px-3 py-2 text-xs font-semibold text-[#333333] bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+        Sobre Nosotros
+      </a>
+      <a href="catalogo.html" class="block px-3 py-2 text-xs font-bold text-[#FFFFFF] bg-[#333333] border border-[#333333] rounded-sm text-center">
+        Abrir Catálogo de Aves (Página Completa ↗)
+      </a>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       4. HERO — PORTADA PRINCIPAL (85-100% de la altura inicial)
+          - Video panorámico en el fondo (Atrás)
+          - Cuadrito "Descubre las aves..." adelante y desplazado bien a la izquierda
+       ====================================================================== -->
+  <section id="inicio" class="min-h-[92vh] flex items-center relative overflow-hidden border-b border-[#B0B0B0] bg-[#333333]">
+    
+    <!-- Área de fondo completa reservada para video panorámico (Atrás) -->
+    <div class="absolute inset-0 w-full h-full wireframe-placeholder-dark flex flex-col items-center justify-center p-6 text-center select-none">
+      <div class="w-16 h-16 sm:w-20 sm:h-20 border-2 border-[#D0D0D0] bg-[#111111] flex items-center justify-center mb-4 rounded-sm">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-[#D0D0D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+      <span class="text-base sm:text-xl font-bold tracking-widest text-[#FFFFFF] max-w-2xl px-4">
+        [VIDEO DE AVE VOLANDO SOBRE SANTANDER DE QUILICHAO]
+      </span>
+      <span class="text-xs text-[#D0D0D0] mt-2 font-mono max-w-lg px-4">
+        Espacio panorámico de fondo en loop (1080p, paisaje de montaña, río y avifauna en vuelo)
+      </span>
+      
+      <!-- Indicador de formato en esquina inferior derecha -->
+      <div class="absolute bottom-6 right-6 px-3 py-1 bg-[#111111] border border-[#777777] text-[11px] font-mono text-[#D0D0D0] rounded-sm">
+        [PLACEHOLDER DE VIDEO: FONDO COMPLETO]
+      </div>
+    </div>
+
+    <!-- Contenedor en primer plano (Adelante y desplazado a la izquierda) -->
+    <div class="relative z-10 w-full px-4 sm:px-8 lg:px-16 py-28 sm:py-36 flex justify-start">
+      
+      <!-- Cuadrito "Descubre las aves de nuestro territorio" posicionado bien a la izquierda -->
+      <div class="w-full max-w-md lg:max-w-lg bg-[#FFFFFF] border-2 border-[#333333] p-7 sm:p-9 rounded-sm shadow-2xl space-y-5">
+        
+        <div class="inline-block px-3 py-1 bg-[#D0D0D0] text-[#333333] text-[11px] font-mono font-bold tracking-wider uppercase border border-[#B0B0B0]">
+          BioAves Quilichao • Santander de Quilichao
+        </div>
+        
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#333333] leading-tight">
+          Descubre las aves de nuestro territorio
+        </h1>
+
+        <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
+          Plataforma dedicada a la observación, identificación, registro cartográfico y conservación de la avifauna en el municipio de Santander de Quilichao, departamento del Cauca.
+        </p>
+
+        <!-- Botón Catálogo lleva a la página independiente catalogo.html -->
+        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <a href="catalogo.html" class="btn-wireframe-primary text-center">
+            <span>Explorar catálogo de aves ↗</span>
+          </a>
+          <a href="#sobre-nosotros" class="btn-wireframe-secondary text-center">
+            <span>Conoce nuestra misión</span>
+          </a>
+        </div>
+
+        <div class="pt-3 border-t border-[#B0B0B0] text-[11px] font-mono text-[#777777] flex items-center justify-between">
+          <span>Eslogan: Descubre. Escucha. Explora. Conserva.</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       5. SECCIÓN — INTRODUCCIÓN A LA BIODIVERSIDAD (Indicadores estadísticos)
+       ====================================================================== -->
+  <section id="introduccion" class="py-16 bg-[#F2F2F2] border-b border-[#B0B0B0]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <div class="max-w-3xl space-y-3">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
+          Contexto Biogeográfico
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#333333]">
+          Un territorio lleno de vida
+        </h2>
+        <p class="text-sm sm:text-base text-[#777777] leading-relaxed">
+          Santander de Quilichao confluye entre los pisos térmicos cálidos del valle geográfico del Río Cauca y las estribaciones de la Cordillera Central. Esta gradiente altitudinal origina diversos ecosistemas que albergan aves endémicas, residentes y migratorias de gran valor ecológico.
+        </p>
+      </div>
+
+      <!-- Tres indicadores estadísticos de ejemplo -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2">
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl sm:text-5xl font-black text-[#333333]">284</span>
+            <span class="text-xs font-mono text-[#777777]">[Dato ficticio]</span>
+          </div>
+          <h3 class="text-base font-bold text-[#333333]">Especies registradas</h3>
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Diversidad acumulada de aves reportadas entre áreas urbanas, cuencas hídricas y reservas de montaña.
+          </p>
+        </div>
+
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2">
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl sm:text-5xl font-black text-[#333333]">18</span>
+            <span class="text-xs font-mono text-[#777777]">[Dato ficticio]</span>
+          </div>
+          <h3 class="text-base font-bold text-[#333333]">Lugares de avistamiento</h3>
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Rutas y puntos geográficos monitoreados en cuencas, veredas y cerros tutelares del municipio.
+          </p>
+        </div>
+
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2">
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl sm:text-5xl font-black text-[#333333]">1.420</span>
+            <span class="text-xs font-mono text-[#777777]">[Dato ficticio]</span>
+          </div>
+          <h3 class="text-base font-bold text-[#333333]">Registros de observación</h3>
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Fichas documentadas por ornitólogos, guías locales y ciencia ciudadana en Santander de Quilichao.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       6. SECCIÓN — CARRUSEL DE AVES DESTACADAS
+          (Tarjeta central con aumento de escala y borde de doble línea gris)
+       ====================================================================== -->
+  <section id="carrusel" class="py-20 bg-[#FFFFFF] border-b border-[#B0B0B0] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
+            Muestreo Representativo
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#333333]">
+            Descubre nuestras aves
+          </h2>
+          <p class="text-sm text-[#777777] mt-1 max-w-xl">
+            La tarjeta que llega al centro visible se destaca automáticamente mediante escala y un contorno diferenciado de doble línea gris (representación wireframe del arcoíris).
+          </p>
+        </div>
+
+        <!-- Controles manuales y acceso al catálogo completo -->
+        <div class="flex items-center gap-3">
+          <a href="catalogo.html" class="hidden sm:inline-block px-3 py-1 bg-[#FFFFFF] border border-[#B0B0B0] text-[11px] font-mono text-[#333333] hover:bg-[#F2F2F2]">
+            Ver Catálogo Completo ↗
+          </a>
+
+          <span id="carousel-status-indicator" class="px-3 py-1 bg-[#F2F2F2] border border-[#B0B0B0] text-[11px] font-mono text-[#333333]">
+            Auto-Desplazamiento Activo
+          </span>
+
+          <div class="flex items-center gap-1">
+            <button id="carousel-prev-btn" type="button" class="w-9 h-9 border border-[#B0B0B0] bg-[#F2F2F2] hover:bg-[#D0D0D0] text-[#333333] flex items-center justify-center rounded-sm transition-colors" aria-label="Anterior ave">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button id="carousel-next-btn" type="button" class="w-9 h-9 border border-[#B0B0B0] bg-[#F2F2F2] hover:bg-[#D0D0D0] text-[#333333] flex items-center justify-center rounded-sm transition-colors" aria-label="Siguiente ave">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenedor del Carrusel Horizontal Centrado -->
+      <div id="carousel-container" class="w-full overflow-x-auto no-scrollbar py-8 px-2 cursor-grab active:cursor-grabbing">
+        <div id="carousel-track" class="flex gap-6 items-center w-max">
+          <!-- Inyectado por JavaScript -->
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#777777] pt-2 border-t border-[#B0B0B0]">
+        <span>Pasa el cursor para pausar • En móvil desplaza con el dedo • Clic en "Conocer especie" para ver ficha</span>
+        <span class="mt-2 sm:mt-0">[Efecto Arcoíris Wireframe: Borde doble línea gris en tarjeta central]</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       NUEVA SECCIÓN REEMPLAZO — RUTAS Y SENDEROS DE OBSERVACIÓN
+       (En lugar de duplicar el catálogo en este index, se presenta la guía
+        de rutas y circuitos de campo de Santander de Quilichao)
+       ====================================================================== -->
+  <section id="rutas" class="py-20 bg-[#F2F2F2] border-b border-[#B0B0B0]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="space-y-2 max-w-2xl">
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
+            Circuitos Ecológicos y Guiados
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#333333]">
+            Rutas y Senderos de Avistamiento
+          </h2>
+          <p class="text-sm text-[#777777]">
+            Rutas georreferenciadas organizadas por nivel de dificultad, altitud y ecosistemas para la observación responsable de aves en Santander de Quilichao.
+          </p>
+        </div>
+
+        <a href="catalogo.html" class="btn-wireframe-primary text-xs py-2 px-4 self-start md:self-auto">
+          <span>Abrir Catálogo de Especies ↗</span>
+        </a>
+      </div>
+
+      <!-- Cuadrícula de 4 Rutas de Avistamiento -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Ruta 1 -->
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-4 hover:border-[#333333] transition-colors">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 bg-[#F2F2F2] border border-[#B0B0B0] text-[#333333]">
+                Ruta 01 • Ribera Fluvial
+              </span>
+              <h3 class="text-lg font-bold text-[#333333] mt-2">
+                Sendero Ribereño Río Quilichao
+              </h3>
+            </div>
+            <span class="text-xs font-mono font-bold text-[#333333] px-2 py-1 bg-[#D0D0D0] rounded-sm">
+              Dificultad: Baja
+            </span>
+          </div>
+
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Recorrido periurbano a lo largo de la ribera arbolada del Río Quilichao. Excelente para principiantes y observación de especies acuáticas y de ribera.
+          </p>
+
+          <!-- Ficha técnica del sendero -->
+          <div class="grid grid-cols-3 gap-2 p-3 bg-[#F2F2F2] border border-[#B0B0B0] text-center text-xs font-mono">
+            <div>
+              <span class="text-[10px] text-[#777777] block">Distancia</span>
+              <strong class="text-[#333333]">2.8 km</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-[#777777] block">Tiempo Estimado</span>
+              <strong class="text-[#333333]">2h 30m</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-[#777777] block">Altitud</span>
+              <strong class="text-[#333333]">1.060 msnm</strong>
+            </div>
+          </div>
+
+          <!-- Placeholder de mapa de sendero -->
+          <div class="h-28 wireframe-placeholder rounded-sm">
+            [PLACEHOLDER: MAPA DEL SENDERO RIBEREÑO RÍO QUILICHAO]
+          </div>
+
+          <div class="pt-2 border-t border-[#B0B0B0] flex items-center justify-between text-xs">
+            <span class="text-[#777777] font-mono text-[11px]">Especie Clave: <strong>Momoto Andino</strong></span>
+            <a href="catalogo.html?bird=momoto-andino" class="font-bold text-[#333333] hover:underline font-mono text-xs">
+              Ver Ficha en Catálogo ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Ruta 2 -->
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-4 hover:border-[#333333] transition-colors">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 bg-[#F2F2F2] border border-[#B0B0B0] text-[#333333]">
+                Ruta 02 • Montaña y Niebla
+              </span>
+              <h3 class="text-lg font-bold text-[#333333] mt-2">
+                Corredor de Niebla Vereda San Antonio
+              </h3>
+            </div>
+            <span class="text-xs font-mono font-bold text-[#333333] px-2 py-1 bg-[#D0D0D0] rounded-sm">
+              Dificultad: Media-Alta
+            </span>
+          </div>
+
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Ascenso hacia los bosques de niebla de la Cordillera Central. Territorio primordial para la observación de especies andinas amenazadas y gran avifauna de dosel.
+          </p>
+
+          <div class="grid grid-cols-3 gap-2 p-3 bg-[#F2F2F2] border border-[#B0B0B0] text-center text-xs font-mono">
+            <div>
+              <span class="text-[10px] text-[#777777] block">Distancia</span>
+              <strong class="text-[#333333]">5.6 km</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-[#777777] block">Tiempo Estimado</span>
+              <strong class="text-[#333333]">4h 30m</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-[#777777] block">Altitud</span>
+              <strong class="text-[#333333]">1.750 msnm</strong>
+            </div>
+          </div>
+
+          <div class="h-28 wireframe-placeholder rounded-sm">
+            [PLACEHOLDER: PERFIL DE ELEVACIÓN Y RUTA SAN ANTONIO]
+          </div>
+
+          <div class="pt-2 border-t border-[#B0B0B0] flex items-center justify-between text-xs">
+            <span class="text-[#777777] font-mono text-[11px]">Especie Clave: <strong>Pava Caucana (EN)</strong></span>
+            <a href="catalogo.html?bird=pava-caucana" class="font-bold text-[#333333] hover:underline font-mono text-xs">
+              Ver Ficha en Catálogo ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Ruta 3 -->
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-4 hover:border-[#333333] transition-colors">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 bg-[#F2F2F2] border border-[#B0B0B0] text-[#333333]">
+                Ruta 03 • Agroecosistema
+              </span>
+              <h3 class="text-lg font-bold text-[#333333] mt-2">
+                Circuito Cafetero Faldas de Mondomo
+              </h3>
+            </div>
+            <span class="text-xs font-mono font-bold text-[#333333] px-2 py-1 bg-[#D0D0D0] rounded-sm">
+              Dificultad: Baja-Media
+            </span>
+          </div>
+
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Sendero a través de cafetales tradicionales bajo sombrío de guamo y plátano. Gran riqueza de tangaras frugívoras, semilleros y colibríes en floraciones.
+          </p>
+
+          <div class="grid grid-cols-3 gap-2 p-3 bg-[#F2F2F2] border border-[#B0B0B0] text-center text-xs font-mono">
+            <div>
+              <span class="text-[10px] text-[#777777] block">Distancia</span>
+              <strong class="text-[#333333]">4.1 km</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-[#777777] block">Tiempo Estimado</span>
+              <strong class="text-[#333333]">3h 00m</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-[#777777] block">Altitud</span>
+              <strong class="text-[#333333]">1.280 msnm</strong>
+            </div>
+          </div>
+
+          <div class="h-28 wireframe-placeholder rounded-sm">
+            [PLACEHOLDER: MAPA DE CIRCUITO AGROECOLÓGICO MONDOMO]
+          </div>
+
+          <div class="pt-2 border-t border-[#B0B0B0] flex items-center justify-between text-xs">
+            <span class="text-[#777777] font-mono text-[11px]">Especie Clave: <strong>Tangara Rastrojera</strong></span>
+            <a href="catalogo.html?bird=tangara-rastrojera" class="font-bold text-[#333333] hover:underline font-mono text-xs">
+              Ver Ficha en Catálogo ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Ruta 4 -->
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-4 hover:border-[#333333] transition-colors">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 bg-[#F2F2F2] border border-[#B0B0B0] text-[#333333]">
+                Ruta 04 • Humedal y Ciénaga
+              </span>
+              <h3 class="text-lg font-bold text-[#333333] mt-2">
+                Humedal El Samán y Microcuencas Sur
+              </h3>
+            </div>
+            <span class="text-xs font-mono font-bold text-[#333333] px-2 py-1 bg-[#D0D0D0] rounded-sm">
+              Dificultad: Muy Baja
+            </span>
+          </div>
+
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Plataforma plana alrededor de la ciénaga y espejos de agua al sur del municipio. Destino ideal para avistamiento de garzas, pollas de agua y zancudas en el crepúsculo.
+          </p>
+
+          <div class="grid grid-cols-3 gap-2 p-3 bg-[#F2F2F2] border border-[#B0B0B0] text-center text-xs font-mono">
+            <div>
+              <span class="text-[10px] text-[#777777] block">Distancia</span>
+              <strong class="text-[#333333]">2.0 km</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-[#777777] block">Tiempo Estimado</span>
+              <strong class="text-[#333333]">2h 00m</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-[#777777] block">Altitud</span>
+              <strong class="text-[#333333]">1.045 msnm</strong>
+            </div>
+          </div>
+
+          <div class="h-28 wireframe-placeholder rounded-sm">
+            [PLACEHOLDER: PUNTOS DE OBSERVACIÓN HUMEDAL EL SAMÁN]
+          </div>
+
+          <div class="pt-2 border-t border-[#B0B0B0] flex items-center justify-between text-xs">
+            <span class="text-[#777777] font-mono text-[11px]">Especie Clave: <strong>Garza Tigre Cuellifasta</strong></span>
+            <a href="catalogo.html?bird=garza-tigre" class="font-bold text-[#333333] hover:underline font-mono text-xs">
+              Ver Ficha en Catálogo ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Banner de llamada a la acción hacia la página del catálogo -->
+      <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="space-y-1">
+          <h4 class="text-sm font-bold text-[#333333]">¿Buscas una especie en particular de Santander de Quilichao?</h4>
+          <p class="text-xs text-[#777777]">Accede al catálogo completo con filtros taxonómicos, cantos de aves y buscador en tiempo real.</p>
+        </div>
+        <a href="catalogo.html" class="btn-wireframe-primary text-xs py-2 px-6 flex-shrink-0">
+          Ir al Catálogo General de Especies ↗
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       9. SECCIÓN — MAPA DE AVISTAMIENTOS (Centrado en Santander de Quilichao)
+       ====================================================================== -->
+  <section id="mapa" class="py-20 bg-[#FFFFFF] border-b border-[#B0B0B0]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="space-y-2 max-w-2xl">
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
+            Georreferenciación Territorial
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#333333]">
+            Encuentra las aves en nuestro territorio
+          </h2>
+          <p class="text-sm text-[#777777]">
+            Distribución espacial de las observaciones en microcuencas, veredas y cerros de Santander de Quilichao. Selecciona un marcador para consultar su ficha de registro.
+          </p>
+        </div>
+
+        <div class="px-3 py-1.5 bg-[#F2F2F2] border border-[#B0B0B0] text-xs font-mono text-[#333333]">
+          Centro: Santander de Quilichao [Lat 3.0094° N, Lon -76.4847° W]
+        </div>
+      </div>
+
+      <!-- Filtros del mapa -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm text-xs">
+        <div>
+          <label for="map-filter-zone" class="block font-mono text-[#333333] mb-1">Zona:</label>
+          <select id="map-filter-zone" class="w-full bg-[#FFFFFF] border border-[#B0B0B0] p-1.5 rounded-sm">
+            <option value="all">Todas las zonas</option>
+            <option value="Cuenca">Cuencas fluviales</option>
+            <option value="Vereda">Veredas de montaña</option>
+            <option value="Humedal">Humedales</option>
+            <option value="Urbana">Área urbana y parques</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="map-filter-species" class="block font-mono text-[#333333] mb-1">Especie:</label>
+          <select id="map-filter-species" class="w-full bg-[#FFFFFF] border border-[#B0B0B0] p-1.5 rounded-sm">
+            <option value="all">Todas las especies</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-mono text-[#333333] mb-1">Fecha de Registro:</label>
+          <div class="p-1.5 bg-[#FFFFFF] border border-[#B0B0B0] text-zinc-500 text-[11px] font-mono">
+            Ene 2026 - Mar 2026 [Demostración]
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-mono text-[#333333] mb-1">Tipo de Registro:</label>
+          <div class="p-1.5 bg-[#FFFFFF] border border-[#B0B0B0] text-zinc-500 text-[11px] font-mono">
+            Avistamiento Visual y Auditivo
+          </div>
+        </div>
+      </div>
+
+      <!-- Distribución Mapa + Panel Lateral -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Mapa (8 columnas) -->
+        <div class="lg:col-span-8 wireframe-map-container h-[480px] sm:h-[540px] rounded-sm relative">
+          <div id="leaflet-map-element" class="w-full h-full"></div>
+          
+          <div class="absolute top-3 left-3 z-[400] pointer-events-none">
+            <div class="px-3 py-1 bg-[#FFFFFF] border border-[#B0B0B0] text-xs font-mono text-[#333333] shadow-sm">
+              [PLACEHOLDER DE MAPA: SANTANDER DE QUILICHAO]
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel lateral con información de los registros (4 columnas) -->
+        <div class="lg:col-span-4 space-y-4">
+          
+          <div class="p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-2">
+            <h3 class="text-sm font-bold text-[#333333] uppercase font-mono flex items-center justify-between">
+              <span>Registros en el Territorio</span>
+              <span id="records-counter" class="text-[11px] bg-[#D0D0D0] px-2 py-0.5 rounded-sm">8 registros</span>
+            </h3>
+            <p class="text-xs text-[#777777]">
+              Selecciona un punto para desplegar la ficha de observación:
+            </p>
+          </div>
+
+          <div id="sighting-records-list" class="space-y-2 max-h-[440px] overflow-y-auto pr-1">
+            <!-- Inyectado por JS -->
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       10. SECCIÓN — CONSERVACIÓN (Composición Editorial)
+       ====================================================================== -->
+  <section id="conservacion" class="py-20 bg-[#F2F2F2] border-b border-[#B0B0B0]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="max-w-3xl space-y-3">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
+          Protección de la Biodiversidad
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#333333]">
+          Conservar nuestras aves es proteger nuestro territorio
+        </h2>
+        <p class="text-sm sm:text-base text-[#777777] leading-relaxed">
+          Las aves son bioindicadores fundamentales de la salud de nuestros bosques, ríos y cafetales. Proteger sus hábitats garantiza la seguridad hídrica y el equilibrio ecológico del Norte del Cauca.
+        </p>
+      </div>
+
+      <!-- Cuadrícula editorial de bloques educativos -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-3">
+          <div class="w-8 h-8 bg-[#D0D0D0] border border-[#B0B0B0] flex items-center justify-center font-mono font-bold text-xs text-[#333333]">
+            01
+          </div>
+          <h3 class="text-base font-bold text-[#333333]">Importancia de los ecosistemas</h3>
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Las microcuencas del Río Quilichao y los bosques de niebla de San Antonio actúan como corredores de conectividad biológica entre la Cordillera Central y los valles interandinos.
+          </p>
+          <div class="h-28 wireframe-placeholder mt-4">
+            [PLACEHOLDER: ESQUEMA DE CONECTIVIDAD ECOLÓGICA]
+          </div>
+        </div>
+
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-3">
+          <div class="w-8 h-8 bg-[#D0D0D0] border border-[#B0B0B0] flex items-center justify-center font-mono font-bold text-xs text-[#333333]">
+            02
+          </div>
+          <h3 class="text-base font-bold text-[#333333]">Amenazas identificadas</h3>
+          <p class="text-xs text-[#777777] leading-relaxed">
+            La fragmentación del dosel boscoso, la deforestación de orillas de ríos, el uso indiscriminado de agroquímicos y la cacería de especies amenazadas como la Pava Caucana.
+          </p>
+          <div class="h-28 wireframe-placeholder mt-4">
+            [PLACEHOLDER: GRÁFICO DE AMENAZAS EN EL TERRITORIO]
+          </div>
+        </div>
+
+        <div class="p-6 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-3">
+          <div class="w-8 h-8 bg-[#D0D0D0] border border-[#B0B0B0] flex items-center justify-center font-mono font-bold text-xs text-[#333333]">
+            03
+          </div>
+          <h3 class="text-base font-bold text-[#333333]">Acciones de protección</h3>
+          <p class="text-xs text-[#777777] leading-relaxed">
+            Reforestación con árboles nativos productores de frutos (yarumos, arrayanes y laureles), siembra de cercas vivas y conformación de grupos de monitoreo comunitario.
+          </p>
+          <div class="h-28 wireframe-placeholder mt-4">
+            [PLACEHOLDER: RED DE MONITOREO COMUNITARIO]
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Código Ético de Avistamiento -->
+      <div class="p-6 sm:p-8 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-6">
+        <div class="border-b border-[#B0B0B0] pb-3">
+          <h3 class="text-lg font-bold text-[#333333]">Recomendaciones para el avistamiento responsable</h3>
+          <p class="text-xs text-[#777777]">Código de ética que todo observador y visitante debe cumplir en Santander de Quilichao:</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] space-y-1">
+            <span class="font-bold text-[#333333] block">1. Cero Playback Excesivo</span>
+            <p class="text-[#777777]">No reproducir cantos repetitivos que desvíen la energía de las aves o perturben el cortejo.</p>
+          </div>
+          <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] space-y-1">
+            <span class="font-bold text-[#333333] block">2. Distancia a Nidos</span>
+            <p class="text-[#777777]">Mantener distancia estricta de colonias reproductivas y no manipular follaje de protección.</p>
+          </div>
+          <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] space-y-1">
+            <span class="font-bold text-[#333333] block">3. Senderos Delimitados</span>
+            <p class="text-[#777777]">Caminar únicamente sobre caminos trazados para evitar erosión en taludes del Río Quilichao.</p>
+          </div>
+          <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] space-y-1">
+            <span class="font-bold text-[#333333] block">4. Guías Locales</span>
+            <p class="text-[#777777]">Involucrar a los habitantes de las veredas para fomentar la economía del aviturismo sostenible.</p>
+          </div>
+        </div>
+
+        <div class="h-24 wireframe-placeholder">
+          [PLACEHOLDER MULTIMEDIA: INFOGRAFÍA EDUCATIVA DE CONSERVACIÓN]
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       11. SECCIÓN — SOBRE NOSOTROS (Composición Editorial Diferenciada)
+       ====================================================================== -->
+  <section id="sobre-nosotros" class="py-20 bg-[#FFFFFF] border-b border-[#B0B0B0]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="max-w-3xl space-y-2">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
+          Propósito y Organización
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#333333]">
+          Sobre Nosotros • BioAves Quilichao
+        </h2>
+        <p class="text-sm text-[#777777]">
+          Iniciativa comunitaria y de divulgación orientada al inventario y valoración biocultural de la avifauna en Santander de Quilichao.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="p-6 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-3">
+            <h3 class="text-base font-bold text-[#333333] uppercase font-mono">Quiénes Somos</h3>
+            <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
+              BioAves Quilichao reúne a naturalistas locales, docentes, estudiantes, guías de turismo de naturaleza y pobladores rurales de Santander de Quilichao comprometidos con documentar la riqueza ornitológica de las cuencas y cerros del Norte del Cauca.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-5 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2">
+              <h4 class="text-xs font-bold uppercase font-mono text-[#333333]">Misión</h4>
+              <p class="text-xs text-[#777777] leading-relaxed">
+                Generar conocimiento accesible, cartografía abierta y conciencia ciudadana sobre las aves quilichagüeñas como herramienta de protección territorial.
+              </p>
+            </div>
+            <div class="p-5 bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm space-y-2">
+              <h4 class="text-xs font-bold uppercase font-mono text-[#333333]">Visión</h4>
+              <p class="text-xs text-[#777777] leading-relaxed">
+                Consolidar a Santander de Quilichao como un referente regional de aviturismo comunitario ético y conservación de especies andinas amenazadas.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-3">
+            <h4 class="text-xs font-bold uppercase font-mono text-[#333333]">Objetivos del Proyecto</h4>
+            <ul class="text-xs text-[#777777] space-y-1.5 list-disc pl-4">
+              <li>Mapear las rutas de avistamiento clave del municipio con datos georreferenciados.</li>
+              <li>Catalogar con fichas morfológicas y etológicas cada especie nativa y migratoria.</li>
+              <li>Fomentar la educación ambiental en escuelas rurales de las veredas San Antonio y Mondomo.</li>
+              <li>Vincular la conservación con alternativas económicas sostenibles para guías locales.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="h-64 wireframe-placeholder">
+            [PLACEHOLDER: ESQUEMA ORGANIZACIONAL Y ARTICULACIÓN COMUNITARIA]
+          </div>
+
+          <div class="p-5 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-2 text-xs">
+            <h4 class="font-bold text-[#333333]">Importancia de Conocer la Biodiversidad Local</h4>
+            <p class="text-[#777777] leading-relaxed">
+              No se puede cuidar lo que no se conoce. Al identificar el canto del barranquero o la silueta de la pava caucana, la comunidad se apropia del patrimonio natural y defiende los bosques que sustentan el agua y la vida de Santander de Quilichao.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       12. FOOTER — PIE DE PÁGINA ESTRUCTURAL
+       ====================================================================== -->
+  <footer class="bg-[#F2F2F2] border-t border-[#B0B0B0] py-12 text-[#777777] text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div class="md:col-span-2 space-y-3">
+          <span class="text-base font-black text-[#333333] tracking-wider uppercase block">
+            BIOAVES QUILICHAO
+          </span>
+          <p class="text-xs text-[#777777] max-w-sm leading-relaxed">
+            Eslogan: <strong>Descubre. Escucha. Explora. Conserva.</strong><br>
+            Plataforma web informativa e interactiva de observación y conservación de aves en Santander de Quilichao, Cauca, Colombia.
+          </p>
+          <div class="text-[11px] font-mono text-[#333333] bg-[#D0D0D0] px-2 py-1 inline-block border border-[#B0B0B0]">
+            ESTADO: Prototipo de Baja Fidelidad (Low-Fidelity Wireframe)
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="font-bold text-[#333333] uppercase font-mono text-xs">Navegación</h4>
+          <ul class="space-y-1.5 font-mono text-[11px]">
+            <li><a href="#inicio" class="text-[#777777] hover:text-[#333333]">Inicio</a></li>
+            <li><a href="#carrusel" class="text-[#777777] hover:text-[#333333]">Aves Destacadas</a></li>
+            <li><a href="#rutas" class="text-[#777777] hover:text-[#333333]">Rutas de Avistamiento</a></li>
+            <li><a href="catalogo.html" class="text-[#777777] hover:text-[#333333] font-bold">Catálogo de Especies ↗</a></li>
+            <li><a href="#mapa" class="text-[#777777] hover:text-[#333333]">Mapa de Avistamientos</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="font-bold text-[#333333] uppercase font-mono text-xs">Proyecto</h4>
+          <ul class="space-y-1.5 font-mono text-[11px]">
+            <li><a href="#conservacion" class="text-[#777777] hover:text-[#333333]">Conservación y Ética</a></li>
+            <li><a href="#sobre-nosotros" class="text-[#777777] hover:text-[#333333]">Sobre Nosotros</a></li>
+            <li><span class="text-[#777777]">Santander de Quilichao, Cauca</span></li>
+            <li><span class="text-[#777777]">Colombia</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-6 border-t border-[#B0B0B0] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-[#777777]">
+        <p>© 2026 BioAves Quilichao • Prototipo Frontend de Baja Fidelidad.</p>
+        <p>Paleta estricta en escala de grises (#FFFFFF, #F2F2F2, #D0D0D0, #B0B0B0, #333333, #777777).</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       FICHA DETALLADA MODAL EN INDEX (Para abrir especies desde el carrusel y mapa)
+       ====================================================================== -->
+  <div id="modal-detalle-ave" class="fixed inset-0 z-50 hidden bg-[#333333]/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="relative w-full max-w-4xl bg-[#FFFFFF] border-2 border-[#333333] rounded-sm overflow-hidden my-auto shadow-2xl">
+      
+      <div class="p-5 border-b border-[#B0B0B0] bg-[#F2F2F2] flex items-start justify-between">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-wider text-[#777777]">Ficha Técnica Detallada • BioAves Quilichao</span>
+          <div class="flex flex-wrap items-center gap-3 mt-0.5">
+            <h2 id="modal-common-name" class="text-2xl font-black text-[#333333]">Nombre Común</h2>
+            <span id="modal-status-badge" class="px-2 py-0.5 bg-[#D0D0D0] border border-[#B0B0B0] text-xs font-mono text-[#333333]">
+              Estado UICN
+            </span>
+          </div>
+          <p id="modal-scientific-name" class="text-xs font-mono italic text-[#777777]">Nombre Científico • Familia</p>
+        </div>
+
+        <button id="modal-close-btn" type="button" class="px-3 py-1 bg-[#D0D0D0] hover:bg-[#B0B0B0] text-[#333333] font-mono text-xs font-bold border border-[#B0B0B0] rounded-sm transition-colors" aria-label="Cerrar modal">
+          [ CERRAR X ]
+        </button>
+      </div>
+
+      <div class="p-6 space-y-8 max-h-[78vh] overflow-y-auto">
+        
+        <!-- B. Galería Multimedia (3 Fotos pasables con botones) -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs font-mono border-b border-[#B0B0B0] pb-1">
+            <span class="font-bold uppercase text-[#333333]">B. Galería Multimedia (3 Fotografías Pasables con Botones)</span>
+            <span id="modal-photo-indicator" class="text-[#777777]">Foto 1 de 3</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+            <div class="md:col-span-8 relative h-64 sm:h-72 wireframe-placeholder rounded-sm flex flex-col items-center justify-center p-4">
+              <span id="modal-photo-label" class="text-sm font-bold text-[#333333] text-center max-w-sm">
+                [PLACEHOLDER DE FOTOGRAFÍA 1 DE 3]
+              </span>
+              <span class="text-[11px] text-[#777777] font-mono mt-1">
+                Representación wireframe sin imágenes reales
+              </span>
+
+              <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+                <button id="modal-photo-prev" type="button" class="btn-wireframe-secondary text-xs py-1 px-3">
+                  ← Anterior
+                </button>
+                <div class="flex gap-1.5">
+                  <span class="photo-dot-indicator w-3 h-3 bg-[#333333] rounded-xs inline-block"></span>
+                  <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-xs inline-block"></span>
+                  <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-xs inline-block"></span>
+                </div>
+                <button id="modal-photo-next" type="button" class="btn-wireframe-secondary text-xs py-1 px-3">
+                  Siguiente →
+                </button>
+              </div>
+            </div>
+
+            <div class="md:col-span-4 h-64 sm:h-72 wireframe-placeholder-dark rounded-sm p-4 flex flex-col justify-between text-center">
+              <span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registro de Video</span>
+              <span id="modal-video-label" class="text-xs font-bold text-[#FFFFFF]">
+                [PLACEHOLDER DE VIDEO: COMPORTAMIENTO]
+              </span>
+              <span class="text-[10px] text-[#D0D0D0] font-mono">
+                Demostración de etología en Santander de Quilichao
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- C. Sonidos y Cantos -->
+        <div class="p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-3">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="font-bold uppercase text-[#333333]">C. Sonidos y Cantos de la Especie</span>
+            <span id="audio-duration-display" class="text-[#777777]">0:00 / 0:28</span>
+          </div>
+
+          <audio id="modal-species-audio" preload="none"></audio>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <button id="modal-audio-toggle-btn" type="button" class="btn-wireframe-primary text-xs py-2 px-4 flex-shrink-0">
+              <span id="audio-btn-icon">▶</span>
+              <span id="audio-btn-text">Reproducir Canto</span>
+            </button>
+
+            <div class="flex-1 space-y-1">
+              <div class="flex items-center justify-between text-[11px] font-mono text-[#777777]">
+                <span id="audio-state-text">Reproductor en espera [PLACEHOLDER DE AUDIO]</span>
+              </div>
+              <div class="w-full bg-[#D0D0D0] h-2 border border-[#B0B0B0] rounded-xs overflow-hidden">
+                <div id="audio-progress-bar" class="bg-[#333333] h-full w-0 transition-all duration-150"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- A. Información General -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-mono font-bold uppercase text-[#333333] border-b border-[#B0B0B0] pb-1">
+            A. Información General y Morfología
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+            <div class="md:col-span-8 space-y-2">
+              <h4 class="text-xs font-mono font-bold text-[#333333]">Descripción de la especie:</h4>
+              <p id="modal-description" class="text-xs sm:text-sm text-[#777777] leading-relaxed">
+                Descripción...
+              </p>
+            </div>
+            <div class="md:col-span-4 p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-1 text-xs">
+              <span class="font-bold text-[#333333] font-mono block">Características Físicas:</span>
+              <p id="modal-physical" class="text-[#777777]">Características...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- D. Información Biológica -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-mono font-bold uppercase text-[#333333] border-b border-[#B0B0B0] pb-1">
+            D. Información Biológica y Ecológica
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+              <span class="font-mono font-bold text-[#333333] block">Hábitat:</span>
+              <p id="modal-habitat-text" class="text-[#777777] mt-1">Hábitat...</p>
+            </div>
+            <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+              <span class="font-mono font-bold text-[#333333] block">Alimentación:</span>
+              <p id="modal-diet-text" class="text-[#777777] mt-1">Alimentación...</p>
+            </div>
+            <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+              <span class="font-mono font-bold text-[#333333] block">Comportamiento:</span>
+              <p id="modal-behavior-text" class="text-[#777777] mt-1">Comportamiento...</p>
+            </div>
+            <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+              <span class="font-mono font-bold text-[#333333] block">Distribución:</span>
+              <p id="modal-distribution-text" class="text-[#777777] mt-1">Distribución...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- E. Ubicación -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-mono font-bold uppercase text-[#333333] border-b border-[#B0B0B0] pb-1">
+            E. Ubicación y Lugares Registrados en Santander de Quilichao
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+            <div class="md:col-span-8 p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-2 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#333333]">Punto de Registro Documentado:</span>
+                <span id="modal-sighting-date" class="font-mono text-[#777777]">Fecha</span>
+              </div>
+              <p id="modal-sighting-loc" class="text-[#333333] font-bold text-sm">Lugar</p>
+              <p id="modal-sighting-notes" class="text-[#777777]">Notas de campo...</p>
+              <div class="text-[11px] font-mono text-[#777777] flex gap-4 pt-1">
+                <span id="modal-sighting-coords">Coord: 0.0, 0.0</span>
+                <span id="modal-sighting-elevation">Alt: 0 msnm</span>
+              </div>
+            </div>
+
+            <div class="md:col-span-4 h-full flex flex-col justify-center gap-2">
+              <div class="h-20 wireframe-placeholder">
+                [PLACEHOLDER DE MAPA DE REGISTRO]
+              </div>
+              <button id="modal-go-to-map-btn" type="button" class="btn-wireframe-primary text-xs py-2 w-full text-center">
+                Ver en el mapa →
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="p-4 bg-[#F2F2F2] border-t border-[#B0B0B0] flex items-center justify-between text-xs font-mono text-[#777777]">
+        <span>BioAves Quilichao • Prototipo de Baja Fidelidad</span>
+        <button onclick="document.getElementById('modal-detalle-ave').classList.add('hidden'); document.body.classList.remove('overflow-hidden');" class="btn-wireframe-secondary text-xs py-1 px-4">
+          Cerrar Ficha
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts funcionales -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/birds-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
