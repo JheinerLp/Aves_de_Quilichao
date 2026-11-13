@@ -8,9 +8,6 @@
         <a href="{{ route('home') }}#sobre-nosotros">💚 Nuestra misión</a>
       </nav>
     </div>
-    <form class="bv-search" method="GET" action="{{ route('catalog.index') }}">
-      <input type="search" name="q" placeholder="Buscar especie…" aria-label="Buscar especie"><button type="submit" aria-label="Buscar">🔍</button>
-    </form>
     <button id="mobile-menu-btn" type="button" class="bv-burger" aria-label="Abrir menú">☰</button>
     <div id="mobile-menu" class="hidden bv-mobile">
       <a href="{{ route('home') }}#inicio">Inicio</a><a href="{{ route('catalog.index') }}">Catálogo</a><a href="{{ route('home') }}#carrusel">Aves destacadas</a>
