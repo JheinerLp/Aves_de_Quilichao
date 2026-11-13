@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; img-src 'self' data: blob: https: http:; media-src 'self' data: blob: http: https:; connect-src 'self' https: http:; font-src 'self' data: https:;">
   <meta name="description" content="BioAves Quilichao: observación, identificación y conservación de las aves de Santander de Quilichao, Cauca.">
   <title>BioAves Quilichao | Descubre las aves de nuestro territorio</title>
   <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
@@ -124,6 +125,478 @@
             
           </figcaption>
         </figure>
+
+      </div>
+
+      <!-- ======================================================================
+           MÓDULO: SENDEROS Y RUTAS INTERACTIVAS
+           ====================================================================== -->
+      <div class="mt-16 pt-16 border-t border-[#B0B0B0] space-y-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="max-w-3xl space-y-2">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
+              Turismo de Naturaleza y Ecoturismo Comunitario
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-black text-[#333333]">
+              Senderos Ecológicos y Rutas de Naturaleza
+            </h2>
+            <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
+              Descubre lugares naturales y reservas cercanas en Santander de Quilichao. Selecciona un sendero para consultar su ficha técnica, aves observables y visualizar el trazado interactivo del recorrido desde el centro histórico.
+            </p>
+          </div>
+
+          <!-- Filtros de Categoría -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button type="button" data-filter="all" class="route-filter-btn px-3 py-1.5 text-xs font-mono font-bold rounded-sm border bg-[#333333] text-[#FFFFFF] border-[#333333] transition-colors cursor-pointer">
+              Todos los destinos
+            </button>
+            <button type="button" data-filter="Fluvial" class="route-filter-btn px-3 py-1.5 text-xs font-mono font-bold rounded-sm border bg-[#FFFFFF] text-[#777777] border-[#B0B0B0] hover:border-[#333333] transition-colors cursor-pointer">
+              Ríos y Cuencas
+            </button>
+            <button type="button" data-filter="Bosque" class="route-filter-btn px-3 py-1.5 text-xs font-mono font-bold rounded-sm border bg-[#FFFFFF] text-[#777777] border-[#B0B0B0] hover:border-[#333333] transition-colors cursor-pointer">
+              Bosques y Reservas
+            </button>
+            <button type="button" data-filter="Humedal" class="route-filter-btn px-3 py-1.5 text-xs font-mono font-bold rounded-sm border bg-[#FFFFFF] text-[#777777] border-[#B0B0B0] hover:border-[#333333] transition-colors cursor-pointer">
+              Humedales
+            </button>
+            <button type="button" data-filter="Mirador" class="route-filter-btn px-3 py-1.5 text-xs font-mono font-bold rounded-sm border bg-[#FFFFFF] text-[#777777] border-[#B0B0B0] hover:border-[#333333] transition-colors cursor-pointer">
+              Miradores
+            </button>
+          </div>
+        </div>
+
+        <!-- Colección de Tarjetas Visuales de Destinos (6 Rutas) -->
+        <div id="routes-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          
+          <!-- Tarjeta 1: Sendero Río Quilichao -->
+          <article class="route-card bg-[#FFFFFF] border-2 border-[#B0B0B0] hover:border-[#333333] rounded-sm overflow-hidden transition-all duration-200 cursor-pointer flex flex-col justify-between group shadow-xs" data-route-id="sendero-rio-quilichao" data-route-type="Sendero Fluvial y Parque Lineal">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-[#333333]">
+                <img src="{{ asset('img/rutas/sendero-rio-quilichao.jpg') }}" alt="Sendero Ecológico Río Quilichao" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#333333]/90 text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm border border-[#B0B0B0]">
+                  Sendero Fluvial
+                </span>
+                <span class="absolute top-2.5 right-2.5 px-2 py-0.5 bg-[#FFFFFF] text-[#2e9b3a] border border-[#2e9b3a] text-[10px] font-mono font-bold uppercase rounded-sm">
+                  Fácil
+                </span>
+                <span class="active-route-indicator hidden absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-[#2e9b3a] text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm shadow-sm">
+                  ✓ Ruta Activa
+                </span>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono text-[#777777] uppercase block">
+                    📍 Santander de Quilichao, Cauca
+                  </span>
+                  <h3 class="text-base font-black text-[#333333] group-hover:underline">
+                    Sendero Ecológico Río Quilichao
+                  </h3>
+                </div>
+                <p class="text-xs text-[#777777] leading-relaxed line-clamp-3">
+                  Paseo ribereño sombreado por sauces, yarumos y vegetación de galería a lo largo del Río Quilichao. Excelente para observación matutina de aves acuáticas y paseriformes.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-[#B0B0B0] text-center font-mono text-[11px]">
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Distancia</span>
+                    <strong class="text-[#333333]">2.4 km</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Tiempo</span>
+                    <strong class="text-[#333333]">1 h 15 min</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Desnivel</span>
+                    <strong class="text-[#333333]">+15 m</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 pt-0">
+              <button type="button" class="w-full btn-wireframe-primary text-xs py-2 text-center group-hover:bg-[#222222] transition-colors">
+                🗺️ Ver ruta en el mapa →
+              </button>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2: Reserva San Antonio -->
+          <article class="route-card bg-[#FFFFFF] border-2 border-[#B0B0B0] hover:border-[#333333] rounded-sm overflow-hidden transition-all duration-200 cursor-pointer flex flex-col justify-between group shadow-xs" data-route-id="reserva-san-antonio" data-route-type="Reserva Natural y Bosque de Niebla">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-[#333333]">
+                <img src="{{ asset('img/rutas/reserva-san-antonio.jpg') }}" alt="Reserva Forestal Vereda San Antonio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#333333]/90 text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm border border-[#B0B0B0]">
+                  Reserva Natural
+                </span>
+                <span class="absolute top-2.5 right-2.5 px-2 py-0.5 bg-[#FFFFFF] text-[#d97706] border border-[#d97706] text-[10px] font-mono font-bold uppercase rounded-sm">
+                  Moderado
+                </span>
+                <span class="active-route-indicator hidden absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-[#2e9b3a] text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm shadow-sm">
+                  ✓ Ruta Activa
+                </span>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono text-[#777777] uppercase block">
+                    📍 Vereda San Antonio, Cauca
+                  </span>
+                  <h3 class="text-base font-black text-[#333333] group-hover:underline">
+                    Reserva Forestal Vereda San Antonio
+                  </h3>
+                </div>
+                <p class="text-xs text-[#777777] leading-relaxed line-clamp-3">
+                  Fragmento de bosque andino y de niebla en las estribaciones de la Cordillera Central. Refugio vital de especies amenazadas como la Pava Caucana y orquídeas nativas.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-[#B0B0B0] text-center font-mono text-[11px]">
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Distancia</span>
+                    <strong class="text-[#333333]">6.8 km</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Tiempo</span>
+                    <strong class="text-[#333333]">2 h 45 min</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Desnivel</span>
+                    <strong class="text-[#333333]">+690 m</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 pt-0">
+              <button type="button" class="w-full btn-wireframe-primary text-xs py-2 text-center group-hover:bg-[#222222] transition-colors">
+                🗺️ Ver ruta en el mapa →
+              </button>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: Humedal El Samán -->
+          <article class="route-card bg-[#FFFFFF] border-2 border-[#B0B0B0] hover:border-[#333333] rounded-sm overflow-hidden transition-all duration-200 cursor-pointer flex flex-col justify-between group shadow-xs" data-route-id="humedal-el-saman" data-route-type="Humedal y Ecosistema Acuático">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-[#333333]">
+                <img src="{{ asset('img/rutas/humedal-el-saman.jpg') }}" alt="Humedal El Samán y Microcuenca Sur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#333333]/90 text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm border border-[#B0B0B0]">
+                  Humedal
+                </span>
+                <span class="absolute top-2.5 right-2.5 px-2 py-0.5 bg-[#FFFFFF] text-[#2e9b3a] border border-[#2e9b3a] text-[10px] font-mono font-bold uppercase rounded-sm">
+                  Fácil
+                </span>
+                <span class="active-route-indicator hidden absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-[#2e9b3a] text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm shadow-sm">
+                  ✓ Ruta Activa
+                </span>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono text-[#777777] uppercase block">
+                    📍 Santander de Quilichao, Cauca
+                  </span>
+                  <h3 class="text-base font-black text-[#333333] group-hover:underline">
+                    Humedal El Samán y Microcuenca Sur
+                  </h3>
+                </div>
+                <p class="text-xs text-[#777777] leading-relaxed line-clamp-3">
+                  Ecosistema léntico con lagunas someras, juncales y franjas de samanes centenarios. Punto estratégico de descanso para aves migratorias boreales y zancudas.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-[#B0B0B0] text-center font-mono text-[11px]">
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Distancia</span>
+                    <strong class="text-[#333333]">3.1 km</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Tiempo</span>
+                    <strong class="text-[#333333]">1 h 30 min</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Desnivel</span>
+                    <strong class="text-[#333333]">+11 m</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 pt-0">
+              <button type="button" class="w-full btn-wireframe-primary text-xs py-2 text-center group-hover:bg-[#222222] transition-colors">
+                🗺️ Ver ruta en el mapa →
+              </button>
+            </div>
+          </article>
+
+          <!-- Tarjeta 4: Cerro y Mirador de Belén -->
+          <article class="route-card bg-[#FFFFFF] border-2 border-[#B0B0B0] hover:border-[#333333] rounded-sm overflow-hidden transition-all duration-200 cursor-pointer flex flex-col justify-between group shadow-xs" data-route-id="cerro-belen" data-route-type="Mirador Panorámico y Cerro Tutelar">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-[#333333]">
+                <img src="{{ asset('img/rutas/cerro-belen.jpg') }}" alt="Sendero Cerro y Mirador de Belén" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#333333]/90 text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm border border-[#B0B0B0]">
+                  Mirador
+                </span>
+                <span class="absolute top-2.5 right-2.5 px-2 py-0.5 bg-[#FFFFFF] text-[#d97706] border border-[#d97706] text-[10px] font-mono font-bold uppercase rounded-sm">
+                  Moderado
+                </span>
+                <span class="active-route-indicator hidden absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-[#2e9b3a] text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm shadow-sm">
+                  ✓ Ruta Activa
+                </span>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono text-[#777777] uppercase block">
+                    📍 Santander de Quilichao, Cauca
+                  </span>
+                  <h3 class="text-base font-black text-[#333333] group-hover:underline">
+                    Sendero Cerro y Mirador de Belén
+                  </h3>
+                </div>
+                <p class="text-xs text-[#777777] leading-relaxed line-clamp-3">
+                  Ascenso hacia el cerro tutelar coronado por la Capilla de Belén. Ofrece una vista panorámica de 360 grados sobre el valle geográfico y avistamiento de rapaces nocturnas.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-[#B0B0B0] text-center font-mono text-[11px]">
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Distancia</span>
+                    <strong class="text-[#333333]">1.8 km</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Tiempo</span>
+                    <strong class="text-[#333333]">50 min</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Desnivel</span>
+                    <strong class="text-[#333333]">+74 m</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 pt-0">
+              <button type="button" class="w-full btn-wireframe-primary text-xs py-2 text-center group-hover:bg-[#222222] transition-colors">
+                🗺️ Ver ruta en el mapa →
+              </button>
+            </div>
+          </article>
+
+          <!-- Tarjeta 5: Faldas de Mondomo -->
+          <article class="route-card bg-[#FFFFFF] border-2 border-[#B0B0B0] hover:border-[#333333] rounded-sm overflow-hidden transition-all duration-200 cursor-pointer flex flex-col justify-between group shadow-xs" data-route-id="faldas-mondomo" data-route-type="Zona Cafetera y Piedemonte Andino">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-[#333333]">
+                <img src="{{ asset('img/rutas/faldas-mondomo.jpg') }}" alt="Ruta Agroecológica Faldas de Mondomo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#333333]/90 text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm border border-[#B0B0B0]">
+                  Zona Cafetera
+                </span>
+                <span class="absolute top-2.5 right-2.5 px-2 py-0.5 bg-[#FFFFFF] text-[#d97706] border border-[#d97706] text-[10px] font-mono font-bold uppercase rounded-sm">
+                  Moderado
+                </span>
+                <span class="active-route-indicator hidden absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-[#2e9b3a] text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm shadow-sm">
+                  ✓ Ruta Activa
+                </span>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono text-[#777777] uppercase block">
+                    📍 Mondomo, Santander de Quilichao
+                  </span>
+                  <h3 class="text-base font-black text-[#333333] group-hover:underline">
+                    Ruta Agroecológica Faldas de Mondomo
+                  </h3>
+                </div>
+                <p class="text-xs text-[#777777] leading-relaxed line-clamp-3">
+                  Circuito entre fincas agroecológicas, cafetales bajo sombra y cañadas naturales en el corregimiento de Mondomo. Gran densidad de tráupidos y carpinteros.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-[#B0B0B0] text-center font-mono text-[11px]">
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Distancia</span>
+                    <strong class="text-[#333333]">8.5 km</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Tiempo</span>
+                    <strong class="text-[#333333]">3 h 15 min</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Desnivel</span>
+                    <strong class="text-[#333333]">+224 m</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 pt-0">
+              <button type="button" class="w-full btn-wireframe-primary text-xs py-2 text-center group-hover:bg-[#222222] transition-colors">
+                🗺️ Ver ruta en el mapa →
+              </button>
+            </div>
+          </article>
+
+          <!-- Tarjeta 6: Guaduales Santa Inés -->
+          <article class="route-card bg-[#FFFFFF] border-2 border-[#B0B0B0] hover:border-[#333333] rounded-sm overflow-hidden transition-all duration-200 cursor-pointer flex flex-col justify-between group shadow-xs" data-route-id="guaduales-santa-ines" data-route-type="Bosque de Guadua y Vía Rural">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-[#333333]">
+                <img src="{{ asset('img/rutas/guaduales-santa-ines.jpg') }}" alt="Ruta de los Guaduales Vereda Santa Inés" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#333333]/90 text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm border border-[#B0B0B0]">
+                  Bosque de Guadua
+                </span>
+                <span class="absolute top-2.5 right-2.5 px-2 py-0.5 bg-[#FFFFFF] text-[#2e9b3a] border border-[#2e9b3a] text-[10px] font-mono font-bold uppercase rounded-sm">
+                  Fácil
+                </span>
+                <span class="active-route-indicator hidden absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-[#2e9b3a] text-[#FFFFFF] text-[10px] font-mono font-bold uppercase rounded-sm shadow-sm">
+                  ✓ Ruta Activa
+                </span>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono text-[#777777] uppercase block">
+                    📍 Vereda Santa Inés, Cauca
+                  </span>
+                  <h3 class="text-base font-black text-[#333333] group-hover:underline">
+                    Ruta de los Guaduales Vereda Santa Inés
+                  </h3>
+                </div>
+                <p class="text-xs text-[#777777] leading-relaxed line-clamp-3">
+                  Camino rural rodeado de imponentes guaduales ribereños y setos vivos tradicionales. Microhábitat propicio para colibríes, carpinteros y tiranos cazadores de insectos.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-[#B0B0B0] text-center font-mono text-[11px]">
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Distancia</span>
+                    <strong class="text-[#333333]">4.2 km</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Tiempo</span>
+                    <strong class="text-[#333333]">2 h 00 min</strong>
+                  </div>
+                  <div class="p-1.5 bg-[#F2F2F2] rounded-sm">
+                    <span class="text-[#777777] text-[9px] block">Desnivel</span>
+                    <strong class="text-[#333333]">+19 m</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 pt-0">
+              <button type="button" class="w-full btn-wireframe-primary text-xs py-2 text-center group-hover:bg-[#222222] transition-colors">
+                🗺️ Ver ruta en el mapa →
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- MAPA INTERACTIVO Y DETALLE DEL RECORRIDO (DEBAJO DE LAS TARJETAS) -->
+        <div id="routes-map-container" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start pt-6">
+          
+          <!-- Mapa Leaflet de Rutas (8 cols) -->
+          <div class="lg:col-span-8 bg-[#FFFFFF] border-2 border-[#B0B0B0] rounded-sm overflow-hidden shadow-sm relative">
+            
+            <!-- Encabezado / Banner flotante de ruta activa -->
+            <div class="p-3 bg-[#F2F2F2] border-b border-[#B0B0B0] flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+              <div class="flex items-center gap-2">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#2e9b3a] animate-pulse"></span>
+                <strong class="text-[#333333]">Trazado de Ruta:</strong>
+                <span id="route-active-pill-name" class="font-bold text-[#2e9b3a] truncate max-w-xs sm:max-w-md">Sendero Ecológico Río Quilichao</span>
+              </div>
+              <button id="btn-fit-route" type="button" class="btn-wireframe-secondary text-[11px] py-1 px-3">
+                🎯 Centrar Ruta
+              </button>
+            </div>
+
+            <div id="routes-map-element" class="w-full h-[450px] sm:h-[540px] bg-[#E0E0E0] relative z-0">
+              <!-- Leaflet inyecta el mapa de rutas aquí -->
+            </div>
+
+            <!-- Barra de navegación / Info pie del mapa -->
+            <div class="p-3 bg-[#FFFFFF] border-t border-[#B0B0B0] flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-[#777777]">
+              <div class="flex items-center gap-3">
+                <span><span class="font-bold text-[#2e9b3a]">A:</span> Parque Principal Santander</span>
+                <span>→</span>
+                <span><span class="font-bold text-[#d97706]">B:</span> Destino Natural</span>
+              </div>
+              <span class="text-[#333333] font-bold">Línea verde: Trazado real de caminos y carreteras</span>
+            </div>
+
+          </div>
+
+          <!-- Panel Lateral de Detalles del Recorrido Seleccionado (4 cols) -->
+          <div class="lg:col-span-4 bg-[#FFFFFF] border-2 border-[#333333] rounded-sm p-6 space-y-5 shadow-sm">
+            
+            <div class="flex items-center justify-between pb-3 border-b border-[#B0B0B0]">
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-[#777777] block">
+                  Itinerario de Campo
+                </span>
+                <h3 id="route-panel-title" class="text-base font-black text-[#333333]">
+                  Sendero Ecológico Río Quilichao
+                </h3>
+              </div>
+              <span id="route-panel-difficulty" class="px-2 py-0.5 rounded-sm font-mono text-[10px] font-bold uppercase border bg-[#FFFFFF] text-[#2e9b3a] border-[#2e9b3a]">
+                Fácil
+              </span>
+            </div>
+
+            <!-- Imagen del destino en panel -->
+            <div class="h-36 overflow-hidden rounded-sm border border-[#B0B0B0] bg-[#333333] relative">
+              <img id="route-panel-img" src="{{ asset('img/rutas/sendero-rio-quilichao.jpg') }}" alt="Ruta seleccionada" class="w-full h-full object-cover">
+              <span id="route-panel-type" class="absolute bottom-2 left-2 bg-[#333333]/90 text-[#FFFFFF] text-[10px] font-mono px-2 py-0.5 rounded border border-[#B0B0B0]">
+                Sendero Fluvial y Parque Lineal
+              </span>
+            </div>
+
+            <!-- Descripción -->
+            <p id="route-panel-desc" class="text-xs text-[#777777] leading-relaxed">
+              Paseo ribereño sombreado por sauces, yarumos y vegetación de galería a lo largo del Río Quilichao. Excelente para observación matutina de aves acuáticas y paseriformes.
+            </p>
+
+            <!-- Tabla técnica del recorrido -->
+            <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-2 text-xs font-mono">
+              <div class="flex justify-between items-start gap-2">
+                <span class="text-[#777777] font-bold">Punto de inicio (A):</span>
+                <span id="route-panel-start" class="text-[#333333] text-right">Parque Principal Santander</span>
+              </div>
+              <div class="flex justify-between items-start gap-2">
+                <span class="text-[#777777] font-bold">Punto de llegada (B):</span>
+                <span id="route-panel-end" class="text-[#333333] text-right">Río Quilichao (3.0145, -76.4880)</span>
+              </div>
+              <div class="flex justify-between items-center gap-2 border-t border-[#B0B0B0] pt-1.5">
+                <span class="text-[#777777] font-bold">Distancia:</span>
+                <span id="route-panel-distance" class="text-[#333333] font-bold">2.4 km</span>
+              </div>
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-bold">Duración estimada:</span>
+                <span id="route-panel-duration" class="text-[#333333] font-bold">1 h 15 min</span>
+              </div>
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-bold">Desnivel / Altura:</span>
+                <span id="route-panel-elevation" class="text-[#333333]">1.055 - 1.070 msnm (+15 m)</span>
+              </div>
+            </div>
+
+            <!-- Recomendaciones -->
+            <div class="space-y-1">
+              <span class="text-[11px] font-mono font-bold text-[#333333] uppercase">Recomendaciones:</span>
+              <p id="route-panel-notes" class="text-xs text-[#777777] leading-relaxed bg-[#F2F2F2] p-2.5 border border-[#B0B0B0] rounded-sm">
+                Ruta peatonal accesible para toda la familia. Se sugiere calzado cómodo, binoculares y realizar el recorrido entre las 06:00 y las 09:00.
+              </p>
+            </div>
+
+            <!-- Aves observables con enlace a ficha -->
+            <div class="space-y-2">
+              <span class="text-[11px] font-mono font-bold text-[#333333] uppercase block">Aves observables en esta ruta:</span>
+              <div id="route-panel-birds" class="flex flex-wrap gap-1.5">
+                <!-- Inyectado por JS -->
+              </div>
+            </div>
+
+            <!-- Botón de navegación externa -->
+            <div class="pt-2">
+              <a id="route-gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=3.0094,-76.4847&destination=3.0145,-76.4880&travelmode=walking" target="_blank" rel="noopener noreferrer" class="w-full btn-wireframe-primary text-center block text-xs py-2.5">
+                🧭 Cómo llegar (Abrir en Google Maps) ↗
+              </a>
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -785,6 +1258,8 @@
   </script>
   <script src="{{ asset('js/birds-data.js') }}"></script>
   <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/routes-data.js') }}"></script>
+  <script src="{{ asset('js/routes-module.js') }}"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const heroVideo = document.querySelector('.bv-video');

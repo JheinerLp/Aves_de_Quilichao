@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; img-src 'self' data: blob: https: http:; media-src 'self' data: blob: http: https:; connect-src 'self' https: http:; font-src 'self' data: https:;">
   <meta name="description" content="Catálogo Completo de Aves de Santander de Quilichao - BioAves Quilichao. Prototipo de baja fidelidad en escala de grises.">
   <title>Catálogo Completo de Aves | BioAves Quilichao (Low-Fidelity Wireframe)</title>
   <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
