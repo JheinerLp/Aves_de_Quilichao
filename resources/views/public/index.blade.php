@@ -24,8 +24,8 @@
       <h1>Descubre las aves de nuestro <span class="bv-script">territorio</span></h1>
       <p>Plataforma dedicada a la observación, identificación, registro cartográfico y conservación de la avifauna en el municipio de Santander de Quilichao, Cauca.</p>
       <div class="bv-btns">
-        <a href="{{ route('catalog.index') }}" class="bv-btn bv-btn-fill">🔭 Explorar catálogo de aves</a>
-        <a href="{{ route('home') }}#sobre-nosotros" class="bv-btn bv-btn-line">🍃 Conoce nuestra misión</a>
+        <a href="{{ route('catalog.index') }}" class="bv-btn bv-btn-fill"> Explorar catálogo de aves</a>
+        <a href="{{ route('home') }}#sobre-nosotros" class="bv-btn bv-btn-line"> Conoce nuestra misión</a>
       </div>
     </div>
     <svg class="bv-wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C300 120 600 110 900 70s400-40 540 10v60H0z" fill="#f4f9e6"/><path d="M0 70C300 150 620 140 920 100s400-40 520 0" fill="none" stroke="#ffd21f" stroke-width="7"/><path d="M0 100C280 160 600 150 900 120s400-30 540-10" fill="none" stroke="#2e9b3a" stroke-width="12"/></svg>
