@@ -205,7 +205,8 @@ function initCarousel() {
   const cardsHtml = [...demoBirds, ...demoBirds, ...demoBirds]
     .map((bird, idx) => `
       <div class="carousel-card flex-shrink-0 w-64 sm:w-72 select-none cursor-pointer group" data-bird-id="${bird.id}" data-index="${idx}">
-        <div class="bv-photo"><img src="${bird.image ? speciesMediaUrl(bird.image) : speciesMediaUrl('img/aves/' + bird.id + '.jpg')}" alt="${bird.commonName}" loading="lazy" style="object-fit:${bird.imageFit || "cover"};object-position:${bird.imagePosition && bird.imagePosition !== "center" ? bird.imagePosition : "center 35%"}" onerror="this.remove()"><h3 class="bv-ribbon">${bird.commonName}</h3></div>
+        <div class="bv-photo"><img src="${bird.image ? speciesMediaUrl(bird.image) : speciesMediaUrl('img/aves/' + bird.id + '.jpg')}" alt="${bird.commonName}" loading="lazy" style="object-fit:${bird.imageFit || "cover"};object-position:${bird.imagePosition && bird.imagePosition !== "center" ? bird.imagePosition : "center 35%"}" onerror="this.remove()"></div>
+        <h3 class="bv-ribbon" title="${bird.commonName}">${bird.commonName}</h3>
         <div class="bv-card-body">
           <span class="bv-badge">${bird.categoryLabel}</span>
           <p>${bird.scientificName}</p>
