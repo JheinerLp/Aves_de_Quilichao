@@ -72,91 +72,58 @@
     <div class="bv-lema">Descubre.<br>Escucha.<br>Explora.<br>Conserva.</div>
   </section>
 
-<!-- ======================================================================
-       7. SECCIÓN — RUTAS Y PUNTOS DE OBSERVACIÓN
+  <!-- ======================================================================
+       7. SECCIÓN — PRIMERA CIUDAD DE LAS AVES DE SURAMÉRICA
        ====================================================================== -->
   <section id="rutas" class="py-20 bg-[#F2F2F2] border-b border-[#B0B0B0]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-      
-      <div class="max-w-3xl space-y-2">
-        <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
-          Senderos y Rutas
-        </span>
-        <h2 class="text-2xl sm:text-3xl font-black text-[#333333]">
-          Dónde pajarear en Santander de Quilichao
-        </h2>
-        <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
-          Recorridos recomendados para avistamiento según el nivel de dificultad, ecosistema y horario recomendado.
-        </p>
-      </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Ruta 1 -->
-        <div class="bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm p-6 space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="wireframe-placeholder-dark h-36 flex flex-col items-center justify-center p-3 text-center rounded-sm">
-              <span class="text-xs font-bold font-mono text-[#FFFFFF]">[PLACEHOLDER DE FOTOGRAFÍA: SENDERO RÍO QUILICHAO]</span>
-              <span class="text-[10px] text-[#D0D0D0] mt-1">Bosque de ribera y cañadas</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+        <!-- Texto -->
+        <div class="space-y-5">
+          <span class="inline-block px-3 py-1 bg-[#D0D0D0] border border-[#B0B0B0] text-[11px] font-mono font-bold uppercase tracking-wider text-[#333333] rounded-full">
+            Nuestro orgullo
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-[#333333] leading-tight">
+            Primera Ciudad de las Aves de Suramérica
+          </h2>
+          <p class="text-sm sm:text-base text-[#777777] leading-relaxed">
+            Santander de Quilichao recibió el reconocimiento internacional de <strong>Ciudad de las Aves</strong>, otorgado por Environment for the Americas y American Bird Conservancy. Es la primera de Suramérica, y eso nos llena de orgullo.
+          </p>
+          <p class="text-sm sm:text-base text-[#777777] leading-relaxed">
+            Este título honra a la comunidad que cuida sus aves y su entorno, y nos recuerda que conocerlas y protegerlas es tarea de todos: niños, jóvenes y adultos.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <div class="p-4 bg-[#FFFFFF] border border-[#B0B0B0] rounded-2xl text-center">
+              <span class="block text-xl font-black text-[#333333]">1.ª</span>
+              <span class="text-[11px] font-mono text-[#777777]">de Suramérica</span>
             </div>
-            <div class="flex items-center justify-between text-[10px] font-mono text-[#777777]">
-              <span>Dificultad: Baja</span>
-              <span>Distancia: 3.2 km</span>
+            <div class="p-4 bg-[#FFFFFF] border border-[#B0B0B0] rounded-2xl text-center">
+              <span class="block text-xl font-black text-[#333333]">2023</span>
+              <span class="text-[11px] font-mono text-[#777777]">año del reconocimiento</span>
             </div>
-            <h3 class="text-base font-bold text-[#333333]">Ruta Urbana: Sendero Fluvial del Río Quilichao</h3>
-            <p class="text-xs text-[#777777] leading-relaxed">
-              Recorrido accesible ideal para mañanas tempranas. Posibilidad alta de observar Momoto Andino, Tangaras y Garzas en las orillas sombreadas.
-            </p>
           </div>
-          <div class="pt-3 border-t border-[#B0B0B0] flex items-center justify-between">
-            <span class="text-[11px] font-mono text-[#333333] font-bold">1.060 msnm</span>
-            <a href="#mapa" class="text-xs font-bold text-[#333333] underline hover:no-underline">Ver en el mapa →</a>
-          </div>
+
+          <a href="catalogo.html" class="btn-wireframe-primary text-xs py-2 px-6 inline-block">
+            Conocer nuestras aves ↗
+          </a>
         </div>
 
-        <!-- Ruta 2 -->
-        <div class="bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm p-6 space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="wireframe-placeholder-dark h-36 flex flex-col items-center justify-center p-3 text-center rounded-sm">
-              <span class="text-xs font-bold font-mono text-[#FFFFFF]">[PLACEHOLDER DE FOTOGRAFÍA: RESERVA SAN ANTONIO]</span>
-              <span class="text-[10px] text-[#D0D0D0] mt-1">Bosque de niebla altoandino</span>
-            </div>
-            <div class="flex items-center justify-between text-[10px] font-mono text-[#777777]">
-              <span>Dificultad: Media - Alta</span>
-              <span>Distancia: 5.8 km</span>
-            </div>
-            <h3 class="text-base font-bold text-[#333333]">Ruta de Niebla: Vereda San Antonio</h3>
-            <p class="text-xs text-[#777777] leading-relaxed">
-              Ascenso a las laderas montañosas de la Cordillera Central. Territorio clave para el avistamiento de la Pava Caucana (Penelope perspicax) y tucanes andinos.
-            </p>
-          </div>
-          <div class="pt-3 border-t border-[#B0B0B0] flex items-center justify-between">
-            <span class="text-[11px] font-mono text-[#333333] font-bold">1.750 msnm</span>
-            <a href="#mapa" class="text-xs font-bold text-[#333333] underline hover:no-underline">Ver en el mapa →</a>
-          </div>
-        </div>
+        <!-- Espacio para tu imagen con bordes redondeados -->
+        <figure class="relative">
+          <div class="relative h-72 sm:h-96 rounded-[2rem] overflow-hidden border-4 border-[#FFFFFF] shadow-xl bg-[#D0D0D0] flex items-center justify-center">
 
-        <!-- Ruta 3 -->
-        <div class="bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm p-6 space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="wireframe-placeholder-dark h-36 flex flex-col items-center justify-center p-3 text-center rounded-sm">
-              <span class="text-xs font-bold font-mono text-[#FFFFFF]">[PLACEHOLDER DE FOTOGRAFÍA: HUMEDAL EL SAMÁN]</span>
-              <span class="text-[10px] text-[#D0D0D0] mt-1">Humedales y meandros de valle</span>
-            </div>
-            <div class="flex items-center justify-between text-[10px] font-mono text-[#777777]">
-              <span>Dificultad: Muy Baja</span>
-              <span>Distancia: 1.5 km</span>
-            </div>
-            <h3 class="text-base font-bold text-[#333333]">Circuito de Humedales: El Samán y Microcuencas</h3>
-            <p class="text-xs text-[#777777] leading-relaxed">
-              Espejos de agua lénticos con avifauna acuática diversa: Garza Tigre Cuellifasta, pollas de agua, Martín Pescador y aves limícolas migratorias.
-            </p>
-          </div>
-          <div class="pt-3 border-t border-[#B0B0B0] flex items-center justify-between">
-            <span class="text-[11px] font-mono text-[#333333] font-bold">1.045 msnm</span>
-            <a href="#mapa" class="text-xs font-bold text-[#333333] underline hover:no-underline">Ver en el mapa →</a>
-          </div>
-        </div>
+      <img src="{{ asset('img/ciudad-de-las-aves.png') }}"
+          alt="Santander de Quilichao, primera Ciudad de las Aves de Suramérica"
+          class="absolute inset-0 w-full h-full object-cover"
+          onerror="this.style.display='none'">
+    </div>
+          <figcaption class="mt-3 text-center text-[11px] font-mono text-[#777777]">
+            
+          </figcaption>
+        </figure>
 
       </div>
 
@@ -319,184 +286,190 @@
   <!-- ======================================================================
        8B. SECCIÓN — REPORTE DE AVISTAMIENTOS CIUDADANOS (FORMULARIO REGULADO)
        ====================================================================== -->
-  <section id="reportar-avistamiento" class="py-20 bg-[#F2F2F2] border-b border-[#B0B0B0]">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      
-      <div class="space-y-2 text-center max-w-2xl mx-auto">
-        <div class="inline-block px-3 py-1 bg-[#D0D0D0] text-[#333333] text-[10px] font-mono font-bold tracking-wider uppercase border border-[#B0B0B0]">
-          Formulario Regulado • Ciencia Ciudadana
+    <section id="reportar-avistamiento" class="relative py-20 bg-gradient-to-b from-[#F4F8EC] via-[#FBF7E8] to-[#EAF3DF]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
+
+        <!-- ================= PANEL IZQUIERDO (verde) ================= -->
+        <aside class="relative lg:col-span-2 overflow-hidden rounded-3xl bg-gradient-to-br from-[#1F4D33] via-[#2F6B3A] to-[#4F8A3A] text-white p-8 sm:p-10 shadow-xl">
+          <!-- círculos suaves decorativos -->
+          <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-[#F2C94C]/20 pointer-events-none"></div>
+          <div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full bg-[#A8D08D]/20 pointer-events-none"></div>
+
+          <div class="relative space-y-6">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-[#F2C94C] text-[#2B2A12] text-xs font-bold tracking-wide uppercase">
+              Ciencia ciudadana
+            </span>
+
+            <h2 class="text-3xl sm:text-4xl font-black leading-tight !text-white" style="color:#FFFFFF;">
+              Reporta un avistamiento de ave en Quilichao
+            </h2>
+
+            <p class="text-sm sm:text-base text-[#E4F1DA] leading-relaxed">
+              ¿Viste un ave en tu barrio, tu vereda o tu finca? Cuéntanos. Cada observación nos ayuda a conocer y proteger nuestro territorio.
+            </p>
+
+            <ol class="space-y-4 pt-2">
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#F2C94C] text-[#2B2A12] font-black flex items-center justify-center text-sm">1</span>
+                <span class="text-sm text-[#F0F7E9]">Elige la especie y la zona donde la viste.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#F2C94C] text-[#2B2A12] font-black flex items-center justify-center text-sm">2</span>
+                <span class="text-sm text-[#F0F7E9]">Cuéntanos qué hacía el ave y a qué hora.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#F2C94C] text-[#2B2A12] font-black flex items-center justify-center text-sm">3</span>
+                <span class="text-sm text-[#F0F7E9]">Revisamos tu reporte antes de publicarlo.</span>
+              </li>
+            </ol>
+
+            <div class="mt-4 p-4 rounded-2xl bg-white/10 border border-white/20 text-xs text-[#E4F1DA] leading-relaxed">
+              El sistema permite un <strong class="text-white">máximo de 3 envíos por correo electrónico</strong> para facilitar la revisión y evitar saturación.
+            </div>
+          </div>
+        </aside>
+
+        <!-- ================= FORMULARIO (tarjeta blanca) ================= -->
+        <div class="lg:col-span-3 space-y-5">
+
+          <!-- Alertas de estado -->
+          @if(session('sighting_success'))
+            <div class="p-4 rounded-2xl bg-[#E8F5E0] border border-[#7DB46C] text-sm text-[#1F4D33] space-y-1">
+              <span class="font-bold block">¡Registro exitoso!</span>
+              <span class="block">{{ session('sighting_success') }}</span>
+              <span class="text-xs text-[#4F6B45] block">Tu reporte será revisado por el administrador antes de publicarse en el mapa territorial.</span>
+            </div>
+          @endif
+
+          @if(session('sighting_error'))
+            <div class="p-4 rounded-2xl bg-[#FFF4D6] border border-[#E9C46A] text-sm text-[#5C4A12] space-y-1">
+              <span class="font-bold block">Límite alcanzado</span>
+              <span class="block">{{ session('sighting_error') }}</span>
+            </div>
+          @endif
+
+          @if($errors->any())
+            <div class="p-4 rounded-2xl bg-[#FDECEA] border border-[#E5988F] text-sm text-[#7A2E26] space-y-1">
+              <span class="font-bold block">Revisa estos campos:</span>
+              <ul class="list-disc list-inside text-xs">
+                @foreach($errors->all() as $err)
+                  <li>{{ $err }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
+
+          <form method="POST" action="{{ route('sightings.public.store') }}" class="relative overflow-hidden bg-white rounded-3xl shadow-xl border border-[#DCE8CC] p-6 sm:p-8 space-y-6">
+            @csrf
+
+            <!-- franja de color superior -->
+            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#F2C94C] via-[#8FC16A] to-[#2F6B3A]"></div>
+
+            <div class="pt-2">
+              <h3 class="text-xl font-black text-[#1F4D33]">Datos de tu observación</h3>
+              <p class="text-xs text-[#6B7F5F]">Los campos con (*) son obligatorios.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="space-y-1.5">
+                <label for="observer_name" class="block text-sm font-semibold text-[#1F4D33]">Nombre completo (*)</label>
+                <input
+                  id="observer_name" name="observer_name" type="text" required
+                  value="{{ old('observer_name') }}"
+                  placeholder="Ej: Laura Gómez"
+                  class="w-full bg-[#FBFDF7] border border-[#CFDDBF] px-4 py-2.5 text-sm rounded-xl focus:border-[#4F8A3A] focus:ring-2 focus:ring-[#A8D08D]/60 focus:outline-none transition"
+                >
+              </div>
+
+              <div class="space-y-1.5">
+                <label for="observer_email" class="block text-sm font-semibold text-[#1F4D33]">Correo electrónico (*)</label>
+                <input
+                  id="observer_email" name="observer_email" type="email" required
+                  value="{{ old('observer_email') }}"
+                  placeholder="tu-correo@ejemplo.com"
+                  class="w-full bg-[#FBFDF7] border border-[#CFDDBF] px-4 py-2.5 text-sm rounded-xl focus:border-[#4F8A3A] focus:ring-2 focus:ring-[#A8D08D]/60 focus:outline-none transition"
+                >
+                <span class="text-[11px] text-[#6B7F5F] block">Máximo 3 envíos por correo</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="space-y-1.5">
+                <label for="species_id" class="block text-sm font-semibold text-[#1F4D33]">Especie observada (*)</label>
+                <select
+                  id="species_id" name="species_id" required
+                  class="w-full bg-[#FBFDF7] border border-[#CFDDBF] px-4 py-2.5 text-sm rounded-xl focus:border-[#4F8A3A] focus:ring-2 focus:ring-[#A8D08D]/60 focus:outline-none transition"
+                >
+                  <option value="">Selecciona la especie observada...</option>
+                  @foreach($species as $sp)
+                    <option value="{{ $sp->id }}" {{ old('species_id') == $sp->id ? 'selected' : '' }}>
+                      {{ $sp->common_name }} ({{ $sp->scientific_name }})
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+
+              <div class="space-y-1.5">
+                <label for="location_id" class="block text-sm font-semibold text-[#1F4D33]">Sector / zona de Quilichao (*)</label>
+                <select
+                  id="location_id" name="location_id"
+                  class="w-full bg-[#FBFDF7] border border-[#CFDDBF] px-4 py-2.5 text-sm rounded-xl focus:border-[#4F8A3A] focus:ring-2 focus:ring-[#A8D08D]/60 focus:outline-none transition"
+                >
+                  <option value="">Selecciona la zona...</option>
+                  @foreach($locations as $loc)
+                    <option value="{{ $loc->id }}" {{ old('location_id') == $loc->id ? 'selected' : '' }}>
+                      {{ $loc->name }} ({{ $loc->zone }})
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="space-y-1.5">
+                <label for="sighting_date" class="block text-sm font-semibold text-[#1F4D33]">Fecha de la observación (*)</label>
+                <input
+                  id="sighting_date" name="sighting_date" type="date" required
+                  max="{{ date('Y-m-d') }}"
+                  value="{{ old('sighting_date', date('Y-m-d')) }}"
+                  class="w-full bg-[#FBFDF7] border border-[#CFDDBF] px-4 py-2.5 text-sm rounded-xl focus:border-[#4F8A3A] focus:ring-2 focus:ring-[#A8D08D]/60 focus:outline-none transition"
+                >
+              </div>
+
+              <div class="space-y-1.5">
+                <label for="individuals_count" class="block text-sm font-semibold text-[#1F4D33]">Cantidad de ejemplares (*)</label>
+                <input
+                  id="individuals_count" name="individuals_count" type="number" min="1" max="500" required
+                  value="{{ old('individuals_count', 1) }}"
+                  class="w-full bg-[#FBFDF7] border border-[#CFDDBF] px-4 py-2.5 text-sm rounded-xl focus:border-[#4F8A3A] focus:ring-2 focus:ring-[#A8D08D]/60 focus:outline-none transition"
+                >
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="description" class="block text-sm font-semibold text-[#1F4D33]">Notas de observación y hábitat (*)</label>
+              <textarea
+                id="description" name="description" rows="4" required
+                placeholder="Describe qué estaba haciendo el ave (perchada, comiendo, cantando), en qué parte del árbol estaba y la hora aproximada..."
+                class="w-full bg-[#FBFDF7] border border-[#CFDDBF] px-4 py-3 text-sm rounded-xl focus:border-[#4F8A3A] focus:ring-2 focus:ring-[#A8D08D]/60 focus:outline-none transition"
+              >{{ old('description') }}</textarea>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 text-[11px] text-[#5C7050]">
+              <span class="px-3 py-1 rounded-full bg-[#EAF3DF] border border-[#CFDDBF]">Máximo 3 envíos por sesión</span>
+              <span class="px-3 py-1 rounded-full bg-[#FFF4D6] border border-[#E9C46A]">Moderado por el administrador</span>
+            </div>
+
+            <button type="submit"
+              class="w-full rounded-full bg-gradient-to-r from-[#4F8A3A] to-[#2F6B3A] hover:from-[#5A9A44] hover:to-[#367A42] text-white font-bold text-sm py-3.5 shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+              Enviar observación para revisión ↗
+            </button>
+          </form>
+
         </div>
-        <h2 class="text-2xl sm:text-3xl font-black text-[#333333]">
-          Reportar Avistamiento de Ave en Quilichao
-        </h2>
-        <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
-          Registra una observación en territorio quilichagüeño. <strong>El sistema regula un máximo de 3 envíos por correo electrónico</strong> para asegurar la moderación administrativa y evitar saturación.
-        </p>
       </div>
-
-      <!-- Alertas de estado -->
-      @if(session('sighting_success'))
-        <div class="p-4 bg-[#FFFFFF] border-2 border-[#333333] rounded-sm text-xs text-[#333333] space-y-1">
-          <div class="flex items-center gap-2">
-            <span class="font-mono font-bold text-sm">[REGISTRO EXITOSO]:</span>
-            <span class="font-semibold">{{ session('sighting_success') }}</span>
-          </div>
-          <span class="text-[10px] font-mono text-[#777777] block">Tu reporte será revisado por el administrador antes de publicarse en el mapa territorial.</span>
-        </div>
-      @endif
-
-      @if(session('sighting_error'))
-        <div class="p-4 bg-[#FFFFFF] border-2 border-[#777777] rounded-sm text-xs text-[#333333] space-y-1">
-          <div class="flex items-center gap-2">
-            <span class="font-mono font-bold text-sm">[LÍMITE REGULADO]:</span>
-            <span class="font-semibold">{{ session('sighting_error') }}</span>
-          </div>
-        </div>
-      @endif
-
-      @if($errors->any())
-        <div class="p-4 bg-[#FFFFFF] border-2 border-[#333333] rounded-sm text-xs text-[#333333] space-y-1">
-          <span class="font-bold block">[ERRORES EN EL FORMULARIO]:</span>
-          <ul class="list-disc list-inside text-[11px] text-[#777777]">
-            @foreach($errors->all() as $err)
-              <li>{{ $err }}</li>
-            @endforeach
-          </ul>
-        </div>
-      @endif
-
-      <!-- Formulario Wireframe -->
-      <form method="POST" action="{{ route('sightings.public.store') }}" class="bg-[#FFFFFF] border-2 border-[#333333] p-6 sm:p-8 rounded-sm space-y-6 shadow-sm">
-        @csrf
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="space-y-1">
-            <label for="observer_name" class="block text-xs font-mono font-bold text-[#333333]">
-              Nombre Completo del Observador (*):
-            </label>
-            <input
-              id="observer_name"
-              name="observer_name"
-              type="text"
-              required
-              value="{{ old('observer_name') }}"
-              placeholder="Ej: Laura Gómez"
-              class="w-full bg-[#FFFFFF] border border-[#B0B0B0] px-3 py-2 text-xs rounded-sm focus:border-[#333333] focus:outline-none"
-            >
-          </div>
-
-          <div class="space-y-1">
-            <label for="observer_email" class="block text-xs font-mono font-bold text-[#333333]">
-              Correo Electrónico (*):
-            </label>
-            <input
-              id="observer_email"
-              name="observer_email"
-              type="email"
-              required
-              value="{{ old('observer_email') }}"
-              placeholder="tu-correo@ejemplo.com"
-              class="w-full bg-[#FFFFFF] border border-[#B0B0B0] px-3 py-2 text-xs rounded-sm focus:border-[#333333] focus:outline-none"
-            >
-            <span class="text-[10px] text-[#777777] font-mono block">Regulación activa: Máximo 3 envíos por correo</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="space-y-1">
-            <label for="species_id" class="block text-xs font-mono font-bold text-[#333333]">
-              Especie Observada (*):
-            </label>
-            <select
-              id="species_id"
-              name="species_id"
-              required
-              class="w-full bg-[#F2F2F2] border border-[#B0B0B0] px-3 py-2 text-xs rounded-sm focus:outline-none"
-            >
-              <option value="">Selecciona la especie observada...</option>
-              @foreach($species as $sp)
-                <option value="{{ $sp->id }}" {{ old('species_id') == $sp->id ? 'selected' : '' }}>
-                  {{ $sp->common_name }} ({{ $sp->scientific_name }})
-                </option>
-              @endforeach
-            </select>
-          </div>
-
-          <div class="space-y-1">
-            <label for="location_id" class="block text-xs font-mono font-bold text-[#333333]">
-              Sector / Zona de Quilichao (*):
-            </label>
-            <select
-              id="location_id"
-              name="location_id"
-              class="w-full bg-[#F2F2F2] border border-[#B0B0B0] px-3 py-2 text-xs rounded-sm focus:outline-none"
-            >
-              <option value="">Selecciona la zona...</option>
-              @foreach($locations as $loc)
-                <option value="{{ $loc->id }}" {{ old('location_id') == $loc->id ? 'selected' : '' }}>
-                  {{ $loc->name }} ({{ $loc->zone }})
-                </option>
-              @endforeach
-            </select>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="space-y-1">
-            <label for="sighting_date" class="block text-xs font-mono font-bold text-[#333333]">
-              Fecha de la Observación (*):
-            </label>
-            <input
-              id="sighting_date"
-              name="sighting_date"
-              type="date"
-              required
-              max="{{ date('Y-m-d') }}"
-              value="{{ old('sighting_date', date('Y-m-d')) }}"
-              class="w-full bg-[#FFFFFF] border border-[#B0B0B0] px-3 py-2 text-xs rounded-sm focus:border-[#333333] focus:outline-none"
-            >
-          </div>
-
-          <div class="space-y-1">
-            <label for="individuals_count" class="block text-xs font-mono font-bold text-[#333333]">
-              Cantidad de Ejemplares (*):
-            </label>
-            <input
-              id="individuals_count"
-              name="individuals_count"
-              type="number"
-              min="1"
-              max="500"
-              required
-              value="{{ old('individuals_count', 1) }}"
-              class="w-full bg-[#FFFFFF] border border-[#B0B0B0] px-3 py-2 text-xs rounded-sm focus:border-[#333333] focus:outline-none"
-            >
-          </div>
-        </div>
-
-        <div class="space-y-1">
-          <label for="description" class="block text-xs font-mono font-bold text-[#333333]">
-            Notas de Observación y Hábitat (*):
-          </label>
-          <textarea
-            id="description"
-            name="description"
-            rows="3"
-            required
-            placeholder="Describe qué estaba haciendo el ave (perchada, forrajeando, cantando), el estrato del árbol y la hora aproximada..."
-            class="w-full bg-[#FFFFFF] border border-[#B0B0B0] p-3 text-xs rounded-sm focus:border-[#333333] focus:outline-none"
-          >{{ old('description') }}</textarea>
-        </div>
-
-        <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm text-[11px] font-mono text-[#777777] flex items-center justify-between">
-          <span>• Regulación: Máximo 3 envíos por sesión</span>
-          <span>• Moderado por el Administrador</span>
-        </div>
-
-        <button type="submit" class="w-full btn-wireframe-primary py-3 text-xs font-bold text-center block">
-          Enviar Observación para Revisión Administrativa ↗
-        </button>
-      </form>
 
     </div>
   </section>
@@ -604,31 +577,7 @@
           </div>
         </div>
 
-        <div class="lg:col-span-5 bg-[#F2F2F2] border border-[#B0B0B0] p-6 rounded-sm space-y-4">
-          <h3 class="text-sm font-bold uppercase font-mono text-[#333333]">Ficha Técnica del Prototipo</h3>
-          <div class="space-y-2 text-xs">
-            <div class="flex justify-between py-1.5 border-b border-[#B0B0B0]">
-              <span class="text-[#777777]">Plataforma:</span>
-              <span class="font-bold text-[#333333]">BioAves Quilichao</span>
-            </div>
-            <div class="flex justify-between py-1.5 border-b border-[#B0B0B0]">
-              <span class="text-[#777777]">Backend & Base de Datos:</span>
-              <span class="font-bold text-[#333333]">Laravel 12 + PostgreSQL / SQLite</span>
-            </div>
-            <div class="flex justify-between py-1.5 border-b border-[#B0B0B0]">
-              <span class="text-[#777777]">Diseño Estructural:</span>
-              <span class="font-bold text-[#333333]">Escala de Grises Estricta</span>
-            </div>
-            <div class="flex justify-between py-1.5 border-b border-[#B0B0B0]">
-              <span class="text-[#777777]">Municipio:</span>
-              <span class="font-bold text-[#333333]">Santander de Quilichao, Cauca</span>
-            </div>
-            <div class="flex justify-between py-1.5">
-              <span class="text-[#777777]">Objetivo:</span>
-              <span class="font-bold text-[#333333]">Conservación y Aviturismo</span>
-            </div>
-          </div>
-        </div>
+        
 
       </div>
 
