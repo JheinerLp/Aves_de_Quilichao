@@ -5,5 +5,14 @@
       <p class="bv-slogan">Conectados con la naturaleza de nuestro territorio</p>
       <nav class="bv-social" aria-label="Redes"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="YouTube">▶</a><a href="#" aria-label="Naturaleza">🍃</a></nav>
     </div>
+    <div class="max-w-4xl mx-auto my-3 text-center text-xs text-white/80 space-x-3">
+      <a href="{{ route('home') }}" class="hover:underline">Inicio</a>
+      <span>·</span>
+      <a href="{{ route('catalog.index') }}" class="hover:underline">Catálogo</a>
+      <span>·</span>
+      <a href="{{ route('guia-ambiental') }}" class="hover:underline">Guía Ambiental</a>
+      <span>·</span>
+      <a href="{{ route('home') }}#reportar-avistamiento" class="hover:underline">Reportar Avistamiento</a>
+    </div>
     <p class="bv-copy">© 2026 BioAves Quilichao · Santander de Quilichao, Cauca, Colombia</p>
   </footer>

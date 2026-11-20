@@ -1018,6 +1018,17 @@
         </div>
       </div>
 
+      <!-- Banner hacia Guía Ambiental -->
+      <div class="p-6 bg-[#EAF3DF] border border-[#B0B0B0] rounded-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h4 class="font-bold text-sm text-[#333333]">¿Quieres conocer los impactos ambientales y cómo mitigarlos?</h4>
+          <p class="text-xs text-[#777777]">Explora las principales amenazas a la avifauna quilichagüeña y acciones comunitarias de protección.</p>
+        </div>
+        <a href="{{ route('guia-ambiental') }}" class="btn-wireframe-primary text-xs py-2 px-5 whitespace-nowrap">
+          🌿 Ver Guía Ambiental Completa →
+        </a>
+      </div>
+
     </div>
   </section>
 

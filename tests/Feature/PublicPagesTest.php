@@ -40,6 +40,15 @@ class PublicPagesTest extends TestCase
         $response->assertSee('Momotus aequatorialis');
     }
 
+    public function test_environmental_guide_page_renders_successfully(): void
+    {
+        $response = $this->get('/guia-ambiental');
+        $response->assertStatus(200);
+        $response->assertSee('Guía Ambiental');
+        $response->assertSee('BIOAVES QUILICHAO');
+        $response->assertSee('Deforestación');
+    }
+
     public function test_species_api_endpoint_returns_json(): void
     {
         $response = $this->getJson('/api/v1/species');
