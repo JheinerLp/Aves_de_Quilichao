@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; img-src 'self' data: blob: https: http:; media-src 'self' data: blob: http: https:; connect-src 'self' https: http:; font-src 'self' data: https:;">
-  <meta name="description" content="Catálogo Completo de Aves de Santander de Quilichao - BioAves Quilichao. Prototipo de baja fidelidad en escala de grises.">
-  <title>Catálogo Completo de Aves | BioAves Quilichao (Low-Fidelity Wireframe)</title>
+  <meta name="description" content="Catálogo completo de aves de Santander de Quilichao - BioAves Quilichao.">
+  <title>Catálogo de Aves | BioAves Quilichao</title>
   <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Estilos del Wireframe en escala de grises estricta -->
+  <!-- Estilos -->
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body class="bv-inner bg-[#FFFFFF] text-[#333333] font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-[#D0D0D0] selection:text-[#333333]">
@@ -29,13 +29,13 @@
     <!-- Encabezado de la Página -->
     <div class="p-6 sm:p-8 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-3">
       <div class="inline-block px-2.5 py-0.5 bg-[#D0D0D0] text-[#333333] text-[10px] font-mono font-bold tracking-wider uppercase border border-[#B0B0B0]">
-        Página Exclusiva de Catálogo • Prototipo de Baja Fidelidad
+        Catálogo de especies
       </div>
       <h1 class="text-3xl sm:text-4xl font-black text-[#333333] tracking-tight">
         Catálogo de Aves de Santander de Quilichao
       </h1>
       <p class="text-xs sm:text-sm text-[#777777] max-w-3xl leading-relaxed">
-        Inventario ornitológico con fichas detalladas de identificación. Selecciona cualquier ave para consultar su ficha técnica con <strong>3 fotografías pasables con botones</strong>, <strong>reproductor con el sonido de la especie</strong> y <strong>datos de ubicación territorial</strong>.
+        Inventario ornitológico con fichas detalladas de identificación. Selecciona cualquier ave para consultar su ficha con <strong>fotografías</strong>, <strong>el sonido de la especie</strong> y <strong>datos de ubicación</strong>.
       </p>
     </div>
 
@@ -87,6 +87,7 @@
             <option value="all">Todas las categorías</option>
             <option value="endemica">Endémica / Amenazada</option>
             <option value="residente">Residente común</option>
+            <option value="migratoria">Migratoria</option>
           </select>
         </div>
 
@@ -102,7 +103,6 @@
     <!-- Contador de resultados -->
     <div class="flex items-center justify-between text-xs font-mono text-[#777777]">
       <span id="catalog-count-label">Cargando especies...</span>
-      <span>Base demostrativa de Santander de Quilichao</span>
     </div>
 
     <!-- Cuadrícula de Tarjetas del Catálogo -->
@@ -118,7 +118,7 @@
   </main>
 
   <!-- ======================================================================
-       FICHA DETALLADA DE CADA AVE (MODAL MULTI-BLOQUE A, B, C, D, E)
+       FICHA DETALLADA DE CADA AVE (MODAL, BLOQUES A, B, C, D, E)
        ====================================================================== -->
   <div id="modal-detalle-ave" class="fixed inset-0 z-50 hidden bg-[#333333]/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
     <div class="relative w-full max-w-4xl bg-[#FFFFFF] border-2 border-[#333333] rounded-sm overflow-hidden my-auto shadow-2xl">
@@ -126,83 +126,82 @@
       <!-- Encabezado del Modal -->
       <div class="p-5 border-b border-[#B0B0B0] bg-[#F2F2F2] flex items-start justify-between">
         <div>
-          <span class="text-[10px] font-mono uppercase tracking-wider text-[#777777]">Ficha Técnica Detallada • BioAves Quilichao</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider text-[#777777]">Ficha de la especie</span>
           <div class="flex flex-wrap items-center gap-3 mt-0.5">
             <h2 id="modal-common-name" class="text-2xl font-black text-[#333333]">Nombre Común</h2>
-            <span id="modal-status-badge" class="px-2 py-0.5 bg-[#D0D0D0] border border-[#B0B0B0] text-xs font-mono text-[#333333]">
-              Estado UICN
+            <span id="modal-status-badge" title="Estado de conservación según la UICN (Unión Internacional para la Conservación de la Naturaleza)" class="px-2 py-0.5 bg-[#D0D0D0] border border-[#B0B0B0] text-xs font-mono text-[#333333]">
+              Estado de conservación
             </span>
           </div>
           <p id="modal-scientific-name" class="text-xs font-mono italic text-[#777777]">Nombre Científico • Familia</p>
         </div>
 
         <button id="modal-close-btn" type="button" class="px-3 py-1 bg-[#D0D0D0] hover:bg-[#B0B0B0] text-[#333333] font-mono text-xs font-bold border border-[#B0B0B0] rounded-sm transition-colors" aria-label="Cerrar modal">
-          [ CERRAR X ]
+          Cerrar ✕
         </button>
       </div>
 
       <!-- Contenido en bloques (A, B, C, D, E) -->
       <div class="p-6 space-y-8 max-h-[78vh] overflow-y-auto">
+
+        <!-- Descripción y morfología -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-mono font-bold uppercase text-[#333333] border-b border-[#B0B0B0] pb-1">
+            Descripción y morfología
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+            <div class="md:col-span-12 space-y-2">
+              <p id="modal-description" class="text-xs text-[#333333] leading-relaxed"></p>
+              <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
+                <span class="text-[11px] font-bold text-[#333333] block mb-0.5">Rasgos Morfológicos:</span>
+                <p id="modal-physical" class="text-xs text-[#777777] leading-relaxed"></p>
+              </div>
+            </div>
+          </div>
+        </div>
         
-        <!-- B. GALERÍA MULTIMEDIA (3 Fotos con botones + Video) -->
+        <!-- Galería -->
         <div class="space-y-3">
           <div class="flex items-center justify-between text-xs font-mono border-b border-[#B0B0B0] pb-1">
-            <span class="font-bold uppercase text-[#333333]">B. Galería Multimedia (3 Fotografías Pasables con Botones)</span>
-            <span id="modal-photo-indicator" class="text-[#777777]">Foto 1 de 3</span>
+            <span class="font-bold uppercase text-[#333333]">Galería</span>
+            <span id="modal-photo-indicator" class="text-[#777777]"></span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="flex flex-col md:flex-row gap-4">
             
-            <!-- Visor de Fotos LIMPIO (8 cols): La foto grande y suelta, botones fuera debajo -->
-            <div class="md:col-span-8 flex flex-col items-center justify-between gap-3">
-              <!-- Área de la fotografía sola, grande y prominente -->
+            <!-- Visor de fotos: ocupa todo el ancho si no hay video -->
+            <div class="md:flex-1 min-w-0 flex flex-col items-center justify-between gap-3">
               <div class="w-full flex-1 min-h-[300px] sm:min-h-[360px] flex flex-col items-center justify-center">
                 <img id="modal-photo-image" class="hidden max-h-[340px] sm:max-h-[390px] w-auto max-w-full object-contain rounded-2xl shadow-md transition-all duration-300" alt="">
                 <div id="modal-photo-fallback-box" class="w-full h-72 sm:h-80 wireframe-placeholder rounded-2xl flex flex-col items-center justify-center p-4">
-                  <span id="modal-photo-label" class="text-sm font-bold text-[#333333] text-center max-w-sm">
-                    [PLACEHOLDER DE FOTOGRAFÍA 1 DE 3]
-                  </span>
-                  <span id="modal-photo-placeholder-note" class="text-[11px] text-[#777777] font-mono mt-1">
-                    Representación wireframe sin imágenes reales
-                  </span>
+                  <span class="text-sm font-bold text-[#333333] text-center">Fotografía no disponible</span>
                 </div>
+                <p id="modal-photo-caption" class="hidden mt-3 text-[11px] text-[#777777] text-center max-w-md leading-snug"></p>
               </div>
 
-              <!-- Botones de navegación afuera del cuadro de la foto -->
-              <div class="w-full flex items-center justify-between pt-1 px-1">
+              <!-- Navegación de fotos (se oculta si hay una sola) -->
+              <div id="modal-photo-nav" class="w-full flex items-center justify-between pt-1 px-1">
                 <button id="modal-photo-prev" type="button" class="btn-wireframe-secondary text-xs py-1.5 px-4 shadow-xs rounded-full">
                   ← Anterior
                 </button>
-                <div class="flex gap-2 items-center bg-[#FFFFFF] px-3 py-1.5 rounded-full border border-[#B0B0B0]/60 shadow-xs">
-                  <span class="photo-dot-indicator w-3 h-3 bg-[#333333] rounded-full inline-block"></span>
-                  <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-full inline-block"></span>
-                  <span class="photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-full inline-block"></span>
-                </div>
+                <div id="modal-photo-dots" class="flex gap-2 items-center bg-[#FFFFFF] px-3 py-1.5 rounded-full border border-[#B0B0B0]/60 shadow-xs"></div>
                 <button id="modal-photo-next" type="button" class="btn-wireframe-secondary text-xs py-1.5 px-4 shadow-xs rounded-full">
                   Siguiente →
                 </button>
               </div>
             </div>
 
-            <!-- Placeholder de Video (4 cols) -->
-            <div id="modal-video-panel" class="md:col-span-4 min-h-[350px] sm:min-h-[415px] wireframe-placeholder-dark media-frame media-video-panel rounded-2xl p-4 flex flex-col justify-between text-center">
-              <span class="text-[10px] font-mono text-[#D0D0D0] uppercase">Registro de Video</span>
-              <span id="modal-video-label" class="text-xs font-bold text-[#FFFFFF]">
-                [PLACEHOLDER DE VIDEO: COMPORTAMIENTO]
-              </span>
-              <span class="text-[10px] text-[#D0D0D0] font-mono">
-                Demostración de etología en Santander de Quilichao
-              </span>
-            </div>
+            <!-- Videos (4 cols): lo llena y lo oculta el JS según haya videos -->
+            <div id="modal-video-panel" class="hidden md:w-1/3 space-y-3"></div>
 
           </div>
         </div>
 
-        <!-- C. SONIDOS Y CANTOS (Reproductor de Audio) -->
-        <div class="p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-3">
+        <!-- Sonidos y cantos -->
+        <div id="modal-audio-block" class="p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-3">
           <div class="flex items-center justify-between text-xs font-mono">
-            <span class="font-bold uppercase text-[#333333]">C. Sonidos y Cantos de la Especie</span>
-            <span id="audio-duration-display" class="text-[#777777]">0:00 / 0:28</span>
+            <span class="font-bold uppercase text-[#333333]">Sonidos y cantos</span>
+            <span id="audio-duration-display" class="text-[#777777]">0:00</span>
           </div>
 
           <audio id="modal-species-audio" preload="none"></audio>
@@ -215,7 +214,7 @@
 
             <div class="flex-1 space-y-1">
               <div class="flex items-center justify-between text-[11px] font-mono text-[#777777]">
-                <span id="audio-state-text">Reproductor en espera [PLACEHOLDER DE AUDIO]</span>
+                <span id="audio-state-text">Listo para reproducir</span>
               </div>
               <div class="w-full bg-[#D0D0D0] h-2 border border-[#B0B0B0] rounded-xs overflow-hidden">
                 <div id="audio-progress-bar" class="bg-[#333333] h-full w-0 transition-all duration-150"></div>
@@ -224,41 +223,10 @@
           </div>
         </div>
 
-        <!-- A. INFORMACIÓN GENERAL -->
+        <!-- Biología y ecología -->
         <div class="space-y-3">
           <h3 class="text-xs font-mono font-bold uppercase text-[#333333] border-b border-[#B0B0B0] pb-1">
-            A. Información General y Morfología
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-8 space-y-2">
-              <p id="modal-description" class="text-xs text-[#333333] leading-relaxed"></p>
-              <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
-                <span class="text-[11px] font-bold text-[#333333] block mb-0.5">Rasgos Morfológicos:</span>
-                <p id="modal-physical" class="text-xs text-[#777777] leading-relaxed"></p>
-              </div>
-            </div>
-
-            <div class="md:col-span-4 bg-[#F2F2F2] border border-[#B0B0B0] p-3 rounded-sm space-y-2 text-xs">
-              <div>
-                <span class="text-[#777777] text-[10px] font-mono block">HÁBITAT PRINCIPAL</span>
-                <span id="modal-habitat" class="font-bold text-[#333333]"></span>
-              </div>
-              <div>
-                <span class="text-[#777777] text-[10px] font-mono block">CATEGORÍA ECOLÓGICA</span>
-                <span id="modal-category" class="font-bold text-[#333333]"></span>
-              </div>
-              <div>
-                <span class="text-[#777777] text-[10px] font-mono block">DISTRIBUCIÓN ALTITUDINAL</span>
-                <span id="modal-distribution" class="text-[#333333]"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- D. INFORMACIÓN BIOLÓGICA -->
-        <div class="space-y-3">
-          <h3 class="text-xs font-mono font-bold uppercase text-[#333333] border-b border-[#B0B0B0] pb-1">
-            D. Información Biológica y Ecológica
+            Biología y ecología
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm">
@@ -280,10 +248,10 @@
           </div>
         </div>
 
-        <!-- E. UBICACIÓN GEOGRÁFICA -->
+        <!-- Dónde se ha registrado -->
         <div class="space-y-3">
           <h3 class="text-xs font-mono font-bold uppercase text-[#333333] border-b border-[#B0B0B0] pb-1">
-            E. Ubicación y Lugares Registrados en Santander de Quilichao
+            Dónde se ha registrado
           </h3>
           
           <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
@@ -295,15 +263,12 @@
               <p id="modal-sighting-loc" class="text-[#333333] font-bold text-sm">Lugar</p>
               <p id="modal-sighting-notes" class="text-[#777777]">Notas de campo...</p>
               <div class="text-[11px] font-mono text-[#777777] flex gap-4 pt-1">
-                <span id="modal-sighting-coords">Coord: 0.0, 0.0</span>
-                <span id="modal-sighting-elevation">Alt: 0 msnm</span>
+                <span id="modal-sighting-coords">Coordenadas: sin dato</span>
+                <span id="modal-sighting-elevation" title="msnm: metros sobre el nivel del mar">Altitud: sin dato</span>
               </div>
             </div>
 
             <div class="md:col-span-4 h-full flex flex-col justify-center gap-2">
-              <div class="h-20 wireframe-placeholder">
-                [PLACEHOLDER DE MAPA DE REGISTRO]
-              </div>
               <a href="{{ route('home') }}#mapa" class="btn-wireframe-primary text-xs py-2 w-full text-center">
                 Ver en el Mapa Principal →
               </a>
@@ -315,7 +280,7 @@
 
       <!-- Pie del modal -->
       <div class="p-4 bg-[#F2F2F2] border-t border-[#B0B0B0] flex items-center justify-between text-[11px] font-mono text-[#777777]">
-        <span>Santander de Quilichao • Prototipo de Baja Fidelidad</span>
+        <span>BioAves Quilichao</span>
         <button id="modal-footer-close" type="button" class="btn-wireframe-secondary text-xs py-1 px-3">
           Cerrar Ficha
         </button>

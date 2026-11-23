@@ -3,18 +3,26 @@ function speciesMediaUrl(path) {
   return prefix + path.split("/").map(encodeURIComponent).join("/");
 }
 
+function realPhotos(bird) {
+  const ph = (bird.multimedia?.photos || []).filter((p) => p.src);
+  if (ph.length) return ph;
+  return bird.image ? [{ src: bird.image, label: bird.commonName }] : [];
+}
+
 function renderSpeciesVideos(bird) {
   const panel = document.getElementById("modal-video-panel");
   if (!panel) return;
-  if (!panel.dataset.placeholderMarkup) panel.dataset.placeholderMarkup = panel.innerHTML;
   const videos = bird.multimedia?.videos || [];
-  panel.innerHTML = videos.length
-    ? videos.map(video => `
-        <div class="media-video-card relative w-full bg-black">
-          <span class="media-caption">${video.label}</span>
-          <video controls preload="metadata" playsinline class="media-video w-full aspect-video object-cover bg-black" src="${speciesMediaUrl(video.src)}" aria-label="${video.label} de ${bird.commonName}"></video>
-        </div>`).join("")
-    : panel.dataset.placeholderMarkup;
+  panel.classList.toggle("hidden", !videos.length);
+  if (!videos.length) {
+    panel.innerHTML = "";
+    return;
+  }
+  panel.innerHTML = videos.map(video => `
+    <div class="media-video-card relative w-full bg-black">
+      <span class="media-caption">${video.label}</span>
+      <video controls preload="metadata" playsinline class="media-video w-full aspect-video object-cover bg-black" src="${speciesMediaUrl(video.src)}" aria-label="${video.label} de ${bird.commonName}"></video>
+    </div>`).join("");
 }
 
 /**
@@ -383,7 +391,8 @@ function initDetailModal() {
   if (prevPhotoBtn) {
     prevPhotoBtn.addEventListener("click", () => {
       if (!activeBirdForModal) return;
-      const total = activeBirdForModal.multimedia.photos.length;
+      const total = realPhotos(activeBirdForModal).length;
+      if (total <= 1) return;
       currentModalPhotoIdx = (currentModalPhotoIdx - 1 + total) % total;
       updateModalPhoto();
     });
@@ -392,7 +401,8 @@ function initDetailModal() {
   if (nextPhotoBtn) {
     nextPhotoBtn.addEventListener("click", () => {
       if (!activeBirdForModal) return;
-      const total = activeBirdForModal.multimedia.photos.length;
+      const total = realPhotos(activeBirdForModal).length;
+      if (total <= 1) return;
       currentModalPhotoIdx = (currentModalPhotoIdx + 1) % total;
       updateModalPhoto();
     });
@@ -419,8 +429,7 @@ function initDetailModal() {
               stateText.textContent = "Reproduciendo canto representativo...";
             })
             .catch(() => {
-              playSyntheticChirp();
-              simulatePlayback();
+              stateText.textContent = "No se pudo reproducir el audio";
             });
         }
       }
@@ -465,65 +474,44 @@ function initDetailModal() {
 
 function updateModalPhoto() {
   if (!activeBirdForModal) return;
-  const photos = (activeBirdForModal.multimedia && activeBirdForModal.multimedia.photos && activeBirdForModal.multimedia.photos.length > 0)
-    ? activeBirdForModal.multimedia.photos
-    : (activeBirdForModal.image ? [{ src: activeBirdForModal.image, label: activeBirdForModal.commonName }] : [{ label: activeBirdForModal.commonName }]);
-  const total = Math.max(1, photos.length);
-  currentModalPhotoIdx = Math.max(0, Math.min(currentModalPhotoIdx, total - 1));
-  const photo = photos[currentModalPhotoIdx] || { label: activeBirdForModal.commonName };
+  const photos = realPhotos(activeBirdForModal);
+  const total = photos.length;
+  currentModalPhotoIdx = Math.min(currentModalPhotoIdx, Math.max(total - 1, 0));
+  const photo = photos[currentModalPhotoIdx];
 
-  const photoLabel = document.getElementById("modal-photo-label");
-  const placeholderNote = document.getElementById("modal-photo-placeholder-note");
-  const photoIndicator = document.getElementById("modal-photo-indicator");
-  const dots = document.querySelectorAll(".photo-dot-indicator");
+  const img = document.getElementById("modal-photo-image");
+  const fallback = document.getElementById("modal-photo-fallback-box");
+  const caption = document.getElementById("modal-photo-caption");
+  const nav = document.getElementById("modal-photo-nav");
+  const dots = document.getElementById("modal-photo-dots");
+  const indicator = document.getElementById("modal-photo-indicator");
 
-  const photoBackdrop = document.getElementById("modal-photo-backdrop");
-  if (photoBackdrop) {
-    const src = photo.src ? speciesMediaUrl(photo.src) : (activeBirdForModal.image ? speciesMediaUrl(activeBirdForModal.image) : null);
-    photoBackdrop.classList.toggle("hidden", !src);
-    if (src) {
-      photoBackdrop.src = src;
+  if (img) {
+    img.classList.toggle("hidden", !photo);
+    if (photo) {
+      img.src = speciesMediaUrl(photo.src);
+      img.alt = `${activeBirdForModal.commonName}: ${photo.label}`;
     } else {
-      photoBackdrop.removeAttribute("src");
+      img.removeAttribute("src");
     }
   }
-
-  const photoFallbackBox = document.getElementById("modal-photo-fallback-box");
-  if (photoFallbackBox) {
-    const src = photo.src ? speciesMediaUrl(photo.src) : (activeBirdForModal.image ? speciesMediaUrl(activeBirdForModal.image) : null);
-    photoFallbackBox.classList.toggle("hidden", !!src);
+  if (fallback) fallback.classList.toggle("hidden", !!photo);
+  if (caption) {
+    caption.textContent = photo ? photo.label : "";
+    caption.classList.toggle("hidden", !photo);
   }
 
-  const photoImage = document.getElementById("modal-photo-image");
-  if (photoImage) {
-    const photoStage = photoImage.closest(".media-photo-stage");
-    const src = photo.src ? speciesMediaUrl(photo.src) : (activeBirdForModal.image ? speciesMediaUrl(activeBirdForModal.image) : null);
-    photoImage.classList.toggle("hidden", !src);
-    if (src) {
-      photoImage.src = src;
-      photoImage.alt = `${activeBirdForModal.commonName || ""}: ${photo.label || ""}`;
-      photoImage.style.objectFit = "contain";
-      photoImage.style.objectPosition = "center";
-      photoStage?.classList.add("has-photo");
-    } else {
-      photoImage.removeAttribute("src");
-      photoStage?.classList.remove("has-photo");
-    }
+  const multi = total > 1;
+  if (nav) nav.classList.toggle("hidden", !multi);
+  if (indicator) {
+    indicator.classList.toggle("hidden", !multi);
+    indicator.textContent = `Foto ${currentModalPhotoIdx + 1} de ${total}`;
   }
-  if (photoLabel) {
-    photoLabel.textContent = photo.label || activeBirdForModal.commonName || "";
-    photoLabel.classList.toggle("hidden", !!(photo.src || activeBirdForModal.image));
+  if (dots) {
+    dots.innerHTML = photos.map((_, i) =>
+      `<span class="photo-dot-indicator ${i === currentModalPhotoIdx ? "w-3 h-3 bg-[#333333]" : "w-2.5 h-2.5 bg-[#B0B0B0]"} rounded-full inline-block"></span>`
+    ).join("");
   }
-  if (placeholderNote) placeholderNote.classList.toggle("hidden", !!(photo.src || activeBirdForModal.image));
-  if (photoIndicator) photoIndicator.textContent = `Foto ${currentModalPhotoIdx + 1} de ${total}`;
-
-  dots.forEach((dot, idx) => {
-    if (idx === currentModalPhotoIdx) {
-      dot.className = "photo-dot-indicator w-3 h-3 bg-[#333333] rounded-xs inline-block";
-    } else {
-      dot.className = "photo-dot-indicator w-2.5 h-2.5 bg-[#B0B0B0] rounded-xs inline-block";
-    }
-  });
 }
 
 function resetAudioUI() {
@@ -535,7 +523,7 @@ function resetAudioUI() {
 
   if (btnIcon) btnIcon.textContent = "▶";
   if (btnText) btnText.textContent = "Reproducir Canto";
-  if (stateText) stateText.textContent = "Reproductor en espera";
+  if (stateText) stateText.textContent = "Listo para reproducir";
   if (progressBar) progressBar.style.width = "0%";
   if (durationDisplay) {
     const duration = (activeBirdForModal && activeBirdForModal.multimedia && activeBirdForModal.multimedia.audioDuration)
@@ -623,6 +611,7 @@ function openDetailModal(bird) {
     if (elevationEl) elevationEl.textContent = "Altitud: 1.060 msnm";
   }
 
+  document.getElementById("modal-audio-block")?.classList.toggle("hidden", !(bird.multimedia && bird.multimedia.audioSample));
   if (modalAudio) {
     if (bird.multimedia && bird.multimedia.audioSample) {
       modalAudio.src = bird.multimedia.audioLocal
