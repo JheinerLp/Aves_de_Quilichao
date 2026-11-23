@@ -28,7 +28,7 @@
         <a href="{{ route('home') }}#sobre-nosotros" class="bv-btn bv-btn-line"> Conoce nuestra misión</a>
       </div>
     </div>
-    <svg class="bv-wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C300 120 600 110 900 70s400-40 540 10v60H0z" fill="#f4f9e6"/><path d="M0 70C300 150 620 140 920 100s400-40 520 0" fill="none" stroke="#ffd21f" stroke-width="7"/><path d="M0 100C280 160 600 150 900 120s400-30 540-10" fill="none" stroke="#2e9b3a" stroke-width="12"/></svg>
+    <svg class="bv-wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 40C300 120 600 110 900 70s400-40 540 10v60H0z" fill="#f4f9e6"/><path class="bv-wave-y" d="M0 70C300 150 620 140 920 100s400-40 520 0" fill="none" stroke="#ffd21f" vector-effect="non-scaling-stroke"/><path class="bv-wave-g" d="M0 100C280 160 600 150 900 120s400-30 540-10" fill="none" stroke="#2e9b3a" vector-effect="non-scaling-stroke"/></svg>
   </section>
 
   <!-- CONTEXTO + INDICADORES -->
@@ -50,13 +50,12 @@
         <div><span class="bv-tag bv-tag-sun">Muestreo representativo</span><h2><i>🌿</i> Descubre nuestras aves <i>🌿</i></h2></div>
         <a href="{{ route('catalog.index') }}" class="bv-btn bv-btn-fill bv-small">Ver Catálogo Completo →</a>
       </div>
-      <div class="bv-controls">
-        <span id="carousel-status-indicator">Auto-desplazamiento activo</span>
-        <button id="carousel-prev-btn" type="button" aria-label="Anterior ave">‹</button>
-        <button id="carousel-next-btn" type="button" aria-label="Siguiente ave">›</button>
-      </div>
-      <div id="carousel-container" class="w-full overflow-x-auto no-scrollbar py-8 px-2 cursor-grab active:cursor-grabbing">
-        <div id="carousel-track" class="flex gap-6 items-center w-max"></div>
+      <div class="bv-carousel-wrap">
+        <button id="carousel-prev-btn" class="bv-car-btn bv-car-prev" type="button" aria-label="Anterior ave">‹</button>
+        <div id="carousel-container" class="w-full overflow-x-auto no-scrollbar py-8 px-2 cursor-grab active:cursor-grabbing">
+          <div id="carousel-track" class="flex gap-6 items-center w-max"></div>
+        </div>
+        <button id="carousel-next-btn" class="bv-car-btn bv-car-next" type="button" aria-label="Siguiente ave">›</button>
       </div>
     </div>
   </section>
@@ -625,9 +624,9 @@
           </p>
         </div>
 
-        <div class="flex items-center gap-2">
-          <button id="map-reset-btn" type="button" class="btn-wireframe-secondary text-xs">
-            Centrar Municipio
+        <div class="hidden lg:flex items-center gap-2">
+          <button id="map-reset-btn" type="button" class="btn-wireframe-secondary !text-sm lg:!text-base !py-2.5 lg:!py-3.5 !px-6 lg:!px-9">
+            📍 Centrar Municipio
           </button>
         </div>
       </div>
@@ -672,7 +671,14 @@
         
         <!-- Contenedor Leaflet (8 columnas) -->
         <div class="lg:col-span-8 bg-[#F2F2F2] border-2 border-[#B0B0B0] rounded-sm overflow-hidden shadow-sm relative">
-          
+
+          <!-- Botón Centrar Municipio (solo pantallas pequeñas, pegado al mapa) -->
+          <div class="lg:hidden p-2 bg-[#F2F2F2] border-b border-[#B0B0B0]">
+            <button type="button" onclick="document.getElementById('map-reset-btn').click()" class="btn-wireframe-secondary w-full !text-sm !py-2.5">
+              📍 Centrar Municipio
+            </button>
+          </div>
+
           <div id="leaflet-map-element" class="w-full h-[450px] sm:h-[520px] bg-[#E0E0E0] relative z-0">
             <!-- Leaflet JS inyecta el mapa en este contenedor -->
           </div>
@@ -960,16 +966,17 @@
         <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
           Acción y Preservación
         </span>
-        <h2 class="text-2xl sm:text-3xl font-black text-[#333333]">
+        <h2 class="text-2xl sm:text-3xl font-black text-[#333333] leading-[1.15] mb-3 text-balance">
           Conservar la avifauna de Santander de Quilichao
         </h2>
-        <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
-          La observación de aves adquiere verdadero valor cuando se vincula con la protección de los ecosistemas locales, la educación comunitaria y el monitoreo científico.
+        <p class="text-sm sm:text-base md:text-lg text-[#777777] leading-relaxed">
+            Santander de Quilichao fue reconocida como la primera Ciudad de las Aves de Suramérica, y esa distinción se mantiene con acciones: proteger sus ecosistemas, educar a la comunidad y monitorear las {{ $species->count() }} especies que ya hemos registrado.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse($conservation as $item)
+          @php $cat = strtolower($item->category); @endphp
           <div class="bg-[#FFFFFF] border border-[#B0B0B0] rounded-sm p-6 space-y-3 flex flex-col justify-between">
             <div class="space-y-3">
               <div class="w-8 h-8 bg-[#F2F2F2] border border-[#B0B0B0] flex items-center justify-center font-mono font-black text-xs text-[#333333]">
@@ -979,9 +986,16 @@
               <p class="text-xs text-[#777777] leading-relaxed">
                 {{ $item->summary }}
               </p>
+              @if($cat === 'accion_comunitaria')
+                <a href="#reportar-avistamiento" class="inline-block text-xs font-bold text-[#2f6b3a] hover:underline">Reporta un avistamiento →</a>
+              @elseif($cat === 'amenazas')
+                <a href="{{ route('guia-ambiental') }}" class="inline-block text-xs font-bold text-[#2f6b3a] hover:underline">Ver Guía Ambiental →</a>
+              @elseif($cat === 'etica')
+                <a href="#codigo-etico" class="inline-block text-xs font-bold text-[#2f6b3a] hover:underline">Ver el código ético →</a>
+              @endif
             </div>
             <div class="pt-3 border-t border-[#B0B0B0] text-[10px] font-mono text-[#777777]">
-              Categoría: {{ strtoupper($item->category) }}
+              Categoría: {{ ucfirst(str_replace('_', ' ', $cat)) }}
             </div>
           </div>
         @empty
@@ -992,39 +1006,45 @@
       </div>
 
       <!-- Módulo de Código Ético -->
-      <div class="p-8 bg-[#FFFFFF] border-2 border-[#333333] rounded-sm space-y-4">
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 bg-[#333333] text-[#FFFFFF] text-[10px] font-mono font-bold uppercase">
-            Protocolo de Campo
-          </span>
-          <span class="text-xs font-mono text-[#777777]">Decálogo del Pajarero Responsable</span>
+      <div id="codigo-etico" class="scroll-mt-24 p-5 sm:p-6 bg-[#FFFFFF] border-2 border-[#1F4D33] rounded-2xl space-y-4">
+        <div class="space-y-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 bg-[#1F4D33] text-[#FFFFFF] text-xs font-mono font-bold uppercase rounded-full">
+              Protocolo de Campo
+            </span>
+            <span class="text-sm font-mono text-[#4a4f45]">Decálogo del Pajarero Responsable</span>
+          </div>
+          <h3 class="text-2xl sm:text-4xl font-black text-[#1F4D33] leading-[1.15] text-balance max-w-3xl">
+            Código ético del observador de aves en Santander de Quilichao
+          </h3>
         </div>
-        <h3 class="text-xl font-bold text-[#333333]">
-          Código ético del observador de aves en Santander de Quilichao
-        </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-[#777777] pt-2">
-          <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-1">
-            <strong class="text-[#333333] block">1. Prioridad al bienestar del ave:</strong>
-            <span>Evita reproducir cantos (playback) reiteradamente para no provocar estrés en periodos de anidación.</span>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+          <div class="p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-xl space-y-1.5">
+            <span class="block text-4xl font-black text-[#2f6b3a] leading-none">1</span>
+            <strong class="block text-lg text-[#1F4D33]">Prioridad al bienestar del ave</strong>
+            <p class="text-sm sm:text-base text-[#4a4f45] leading-snug">Evita reproducir cantos (playback) reiteradamente para no provocar estrés en periodos de anidación.</p>
           </div>
-          <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-1">
-            <strong class="text-[#333333] block">2. Mantén senderos trazados:</strong>
-            <span>No abras trochas ni pisotees la vegetación frágil en cañadas, nacimientos de agua y reservas.</span>
+          <div class="p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-xl space-y-1.5">
+            <span class="block text-4xl font-black text-[#2f6b3a] leading-none">2</span>
+            <strong class="block text-lg text-[#1F4D33]">Mantén senderos trazados</strong>
+            <p class="text-sm sm:text-base text-[#4a4f45] leading-snug">No abras trochas ni pisotees la vegetación frágil en cañadas, nacimientos de agua y reservas.</p>
           </div>
-          <div class="p-3 bg-[#F2F2F2] border border-[#B0B0B0] rounded-sm space-y-1">
-            <strong class="text-[#333333] block">3. Respeto comunitario:</strong>
-            <span>Solicita permiso al transitar predios rurales y apoya a los guías comunitarios locales.</span>
+          <div class="p-4 bg-[#F2F2F2] border border-[#B0B0B0] rounded-xl space-y-1.5">
+            <span class="block text-4xl font-black text-[#2f6b3a] leading-none">3</span>
+            <strong class="block text-lg text-[#1F4D33]">Respeto comunitario</strong>
+            <p class="text-sm sm:text-base text-[#4a4f45] leading-snug">Solicita permiso al transitar predios rurales y apoya a los guías comunitarios locales.</p>
           </div>
         </div>
       </div>
 
       <!-- Banner hacia Guía Ambiental -->
-      <div class="p-6 bg-[#EAF3DF] border border-[#B0B0B0] rounded-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <h4 class="font-bold text-sm text-[#333333]">¿Quieres conocer los impactos ambientales y cómo mitigarlos?</h4>
-          <p class="text-xs text-[#777777]">Explora las principales amenazas a la avifauna quilichagüeña y acciones comunitarias de protección.</p>
+      <div class="px-6 py-5 sm:px-8 bg-[#EAF3DF] border border-[#B0B0B0] rounded-2xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div class="space-y-1 max-w-2xl">
+          <h4 class="font-black text-xl sm:text-2xl text-[#1F4D33]">¿Quieres conocer los impactos ambientales y cómo mitigarlos?</h4>
+          <p class="text-sm sm:text-base text-[#4a4f45] leading-snug">Explora las principales amenazas a la avifauna quilichagüeña y acciones comunitarias de protección.</p>
         </div>
-        <a href="{{ route('guia-ambiental') }}" class="btn-wireframe-primary text-xs py-2 px-5 whitespace-nowrap">
+        <a href="{{ route('guia-ambiental') }}" class="btn-wireframe-primary !text-base sm:!text-lg !py-2.5 !px-7 !rounded-full whitespace-nowrap">
           🌿 Ver Guía Ambiental Completa →
         </a>
       </div>
@@ -1040,27 +1060,28 @@
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <div class="lg:col-span-7 space-y-5">
+        <div class="lg:col-span-7 space-y-5 relative">
           <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#777777]">
             Identidad del Proyecto
           </span>
           <h2 class="text-2xl sm:text-3xl font-black text-[#333333]">
             Acerca de BioAves Quilichao
           </h2>
-          <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
+          <p class="text-sm sm:text-base md:text-lg text-[#777777] leading-relaxed">
             BioAves Quilichao es una iniciativa ornitológica comunitaria orientada a mapear, registrar y difundir el patrimonio ornitológico de Santander de Quilichao, Cauca.
           </p>
-          <p class="text-xs sm:text-sm text-[#777777] leading-relaxed">
+          <p class="text-sm sm:text-base md:text-lg text-[#777777] leading-relaxed">
             A través de metodologías de ciencia ciudadana, combinamos tecnología web accesible, cartografía abierta y rigurosidad taxonómica para fomentar el aviturismo responsable y la conservación de microcuencas y bosques andinos.
           </p>
 
-          <div class="pt-2 flex flex-wrap gap-3">
-            <a href="{{ route('catalog.index') }}" class="btn-wireframe-primary text-xs">
-              Explorar Catálogo de Aves ↗
-            </a>
-            <a href="#mapa" class="btn-wireframe-secondary text-xs">
-              Ver Mapa de Observaciones
-            </a>
+          <div class="pt-2 flex flex-col items-center gap-3
+                      lg:items-start lg:pt-0 lg:absolute lg:left-full lg:top-1/2 lg:-translate-y-1/2 lg:ml-6 lg:w-max">
+              <a href="{{ route('catalog.index') }}" class="btn-wireframe-primary text-sm sm:text-base">
+                  Explorar Catálogo de Aves ↗
+              </a>
+              <a href="#mapa" class="btn-wireframe-secondary text-sm sm:text-base">
+                  Ver Mapa de Observaciones
+              </a>
           </div>
         </div>
 

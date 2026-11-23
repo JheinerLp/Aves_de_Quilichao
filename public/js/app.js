@@ -149,15 +149,13 @@ function initNavbar() {
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 30) {
-      navbar.classList.add("bg-[#FFFFFF]", "shadow-sm");
-      navbar.classList.remove("bg-[#FFFFFF]/90");
-    } else {
-      navbar.classList.remove("bg-[#FFFFFF]", "shadow-sm");
-      navbar.classList.add("bg-[#FFFFFF]/90");
-    }
-  });
+  const onScroll = () => {
+    const scrolled = window.scrollY > 30;
+    navbar.classList.toggle("bg-[#FFFFFF]", scrolled);
+    navbar.classList.toggle("shadow-sm", scrolled);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener("click", () => {
@@ -271,12 +269,14 @@ function initCarousel() {
 
   animFrameId = requestAnimationFrame(autoScroll);
 
-  container.addEventListener("mouseenter", () => {
+  const hoverZone = container.closest(".bv-carousel-wrap") || container;
+
+  hoverZone.addEventListener("mouseenter", () => {
     isPaused = true;
     if (statusIndicator) statusIndicator.textContent = "Pausado (Hover)";
   });
 
-  container.addEventListener("mouseleave", () => {
+  hoverZone.addEventListener("mouseleave", () => {
     isPaused = false;
     if (statusIndicator) statusIndicator.textContent = "Auto-Desplazamiento Activo";
   });
