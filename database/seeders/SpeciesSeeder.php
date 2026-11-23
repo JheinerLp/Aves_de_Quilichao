@@ -324,13 +324,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'carrao-3.svg'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/e/ee/Aramus_guarauna_-_Limpkin_XC250488.mp3',
-                    'caption' => 'Vocalización del Carrao (Aramus guarauna)',
-                    'duration' => 15,
+                    'asset' => 'video/CARRAO SONIDO.mp4',
+                    'file' => 'CARRAO SONIDO.mp4',
+                    'caption' => 'Registro del canto del Carrao',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE CARRAO]',
-                    'file' => 'video-carrao.mp4',
+                'videos' => [
+                    ['caption' => 'Carrao vocalizando', 'file' => 'CARRAO HABLANDO.mp4', 'asset' => 'video/CARRAO HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto del Carrao', 'file' => 'CARRAO SONIDO.mp4', 'asset' => 'video/CARRAO SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -353,13 +354,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'ciguenuela-cuellinegra-3.svg'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Himantopus_mexicanus_-_Black-necked_Stilt_-_XC99570.ogg',
-                    'caption' => 'Llamado de alarma de la Cigüeñuela cuellinegra',
-                    'duration' => 20,
+                    'asset' => 'video/CIGUENUELA CUELLINEGRA SONIDO.mp4',
+                    'file' => 'CIGUENUELA CUELLINEGRA SONIDO.mp4',
+                    'caption' => 'Registro del canto de la Cigüeñuela Cuellinegra',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE CIGÜEÑUELA CUELLINEGRA]',
-                    'file' => 'video-ciguenuela-cuellinegra.mp4',
+                'videos' => [
+                    ['caption' => 'Cigüeñuela Cuellinegra vocalizando', 'file' => 'CIGUENUELA CUELLINEGRA HABLANDO.mp4', 'asset' => 'video/CIGUENUELA CUELLINEGRA HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto de la Cigüeñuela Cuellinegra', 'file' => 'CIGUENUELA CUELLINEGRA SONIDO.mp4', 'asset' => 'video/CIGUENUELA CUELLINEGRA SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -382,13 +384,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'garceta-nivea-3.svg'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/9/93/Littleblueheronfishes.ogg',
-                    'caption' => 'Sonidos de colonia y forrajeo de garzas',
+                    'asset' => 'video/GARCETA NIVEA SONIDO.mp4',
+                    'file' => 'GARCETA NIVEA SONIDO.mp4',
+                    'caption' => 'Registro del canto de la Garceta Nívea',
                     'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE GARCETA NÍVEA]',
-                    'file' => 'video-garceta-nivea.mp4',
+                'videos' => [
+                    ['caption' => 'Garceta Nívea vocalizando', 'file' => 'GARCETA NIVEA HABLANDO.mp4', 'asset' => 'video/GARCETA NIVEA HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto de la Garceta Nívea', 'file' => 'GARCETA NIVEA SONIDO.mp4', 'asset' => 'video/GARCETA NIVEA SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -411,13 +414,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'garceta-azul-3.svg'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/9/93/Littleblueheronfishes.ogg',
-                    'caption' => 'Sonidos de colonia y forrajeo de garzas',
+                    'asset' => 'video/GARCETA AZUL SONIDO.mp4',
+                    'file' => 'GARCETA AZUL SONIDO.mp4',
+                    'caption' => 'Registro del canto de la Garceta Azul',
                     'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE GARCETA AZUL]',
-                    'file' => 'video-garceta-azul.mp4',
+                'videos' => [
+                    ['caption' => 'Garceta Azul vocalizando', 'file' => 'GARCETA AZUL HABLANDO.mp4', 'asset' => 'video/GARCETA AZUL HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto de la Garceta Azul', 'file' => 'GARCETA AZUL SONIDO.mp4', 'asset' => 'video/GARCETA AZUL SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -440,13 +444,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'morito-comun-3.svg'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Glossy_ibis.ogg',
-                    'caption' => 'Llamados del Morito común en vuelo',
-                    'duration' => 12,
+                    'asset' => 'video/MORITO COMUN SONIDO.mp4',
+                    'file' => 'MORITO COMUN SONIDO.mp4',
+                    'caption' => 'Registro del canto del Morito Común',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE MORITO COMÚN]',
-                    'file' => 'video-morito-comun.mp4',
+                'videos' => [
+                    ['caption' => 'Morito Común vocalizando', 'file' => 'MORITO COMUN HABLANDO.mp4', 'asset' => 'video/MORITO COMUN HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto del Morito Común', 'file' => 'MORITO COMUN SONIDO.mp4', 'asset' => 'video/MORITO COMUN SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -469,13 +474,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'caracolero-comun-3.svg'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/9/97/Rostrhamus_sociabilis_-_Snail_Kite_XC251465.mp3',
-                    'caption' => 'Llamado del Caracolero común (Rostrhamus sociabilis)',
-                    'duration' => 15,
+                    'asset' => 'video/CARACOLERO COMÚN SONIDO.mp4',
+                    'file' => 'CARACOLERO COMÚN SONIDO.mp4',
+                    'caption' => 'Registro del canto del Caracolero Común',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE CARACOLERO COMÚN]',
-                    'file' => 'video-caracolero-comun.mp4',
+                'videos' => [
+                    ['caption' => 'Caracolero Común vocalizando', 'file' => 'CARACOLERO COMÚN HABLANDO.mp4', 'asset' => 'video/CARACOLERO COMÚN HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto del Caracolero Común', 'file' => 'CARACOLERO COMÚN SONIDO.mp4', 'asset' => 'video/CARACOLERO COMÚN SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -497,10 +503,15 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO]', 'file' => 'bandurria-comun-2.svg'],
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'bandurria-comun-3.svg'],
                 ],
-                'audio' => null,
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE BANDURRIA COMÚN]',
-                    'file' => 'video-bandurria-comun.mp4',
+                'audio' => [
+                    'asset' => 'video/BANDURIA COMÚN SONIDO.mp4',
+                    'file' => 'BANDURIA COMÚN SONIDO.mp4',
+                    'caption' => 'Registro del canto de la Bandurria Común',
+                    'duration' => 10,
+                ],
+                'videos' => [
+                    ['caption' => 'Bandurria Común vocalizando', 'file' => 'BANDURIA COMÚN HABLANDO.mp4', 'asset' => 'video/BANDURIA COMÚN HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto de la Bandurria Común', 'file' => 'BANDURIA COMÚN SONIDO.mp4', 'asset' => 'video/BANDURIA COMÚN SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -523,13 +534,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'golondrina-pechigris-3.svg'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Progne_chalybea_-_Grey-breasted_Martin_XC243000.mp3',
-                    'caption' => 'Trino de la Golondrina pechigrís (Progne chalybea)',
-                    'duration' => 18,
+                    'asset' => 'video/GOLONDRINA PECHIGRIS SONIDO.mp4',
+                    'file' => 'GOLONDRINA PECHIGRIS SONIDO.mp4',
+                    'caption' => 'Registro del canto de la Golondrina Pechigrís',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE GOLONDRINA PECHIGRÍS]',
-                    'file' => 'video-golondrina-pechigris.mp4',
+                'videos' => [
+                    ['caption' => 'Golondrina Pechigrís vocalizando', 'file' => 'GOLONDRINA PECHIGRIS HABLANDO.mp4', 'asset' => 'video/GOLONDRINA PECHIGRIS HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto de la Golondrina Pechigrís', 'file' => 'GOLONDRINA PECHIGRIS SONIDO.mp4', 'asset' => 'video/GOLONDRINA PECHIGRIS SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -609,10 +621,15 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO]', 'file' => 'elanio-enano-2.svg'],
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'elanio-enano-3.svg'],
                 ],
-                'audio' => null,
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE ELANIO ENANO]',
-                    'file' => 'video-elanio-enano.mp4',
+                'audio' => [
+                    'asset' => 'video/ELANIO ENANO SONIDO.mp4',
+                    'file' => 'ELANIO ENANO SONIDO.mp4',
+                    'caption' => 'Registro del canto del Elanio Enano',
+                    'duration' => 10,
+                ],
+                'videos' => [
+                    ['caption' => 'Elanio Enano vocalizando', 'file' => 'ELANIO ENANO HABLANDO.mp4', 'asset' => 'video/ELANIO ENANO HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto del Elanio Enano', 'file' => 'ELANIO ENANO SONIDO.mp4', 'asset' => 'video/ELANIO ENANO SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -664,13 +681,14 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'anhinga-americana-3.svg'],
                 ],
                 'audio' => [
-                    'url' => 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Anhinga_Everglades_National_Park.ogg',
-                    'caption' => 'Vocalizaciones de colonia de Anhinga americana',
-                    'duration' => 20,
+                    'asset' => 'video/ANHINGA SONIDO.mp4',
+                    'file' => 'ANHINGA SONIDO.mp4',
+                    'caption' => 'Registro del canto de la Anhinga Americana',
+                    'duration' => 10,
                 ],
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE ANHINGA AMERICANA]',
-                    'file' => 'video-anhinga-americana.mp4',
+                'videos' => [
+                    ['caption' => 'Anhinga Americana vocalizando', 'file' => 'ANHINGA HABLANDO.mp4', 'asset' => 'video/ANHINGA HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto de la Anhinga Americana', 'file' => 'ANHINGA SONIDO.mp4', 'asset' => 'video/ANHINGA SONIDO.mp4', 'duration' => 10],
                 ],
             ],
             [
@@ -721,10 +739,15 @@ class SpeciesSeeder extends Seeder
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 2 DE 3: PRIMER PLANO]', 'file' => 'ermitano-hirsuto-2.svg'],
                     ['caption' => '[PLACEHOLDER DE FOTOGRAFÍA 3 DE 3: AVE EN HÁBITAT]', 'file' => 'ermitano-hirsuto-3.svg'],
                 ],
-                'audio' => null,
-                'video' => [
-                    'caption' => '[PLACEHOLDER DE VIDEO: REGISTRO DE ERMITAÑO HIRSUTO]',
-                    'file' => 'video-ermitano-hirsuto.mp4',
+                'audio' => [
+                    'asset' => 'video/ERMITAÑO HIRSUTO SONIDO.mp4',
+                    'file' => 'ERMITAÑO HIRSUTO SONIDO.mp4',
+                    'caption' => 'Registro del canto del Ermitaño Hirsuto',
+                    'duration' => 10,
+                ],
+                'videos' => [
+                    ['caption' => 'Ermitaño Hirsuto vocalizando', 'file' => 'ERMITAÑO HIRSUTO HABLANDO.mp4', 'asset' => 'video/ERMITAÑO HIRSUTO HABLANDO.mp4', 'duration' => 10],
+                    ['caption' => 'Registro del canto del Ermitaño Hirsuto', 'file' => 'ERMITAÑO HIRSUTO SONIDO.mp4', 'asset' => 'video/ERMITAÑO HIRSUTO SONIDO.mp4', 'duration' => 10],
                 ],
             ],
         ];

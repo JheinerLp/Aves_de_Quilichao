@@ -15,10 +15,10 @@
 
   @include('partials.header')
 
-  <!-- HERO: video en video/hero.mp4 -->
+  <!-- HERO: registro del Chicao en vuelo -->
   <section id="inicio" class="bv-hero">
     <video class="bv-video" autoplay muted loop playsinline preload="auto">
-      <source src="{{ asset('video/hero.mp4') }}" type="video/mp4">
+      <source src="{{ asset('video/CHICAO VOLANDO.mp4') }}" type="video/mp4">
     </video>
     <div class="bv-hero-in">
       <h1>Descubre las aves de nuestro <span class="bv-script">territorio</span></h1>

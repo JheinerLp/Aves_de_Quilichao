@@ -643,9 +643,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE CARRAO]",
-      "audioDuration": "0:15",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Aramus_guarauna_-_Limpkin_XC250488.mp3"
+      "videoPlaceholder": "Registros audiovisuales del Carrao",
+      "videos": [
+        { "src": "video/CARRAO HABLANDO.mp4", "label": "Carrao vocalizando" },
+        { "src": "video/CARRAO SONIDO.mp4", "label": "Registro del canto del Carrao" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/CARRAO SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -690,9 +695,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE CIGÜEÑUELA CUELLINEGRA]",
-      "audioDuration": "0:20",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Himantopus_mexicanus_-_Black-necked_Stilt_-_XC99570.ogg"
+      "videoPlaceholder": "Registros audiovisuales de la Cigüeñuela Cuellinegra",
+      "videos": [
+        { "src": "video/CIGUENUELA CUELLINEGRA HABLANDO.mp4", "label": "Cigüeñuela Cuellinegra vocalizando" },
+        { "src": "video/CIGUENUELA CUELLINEGRA SONIDO.mp4", "label": "Registro del canto de la Cigüeñuela Cuellinegra" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/CIGUENUELA CUELLINEGRA SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -737,9 +747,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE GARCETA NÍVEA]",
+      "videoPlaceholder": "Registros audiovisuales de la Garceta Nívea",
+      "videos": [
+        { "src": "video/GARCETA NIVEA HABLANDO.mp4", "label": "Garceta Nívea vocalizando" },
+        { "src": "video/GARCETA NIVEA SONIDO.mp4", "label": "Registro del canto de la Garceta Nívea" }
+      ],
       "audioDuration": "0:10",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/9/93/Littleblueheronfishes.ogg"
+      "audioSample": "video/GARCETA NIVEA SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -784,9 +799,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE GARCETA AZUL]",
+      "videoPlaceholder": "Registros audiovisuales de la Garceta Azul",
+      "videos": [
+        { "src": "video/GARCETA AZUL HABLANDO.mp4", "label": "Garceta Azul vocalizando" },
+        { "src": "video/GARCETA AZUL SONIDO.mp4", "label": "Registro del canto de la Garceta Azul" }
+      ],
       "audioDuration": "0:10",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/9/93/Littleblueheronfishes.ogg"
+      "audioSample": "video/GARCETA AZUL SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -831,9 +851,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE MORITO COMÚN]",
-      "audioDuration": "0:12",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Glossy_ibis.ogg"
+      "videoPlaceholder": "Registros audiovisuales del Morito Común",
+      "videos": [
+        { "src": "video/MORITO COMUN HABLANDO.mp4", "label": "Morito Común vocalizando" },
+        { "src": "video/MORITO COMUN SONIDO.mp4", "label": "Registro del canto del Morito Común" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/MORITO COMUN SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -878,9 +903,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE CARACOLERO COMÚN]",
-      "audioDuration": "0:15",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/9/97/Rostrhamus_sociabilis_-_Snail_Kite_XC251465.mp3"
+      "videoPlaceholder": "Registros audiovisuales del Caracolero Común",
+      "videos": [
+        { "src": "video/CARACOLERO COMÚN HABLANDO.mp4", "label": "Caracolero Común vocalizando" },
+        { "src": "video/CARACOLERO COMÚN SONIDO.mp4", "label": "Registro del canto del Caracolero Común" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/CARACOLERO COMÚN SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -925,9 +955,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE BANDURRIA COMÚN]",
-      "audioDuration": "0:15",
-      "audioSample": null
+      "videoPlaceholder": "Registros audiovisuales de la Bandurria Común",
+      "videos": [
+        { "src": "video/BANDURIA COMÚN HABLANDO.mp4", "label": "Bandurria Común vocalizando" },
+        { "src": "video/BANDURIA COMÚN SONIDO.mp4", "label": "Registro del canto de la Bandurria Común" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/BANDURIA COMÚN SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -972,9 +1007,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE GOLONDRINA PECHIGRÍS]",
-      "audioDuration": "0:18",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Progne_chalybea_-_Grey-breasted_Martin_XC243000.mp3"
+      "videoPlaceholder": "Registros audiovisuales de la Golondrina Pechigrís",
+      "videos": [
+        { "src": "video/GOLONDRINA PECHIGRIS HABLANDO.mp4", "label": "Golondrina Pechigrís vocalizando" },
+        { "src": "video/GOLONDRINA PECHIGRIS SONIDO.mp4", "label": "Registro del canto de la Golondrina Pechigrís" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/GOLONDRINA PECHIGRIS SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -1113,9 +1153,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE ELANIO ENANO]",
-      "audioDuration": "0:15",
-      "audioSample": null
+      "videoPlaceholder": "Registros audiovisuales del Elanio Enano",
+      "videos": [
+        { "src": "video/ELANIO ENANO HABLANDO.mp4", "label": "Elanio Enano vocalizando" },
+        { "src": "video/ELANIO ENANO SONIDO.mp4", "label": "Registro del canto del Elanio Enano" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/ELANIO ENANO SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -1207,9 +1252,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE ANHINGA AMERICANA]",
-      "audioDuration": "0:20",
-      "audioSample": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Anhinga_Everglades_National_Park.ogg"
+      "videoPlaceholder": "Registros audiovisuales de la Anhinga Americana",
+      "videos": [
+        { "src": "video/ANHINGA HABLANDO.mp4", "label": "Anhinga Americana vocalizando" },
+        { "src": "video/ANHINGA SONIDO.mp4", "label": "Registro del canto de la Anhinga Americana" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/ANHINGA SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",
@@ -1301,9 +1351,14 @@ const BIOAVES_DATA = [
           "label": "[FOTOGRAFÍA 3 DE 3: COMPORTAMIENTO]"
         }
       ],
-      "videoPlaceholder": "[PLACEHOLDER DE VIDEO: REGISTRO DE ERMITAÑO HIRSUTO]",
-      "audioDuration": "0:15",
-      "audioSample": null
+      "videoPlaceholder": "Registros audiovisuales del Ermitaño Hirsuto",
+      "videos": [
+        { "src": "video/ERMITAÑO HIRSUTO HABLANDO.mp4", "label": "Ermitaño Hirsuto vocalizando" },
+        { "src": "video/ERMITAÑO HIRSUTO SONIDO.mp4", "label": "Registro del canto del Ermitaño Hirsuto" }
+      ],
+      "audioDuration": "0:10",
+      "audioSample": "video/ERMITAÑO HIRSUTO SONIDO.mp4",
+      "audioLocal": true
     },
     "sighting": {
       "locationName": "Santander de Quilichao (No documentado en fuentes primarias)",

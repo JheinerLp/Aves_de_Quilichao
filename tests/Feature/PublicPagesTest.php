@@ -49,6 +49,39 @@ class PublicPagesTest extends TestCase
         $response->assertSee('Deforestación');
     }
 
+    public function test_new_local_bird_videos_are_connected_to_their_species(): void
+    {
+        $expectedMedia = [
+            'anhinga-americana' => ['ANHINGA HABLANDO.mp4', 'ANHINGA SONIDO.mp4'],
+            'bandurria-comun' => ['BANDURIA COMÚN HABLANDO.mp4', 'BANDURIA COMÚN SONIDO.mp4'],
+            'caracolero-comun' => ['CARACOLERO COMÚN HABLANDO.mp4', 'CARACOLERO COMÚN SONIDO.mp4'],
+            'carrao' => ['CARRAO HABLANDO.mp4', 'CARRAO SONIDO.mp4'],
+            'ciguenuela-cuellinegra' => ['CIGUENUELA CUELLINEGRA HABLANDO.mp4', 'CIGUENUELA CUELLINEGRA SONIDO.mp4'],
+            'elanio-enano' => ['ELANIO ENANO HABLANDO.mp4', 'ELANIO ENANO SONIDO.mp4'],
+            'ermitano-hirsuto' => ['ERMITAÑO HIRSUTO HABLANDO.mp4', 'ERMITAÑO HIRSUTO SONIDO.mp4'],
+            'garceta-azul' => ['GARCETA AZUL HABLANDO.mp4', 'GARCETA AZUL SONIDO.mp4'],
+            'garceta-nivea' => ['GARCETA NIVEA HABLANDO.mp4', 'GARCETA NIVEA SONIDO.mp4'],
+            'golondrina-pechigris' => ['GOLONDRINA PECHIGRIS HABLANDO.mp4', 'GOLONDRINA PECHIGRIS SONIDO.mp4'],
+            'morito-comun' => ['MORITO COMUN HABLANDO.mp4', 'MORITO COMUN SONIDO.mp4'],
+        ];
+
+        foreach ($expectedMedia as $slug => [$spokenFile, $soundFile]) {
+            $species = \App\Models\Species::where('slug', $slug)->firstOrFail();
+
+            $this->assertSame(
+                ["asset:video/{$spokenFile}", "asset:video/{$soundFile}"],
+                $species->videos()->pluck('storage_path')->all()
+            );
+            $this->assertSame("asset:video/{$soundFile}", $species->audios()->value('storage_path'));
+            $this->assertFileExists(public_path("video/{$spokenFile}"));
+            $this->assertFileExists(public_path("video/{$soundFile}"));
+        }
+
+        $this->get('/')
+            ->assertStatus(200)
+            ->assertSee('video/CHICAO VOLANDO.mp4', false);
+    }
+
     public function test_species_api_endpoint_returns_json(): void
     {
         $response = $this->getJson('/api/v1/species');
