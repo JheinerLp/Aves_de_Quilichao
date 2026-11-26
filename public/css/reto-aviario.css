@@ -1,0 +1,149 @@
+/* Estilos aislados para Reto Aviario. */
+#ra-app {
+  min-height: 100vh;
+  color: #333333;
+  background: linear-gradient(180deg, #f3f8f1 0, #ffffff 35rem);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+#ra-app *, #ra-app *::before, #ra-app *::after { box-sizing: border-box; }
+#ra-app [hidden] { display: none !important; }
+
+#main-navbar.bv-header { position: fixed; top: 0; right: 0; left: 0; z-index: 1000; }
+#ra-app h1, #ra-app h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
+
+#ra-app .ra-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px max(20px, calc((100vw - 1280px) / 2));
+  background: #ffffff;
+  border-bottom: 1px solid #b0b0b0;
+}
+
+#ra-app .ra-brand { display: flex; flex-direction: column; gap: 3px; color: #333333; text-decoration: none; white-space: nowrap; }
+#ra-app .ra-brand-name { font-size: 16px; font-weight: 900; letter-spacing: 1.8px; }
+#ra-app .ra-brand-location { color: #777777; font-family: monospace; font-size: 9px; letter-spacing: .6px; }
+#ra-app .ra-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 4px; }
+#ra-app .ra-nav a { padding: 9px 10px; color: #333333; font-size: 12px; text-decoration: none; border: 1px solid transparent; }
+#ra-app .ra-nav a:hover, #ra-app .ra-nav a[aria-current="page"] { background: #f2f2f2; border-color: #b0b0b0; }
+#ra-app .ra-nav .ra-catalog-link { margin-left: 6px; color: #ffffff; background: #333333; border-color: #333333; font-weight: 700; }
+
+#ra-app .ra-main { width: min(1120px, calc(100% - 40px)); min-height: calc(100vh - 125px); margin: 0 auto; padding: clamp(132px, 12vw, 154px) 0 64px; }
+#ra-app .ra-screen { width: 100%; }
+#ra-app .ra-eyebrow { color: #28743a; font-family: inherit; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+#ra-app h1 { margin: 8px 0 10px; color: #173c28; font-family: inherit; font-size: clamp(32px, 4vw, 46px); font-weight: 850; letter-spacing: -1.4px; line-height: 1.1; }
+#ra-app .ra-intro { max-width: 690px; margin: 0; color: #52665a; font-size: 16px; line-height: 1.7; }
+#ra-app .ra-catalog-note { display: inline-flex; align-items: center; gap: 8px; margin: 20px 0 26px; padding: 9px 14px; color: #376546; background: #eaf5e7; border: 1px solid #d7e9d4; border-radius: 999px; font-size: 12px; }
+#ra-app .ra-game-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+#ra-app .ra-game-card { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; color: #263d2d; background: #ffffff; border: 1px solid #e0e9df; border-radius: 22px; box-shadow: 0 8px 26px rgba(29,72,41,.08); text-align: left; cursor: pointer; transition: transform .28s cubic-bezier(.2,.75,.25,1), box-shadow .28s ease, border-color .28s ease; }
+#ra-app .ra-game-card::after { content: ""; position: absolute; inset: 0; border: 2px solid transparent; border-radius: 22px; pointer-events: none; transition: border-color .28s ease, box-shadow .28s ease; }
+#ra-app .ra-game-card:hover { transform: translateY(-8px) scale(1.008); border-color: #75b77c; box-shadow: 0 20px 44px rgba(46,125,58,.2), 0 8px 18px rgba(51,51,51,.08); }
+#ra-app .ra-game-card:hover::after { border-color: rgba(46,155,58,.65); box-shadow: inset 0 0 0 1px rgba(255,210,31,.7); }
+#ra-app .ra-game-card:active { transform: translateY(-3px) scale(1.004); }
+#ra-app .ra-game-card:focus-visible, #ra-app button:focus-visible, #ra-app select:focus-visible { outline: 3px solid #777777; outline-offset: 2px; }
+#ra-app .ra-card-image { position: relative; display: block; height: 235px; overflow: hidden; background: #dce8dc; border-bottom: 1px solid #e0e9df; }
+#ra-app .ra-card-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(20,25,18,.25) 100%); opacity: .35; transition: opacity .28s ease, background .28s ease; }
+#ra-app .ra-card-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; transition: transform .5s cubic-bezier(.2,.75,.25,1), filter .28s ease; }
+#ra-app .ra-game-card:hover .ra-card-image img { transform: scale(1.075); }
+#ra-app .ra-game-card:hover .ra-card-image::after { opacity: 1; background: linear-gradient(180deg, rgba(255,210,31,.08), rgba(46,155,58,.32)); }
+#ra-app .ra-puzzle-mark { position: absolute; right: 14px; bottom: 13px; display: grid; width: 45px; height: 45px; place-items: center; color: #333333; background: rgba(255,255,255,.92); border: 1px solid #777777; font-size: 24px; }
+#ra-app .ra-game-card:hover .ra-puzzle-mark { z-index: 2; background: #ffd21f; border-color: #2e9b3a; transform: rotate(-5deg) scale(1.08); transition: .28s ease; }
+#ra-app .ra-quiz-image img { filter: grayscale(.72) brightness(.42); }
+#ra-app .ra-game-card:hover .ra-quiz-image img { filter: grayscale(.12) brightness(.68); }
+#ra-app .ra-question-mark { position: absolute; inset: 0; display: grid; place-items: center; color: #ffffff; font-size: 76px; font-weight: 700; text-shadow: 0 2px 12px #111111; }
+#ra-app .ra-game-card:hover .ra-question-mark { z-index: 2; color: #ffd21f; transform: scale(1.12); text-shadow: 0 4px 18px rgba(46,155,58,.9); transition: .28s ease; }
+#ra-app .ra-card-content { display: block; padding: 20px 22px 22px; }
+#ra-app .ra-game-card:hover .ra-card-content { background: linear-gradient(135deg, #ffffff 0%, #f4f9e6 100%); }
+#ra-app .ra-card-meta { display: flex; justify-content: space-between; gap: 12px; color: #748579; font-family: inherit; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+#ra-app .ra-card-meta span:last-child { padding: 5px 9px; color: #397448; background: #edf6eb; border-radius: 999px; letter-spacing: .2px; }
+#ra-app .ra-card-title { display: block; margin: 14px 0 7px; color: #173c28; font-size: 23px; font-weight: 800; letter-spacing: -.5px; }
+#ra-app .ra-card-description { display: block; min-height: 42px; color: #647469; font-size: 14px; line-height: 1.6; }
+#ra-app .ra-card-action { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 14px; color: #275b35; border-top: 1px solid #e4ece3; font-size: 13px; font-weight: 800; transition: color .28s ease, border-color .28s ease; }
+#ra-app .ra-game-card:hover .ra-card-action { color: #176b2b; border-color: #a9d2ac; }
+#ra-app .ra-card-action span:last-child { font-size: 20px; }
+#ra-app .ra-game-card:hover .ra-card-action span:last-child { transform: translateX(7px); transition: transform .28s ease; }
+
+#ra-app .ra-back-button { margin: 0 0 18px; padding: 9px 14px; color: #356346; background: #edf5eb; border: 1px solid #dcebd9; border-radius: 999px; font-size: 13px; font-weight: 750; transition: background .2s ease, transform .2s ease; }
+#ra-app .ra-back-button:hover { color: #174b2a; background: #e0efdc; transform: translateX(-3px); }
+#ra-app .ra-game-heading { position: sticky; top: 112px; z-index: 30; display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin: 0 0 24px; padding: 14px 18px; background: #ffffff; border: 1px solid #e3ece1; border-radius: 18px; box-shadow: 0 10px 28px rgba(29,72,41,.1); }
+#ra-app .ra-game-heading h1 { margin-bottom: 0; }
+#ra-app .ra-score { padding: 10px 14px; color: #1d5e30; background: #eaf5e7; border: 1px solid #d2e8ce; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+#ra-app .ra-progress-row { display: flex; justify-content: space-between; margin-bottom: 8px; color: #68796d; font-family: inherit; font-size: 12px; font-weight: 700; }
+#ra-app .ra-progress-track { height: 9px; overflow: hidden; background: #e6eee4; border-radius: 999px; }
+#ra-app .ra-progress-track span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, #7bc56c, #21833b); border-radius: inherit; transition: width .2s ease; }
+#ra-app .ra-question-panel { padding: clamp(20px, 4vw, 34px); background: #ffffff; border: 1px solid #e0e9df; border-radius: 24px; box-shadow: 0 14px 36px rgba(29,72,41,.08); }
+#ra-app .ra-question-label { margin: 0 0 10px; color: #498052; font-family: inherit; font-size: 10px; font-weight: 800; letter-spacing: 1.2px; }
+#ra-app .ra-clue { margin: 0 0 24px; color: #253e2c; font-size: clamp(18px, 2.2vw, 22px); font-weight: 650; line-height: 1.6; }
+#ra-app .ra-answer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+#ra-app .ra-answer-option { min-height: 54px; padding: 13px 16px; color: #355440; background: #fbfdfb; border: 1px solid #dce8da; border-radius: 14px; font-weight: 650; text-align: left; cursor: pointer; transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease; }
+#ra-app .ra-answer-option:hover:not(:disabled) { transform: translateY(-2px); background: #f0f8ee; border-color: #85be89; box-shadow: 0 6px 16px rgba(46,125,58,.1); }
+#ra-app .ra-answer-option:disabled { color: #68776a; background: #f2f6f1; cursor: default; }
+#ra-app .ra-answer-option.ra-correct { color: #17652b; background: #e8f7e6; border: 2px solid #55a75f; font-weight: 800; }
+#ra-app .ra-answer-option.ra-incorrect { color: #a35151; background: #fff3f1; border-color: #e7b6ac; text-decoration: none; }
+#ra-app .ra-feedback { display: grid; grid-template-columns: minmax(180px, 300px) 1fr; gap: 22px; align-items: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e4ece2; }
+#ra-app .ra-reveal-photo { min-height: 170px; overflow: hidden; background: #edf4eb; border: 1px solid #dce8da; border-radius: 18px; }
+#ra-app .ra-reveal-photo img { display: block; width: 100%; height: 100%; min-height: 170px; object-fit: cover; }
+#ra-app .ra-reveal-details h2 { margin: 3px 0; color: #333333; font-size: 21px; }
+#ra-app .ra-reveal-details > p:not(.ra-feedback-label):not(.ra-no-audio) { margin: 0 0 12px; color: #777777; font-size: 13px; font-style: italic; }
+#ra-app .ra-feedback-label { margin: 0; color: #555555; font-family: monospace; font-size: 10px; font-weight: 700; letter-spacing: .7px; }
+#ra-app audio { display: block; width: min(100%, 360px); height: 38px; margin: 10px 0; }
+#ra-app .ra-no-audio { color: #666666; font-size: 12px; }
+#ra-app .ra-primary-button, #ra-app .ra-secondary-button { min-height: 44px; padding: 11px 18px; color: #ffffff; background: linear-gradient(135deg, #3ca64b, #176b32); border: 1px solid #2e8a40; border-radius: 999px; box-shadow: 0 6px 14px rgba(31,111,51,.18); font-size: 13px; font-weight: 750; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+#ra-app .ra-primary-button:hover, #ra-app .ra-secondary-button:hover { transform: translateY(-2px); box-shadow: 0 9px 20px rgba(31,111,51,.24); }
+#ra-app .ra-finish-panel { margin-top: 18px; padding: 28px; background: linear-gradient(135deg, #f2faef, #ffffff); border: 1px solid #dcebd8; border-radius: 24px; box-shadow: 0 12px 30px rgba(29,72,41,.08); text-align: center; }
+#ra-app .ra-finish-panel h2 { margin: 0 0 6px; font-size: 24px; }
+#ra-app .ra-finish-panel p { color: #666666; }
+#ra-app .ra-difficulty-label { display: grid; gap: 6px; color: #607466; font-size: 11px; font-weight: 800; }
+#ra-app .ra-difficulty-label select { min-height: 42px; padding: 8px 14px; color: #285437; background: #f8fcf7; border: 1px solid #d5e5d2; border-radius: 12px; font-size: 13px; }
+#ra-app .ra-puzzle-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 20px; align-items: start; }
+#ra-app .ra-puzzle-topline { display: flex; justify-content: space-between; gap: 14px; color: #65796a; font-size: 12px; font-weight: 650; }
+#ra-app .ra-puzzle-topline strong { color: #1d6331; }
+#ra-app .ra-puzzle-board { display: grid; width: min(100%, 560px); aspect-ratio: 1; margin: 20px auto; padding: 6px; gap: 4px; overflow: hidden; background: #e8f1e6; border: 1px solid #d4e4d1; border-radius: 22px; box-shadow: 0 10px 26px rgba(29,72,41,.12); }
+#ra-app .ra-puzzle-tile { min-width: 0; min-height: 0; padding: 0; background-repeat: no-repeat; border: 1px solid rgba(255,255,255,.92); border-radius: 5px; cursor: pointer; transition: filter .16s ease, transform .16s ease; }
+#ra-app .ra-puzzle-tile:hover { z-index: 1; filter: brightness(1.08); transform: scale(.985); }
+#ra-app .ra-puzzle-tile.is-selected { position: relative; z-index: 2; outline: 3px solid #31a047; outline-offset: -4px; filter: brightness(1.12); }
+#ra-app .ra-puzzle-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
+#ra-app .ra-secondary-button { color: #333333; background: #ffffff; border-color: #777777; }
+#ra-app .ra-puzzle-status { min-height: 22px; margin: 13px 0 0; color: #555555; font-size: 13px; text-align: center; }
+#ra-app .ra-puzzle-help { padding: 22px; background: linear-gradient(145deg, #f5faf2, #ffffff); border: 1px solid #dce9d9; border-radius: 20px; box-shadow: 0 10px 26px rgba(29,72,41,.07); }
+#ra-app .ra-help-icon { display: grid; width: 40px; height: 40px; place-items: center; color: #ffffff; background: linear-gradient(135deg, #82c86d, #21833b); border-radius: 14px; font-size: 18px; }
+#ra-app .ra-puzzle-help h2 { margin: 14px 0 8px; color: #1d4c2b; font-size: 18px; letter-spacing: -.3px; }
+#ra-app .ra-puzzle-help p { margin: 0; color: #647469; font-size: 13px; line-height: 1.65; }
+#ra-app .ra-puzzle-help .ra-puzzle-hint { margin-top: 14px; padding-top: 13px; border-top: 1px solid #dce9d9; }
+#ra-app .ra-puzzle-reveal { display: grid; grid-template-columns: minmax(180px, 300px) 1fr; gap: 22px; align-items: center; margin-top: 18px; padding: 22px; background: #f5faf2; border: 1px solid #dce9d9; border-radius: 22px; box-shadow: 0 10px 26px rgba(29,72,41,.07); }
+#ra-app .ra-footer { padding: 18px 20px; color: #777777; background: #f2f2f2; border-top: 1px solid #b0b0b0; font-family: monospace; font-size: 10px; text-align: center; }
+
+@media (max-width: 900px) {
+  #ra-app .ra-topbar { align-items: flex-start; flex-direction: column; gap: 10px; }
+  #ra-app .ra-nav { justify-content: flex-start; }
+  #ra-app .ra-nav a { padding: 7px; font-size: 11px; }
+}
+@media (max-width: 680px) {
+  #ra-app .ra-main { width: min(100% - 28px, 560px); padding: 122px 0 44px; }
+  #ra-app .ra-game-grid, #ra-app .ra-answer-grid { grid-template-columns: 1fr; }
+  #ra-app .ra-card-image { height: 190px; }
+  #ra-app .ra-game-heading { align-items: flex-start; flex-direction: column; }
+  #ra-app .ra-feedback, #ra-app .ra-puzzle-layout, #ra-app .ra-puzzle-reveal { grid-template-columns: 1fr; }
+  #ra-app .ra-puzzle-help { order: -1; }
+  #ra-app .ra-reveal-photo, #ra-app .ra-reveal-photo img { min-height: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #ra-app .ra-progress-track span,
+  #ra-app .ra-game-card,
+  #ra-app .ra-game-card::after,
+  #ra-app .ra-card-image img,
+  #ra-app .ra-card-image::after,
+  #ra-app .ra-puzzle-mark,
+  #ra-app .ra-question-mark,
+  #ra-app .ra-card-action span:last-child { transition: none; }
+  #ra-app .ra-answer-option,
+  #ra-app .ra-primary-button,
+  #ra-app .ra-secondary-button,
+  #ra-app .ra-back-button,
+  #ra-app .ra-puzzle-tile { transition: none; }
+}

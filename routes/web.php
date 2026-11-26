@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::view('/reto-aviario', 'public.reto-aviario')
+    ->name('game.index');
+
 Route::get('/catalogo', [CatalogController::class, 'index'])
     ->name('catalog.index');
 

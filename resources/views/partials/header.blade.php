@@ -4,6 +4,7 @@
       <nav class="bv-nav" aria-label="Principal">
         <a href="{{ route('home') }}#inicio" class="{{ request()->routeIs('home') ? 'is-active' : '' }}">🏠 Inicio</a>
         <a href="{{ route('catalog.index') }}" class="{{ request()->routeIs('catalog.*') ? 'is-active' : '' }}">📖 Catálogo</a>
+        <a href="{{ route('game.index') }}" class="{{ request()->routeIs('game.index') ? 'is-active' : '' }}">🎮 Reto Aviario</a>
         <a href="{{ route('guia-ambiental') }}" class="{{ request()->routeIs('guia-ambiental') ? 'is-active' : '' }}">🌿 Guía Ambiental</a>
         <a href="{{ route('home') }}#mapa">📍 Mapa</a>
         <a href="{{ route('home') }}#sobre-nosotros">💚 Nuestra misión</a>
@@ -13,6 +14,7 @@
     <div id="mobile-menu" class="hidden bv-mobile">
       <a href="{{ route('home') }}#inicio">Inicio</a>
       <a href="{{ route('catalog.index') }}">Catálogo</a>
+      <a href="{{ route('game.index') }}">Reto Aviario</a>
       <a href="{{ route('guia-ambiental') }}">Guía Ambiental</a>
       <a href="{{ route('home') }}#carrusel">Aves destacadas</a>
       <a href="{{ route('home') }}#mapa">Mapa</a>
