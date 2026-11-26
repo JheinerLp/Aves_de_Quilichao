@@ -59,20 +59,37 @@
               <span class="ra-card-action">Comenzar reto <span aria-hidden="true">→</span></span>
             </span>
           </button>
+
+          <button class="ra-game-card" type="button" data-open-game="song">
+            <span class="ra-card-image ra-song-image">
+              <img src="public/img/aves/momoto-andino-panoramica.png" alt="Momoto Andino del catálogo BioAves" loading="lazy">
+              <span class="ra-song-mark" aria-hidden="true">♫</span>
+            </span>
+            <span class="ra-card-content">
+              <span class="ra-card-meta"><span>JUEGO 03</span><span>Sonidos reales</span></span>
+              <span class="ra-card-title">Adivina por el Canto</span>
+              <span class="ra-card-description">Escucha el canto y elige cuál de las cuatro aves lo produce.</span>
+              <span class="ra-card-action">Escuchar reto <span aria-hidden="true">→</span></span>
+            </span>
+          </button>
         </div>
       </section>
 
       <section class="ra-screen" id="ra-quiz-screen" hidden aria-labelledby="ra-quiz-title">
         <button class="ra-back-button" type="button" data-back-to-games>← Volver a los juegos</button>
         <div class="ra-game-heading">
-          <div><div class="ra-eyebrow">Acierta el Nombre del Ave</div><h1 id="ra-quiz-title">¿Quién soy?</h1></div>
+          <div><div class="ra-eyebrow" id="ra-quiz-mode">Acierta el Nombre del Ave</div><h1 id="ra-quiz-title">¿Quién soy?</h1></div>
           <div class="ra-score">Puntaje: <strong id="ra-quiz-score">0</strong></div>
         </div>
         <div class="ra-progress-row"><span id="ra-question-count">Pregunta 1</span><span id="ra-progress-text">0%</span></div>
         <div class="ra-progress-track" role="progressbar" aria-label="Progreso del reto" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="ra-progress-bar"></span></div>
         <article class="ra-question-panel" aria-live="polite">
-          <p class="ra-question-label">LEE LA PISTA</p>
+          <p class="ra-question-label" id="ra-question-instruction">LEE LA PISTA</p>
           <p class="ra-clue" id="ra-clue">Cargando aves…</p>
+          <div class="ra-song-player" id="ra-song-player" hidden>
+            <audio id="ra-question-audio" controls preload="none" aria-label="Escucha el canto del ave"></audio>
+            <p class="ra-song-message" id="ra-question-audio-message" role="status" hidden></p>
+          </div>
           <div class="ra-answer-grid" id="ra-answer-grid"></div>
           <div class="ra-feedback" id="ra-quiz-feedback" hidden>
             <div class="ra-reveal-photo"><img id="ra-quiz-photo" alt=""></div>

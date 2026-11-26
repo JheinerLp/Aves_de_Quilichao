@@ -6,6 +6,7 @@
   if (!app || typeof BIOAVES_DATA === "undefined") return;
 
   const birds = BIOAVES_DATA.filter((bird) => bird && bird.commonName && getImagePath(bird));
+  const birdsWithSongs = birds.filter((bird) => getSongPaths(bird).length > 0);
   const screens = {
     home: app.querySelector("#ra-home-screen"),
     quiz: app.querySelector("#ra-quiz-screen"),
@@ -18,6 +19,7 @@
   let quizDeck = [];
   let quizIndex = 0;
   let quizScore = 0;
+  let quizMode = "clue";
   let activePuzzleBird = null;
   let puzzleSize = 3;
   let puzzleMoves = 0;
@@ -55,6 +57,14 @@
     return [...new Set([...localSample, ...localSongVideos, ...mappedLocalSound, ...remoteSample, ...otherVideos])];
   }
 
+  function getSongPaths(bird) {
+    const media = bird.multimedia || {};
+    const videos = [...(media.videos || []), ...(media.video?.src ? [media.video] : [])]
+      .filter((item) => item.src && /canto|cantando|sonido|song/i.test(`${item.src} ${item.label || ""}`))
+      .map((item) => item.src);
+    return [...new Set([media.audioSample, ...videos].filter(Boolean))];
+  }
+
   function shuffled(items) {
     const result = [...items];
     for (let i = result.length - 1; i > 0; i -= 1) {
@@ -77,17 +87,16 @@
     });
   }
 
-  function setAudio(audioId, fallbackId, bird) {
-    const audio = app.querySelector(`#${audioId}`);
-    const fallback = app.querySelector(`#${fallbackId}`);
-    const sources = getAudioPaths(bird);
+  function setAudioSources(audio, fallback, sources, emptyMessage, failedMessage) {
     audio.pause();
     audio.onerror = null;
     audio.removeAttribute("src");
+    audio.load();
+    fallback.hidden = true;
     if (!sources.length) {
       audio.hidden = true;
       fallback.hidden = false;
-      fallback.textContent = "El canto de esta especie no está cargado en el catálogo.";
+      fallback.textContent = emptyMessage;
       return;
     }
 
@@ -97,7 +106,7 @@
         audio.onerror = null;
         audio.hidden = true;
         fallback.hidden = false;
-        fallback.textContent = "No se pudo cargar el canto. Revisa la conexión e inténtalo de nuevo.";
+        fallback.textContent = failedMessage;
         return;
       }
       const source = sources[sourceIndex++];
@@ -108,6 +117,26 @@
       audio.load();
     };
     tryNextSource();
+  }
+
+  function setAudio(audioId, fallbackId, bird) {
+    setAudioSources(
+      app.querySelector(`#${audioId}`),
+      app.querySelector(`#${fallbackId}`),
+      getAudioPaths(bird),
+      "El canto de esta especie no está cargado en el catálogo.",
+      "No se pudo cargar el canto. Revisa la conexión e inténtalo de nuevo."
+    );
+  }
+
+  function setQuestionSong(bird) {
+    setAudioSources(
+      app.querySelector("#ra-question-audio"),
+      app.querySelector("#ra-question-audio-message"),
+      getSongPaths(bird),
+      "Esta especie no tiene un canto registrado.",
+      "No se pudo cargar el canto. Puedes continuar con las opciones."
+    );
   }
 
   function setReveal({ bird, photoId, nameId, scientificId, audioId, fallbackId }) {
@@ -128,13 +157,27 @@
     return text.replace(new RegExp(name, "gi"), "esta ave").trim();
   }
 
-  function startQuiz() {
-    if (birds.length < 4) {
-      app.querySelector("#ra-clue").textContent = "Se necesitan al menos cuatro aves en el catálogo para iniciar el reto.";
+  function startQuiz(mode = "clue") {
+    quizMode = mode;
+    const questionBirds = mode === "song" ? birdsWithSongs : birds;
+    const isSongQuiz = mode === "song";
+    app.querySelector("#ra-quiz-mode").textContent = isSongQuiz ? "Adivina por el Canto" : "Acierta el Nombre del Ave";
+    app.querySelector("#ra-quiz-title").textContent = isSongQuiz ? "¿De quién es este canto?" : "¿Quién soy?";
+    if (questionBirds.length < 4) {
+      app.querySelector("#ra-clue").hidden = false;
+      app.querySelector("#ra-song-player").hidden = true;
+      app.querySelector("#ra-clue").textContent = isSongQuiz
+        ? "Se necesitan al menos cuatro cantos disponibles para iniciar este reto."
+        : "Se necesitan al menos cuatro aves en el catálogo para iniciar el reto.";
+      answerGrid.hidden = true;
+      answerGrid.replaceChildren();
+      quizFeedback.hidden = true;
+      quizFinish.hidden = true;
+      quizQuestionPanel.hidden = false;
       showScreen("quiz");
       return;
     }
-    quizDeck = shuffled(birds).slice(0, Math.min(10, birds.length));
+    quizDeck = shuffled(questionBirds).slice(0, Math.min(10, questionBirds.length));
     quizIndex = 0;
     quizScore = 0;
     quizFinish.hidden = true;
@@ -145,6 +188,7 @@
   }
 
   function renderQuestion() {
+    stopAudio();
     const bird = quizDeck[quizIndex];
     if (!bird) return finishQuiz();
     quizFeedback.hidden = true;
@@ -155,7 +199,15 @@
     app.querySelector("#ra-progress-text").textContent = `${percent}%`;
     app.querySelector(".ra-progress-track").setAttribute("aria-valuenow", String(percent));
     app.querySelector("#ra-progress-bar").style.width = `${percent}%`;
-    app.querySelector("#ra-clue").textContent = clueFor(bird);
+    const isSongQuiz = quizMode === "song";
+    app.querySelector("#ra-question-instruction").textContent = isSongQuiz ? "ESCUCHA EL CANTO" : "LEE LA PISTA";
+    app.querySelector("#ra-clue").hidden = isSongQuiz;
+    app.querySelector("#ra-song-player").hidden = !isSongQuiz;
+    if (isSongQuiz) {
+      setQuestionSong(bird);
+    } else {
+      app.querySelector("#ra-clue").textContent = clueFor(bird);
+    }
 
     const alternatives = shuffled(birds.filter((item) => item.id !== bird.id)).slice(0, 3);
     const options = shuffled([...alternatives, bird]);
@@ -173,6 +225,8 @@
     if (!answerGrid || answerGrid.hidden) return;
     const correct = choice.id === correctBird.id;
     if (correct) quizScore += 1;
+    app.querySelector("#ra-question-audio").pause();
+    app.querySelector("#ra-song-player").hidden = true;
     app.querySelector("#ra-quiz-score").textContent = String(quizScore);
     [...answerGrid.children].forEach((option) => {
       option.disabled = true;
@@ -198,7 +252,7 @@
     replay.className = "ra-primary-button";
     replay.type = "button";
     replay.textContent = "Jugar otra vez";
-    replay.addEventListener("click", startQuiz);
+    replay.addEventListener("click", () => startQuiz(quizMode));
     quizFinish.append(heading, result, replay);
     const percent = 100;
     app.querySelector("#ra-progress-text").textContent = `${percent}%`;
@@ -289,7 +343,11 @@
   }
 
   app.querySelectorAll("[data-open-game]").forEach((button) => {
-    button.addEventListener("click", () => button.dataset.openGame === "quiz" ? startQuiz() : startPuzzle());
+    button.addEventListener("click", () => {
+      if (button.dataset.openGame === "quiz") startQuiz();
+      else if (button.dataset.openGame === "song") startQuiz("song");
+      else startPuzzle();
+    });
   });
   app.querySelectorAll("[data-back-to-games]").forEach((button) => button.addEventListener("click", () => showScreen("home")));
   app.querySelector("#ra-next-question").addEventListener("click", () => {

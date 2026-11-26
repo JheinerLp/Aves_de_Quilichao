@@ -49,6 +49,15 @@ class PublicPagesTest extends TestCase
         $response->assertSee('Deforestación');
     }
 
+    public function test_song_guessing_game_is_available(): void
+    {
+        $this->get('/reto-aviario')
+            ->assertStatus(200)
+            ->assertSee('Adivina por el Canto')
+            ->assertSee('data-open-game="song"', false)
+            ->assertSee('ra-question-audio', false);
+    }
+
     public function test_new_local_bird_videos_are_connected_to_their_species(): void
     {
         $expectedMedia = [
