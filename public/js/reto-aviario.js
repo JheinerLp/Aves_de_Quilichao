@@ -79,6 +79,44 @@
     stopAudio();
   }
 
+  function returnToGames() {
+    showScreen("home");
+    const gameGrid = app.querySelector(".ra-game-grid");
+    requestAnimationFrame(() => {
+      const header = document.querySelector("#main-navbar") || app.querySelector(".ra-topbar");
+      const offset = (header ? header.getBoundingClientRect().height : 0) + 16;
+      const top = gameGrid.getBoundingClientRect().top + window.scrollY - offset;
+      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+      window.scrollTo({ top: Math.max(0, top), behavior });
+    });
+  }
+
+  function isGameState(state) {
+    return state && ["puzzle", "quiz", "song"].includes(state.raGame);
+  }
+
+  function startGame(game) {
+    if (game === "quiz") startQuiz();
+    else if (game === "song") startQuiz("song");
+    else if (game === "puzzle") startPuzzle();
+  }
+
+  function openGame(game) {
+    const currentState = window.history.state;
+    const nextState = currentState && typeof currentState === "object" ? { ...currentState } : {};
+    nextState.raGame = game;
+    window.history.pushState(nextState, "", window.location.href);
+    startGame(game);
+  }
+
+  function backToGames() {
+    if (isGameState(window.history.state)) {
+      window.history.back();
+      return;
+    }
+    returnToGames();
+  }
+
   function stopAudio() {
     app.querySelectorAll("audio").forEach((audio) => {
       audio.pause();
@@ -343,13 +381,13 @@
   }
 
   app.querySelectorAll("[data-open-game]").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (button.dataset.openGame === "quiz") startQuiz();
-      else if (button.dataset.openGame === "song") startQuiz("song");
-      else startPuzzle();
-    });
+    button.addEventListener("click", () => openGame(button.dataset.openGame));
   });
-  app.querySelectorAll("[data-back-to-games]").forEach((button) => button.addEventListener("click", () => showScreen("home")));
+  app.querySelectorAll("[data-back-to-games]").forEach((button) => button.addEventListener("click", backToGames));
+  window.addEventListener("popstate", (event) => {
+    if (isGameState(event.state)) startGame(event.state.raGame);
+    else returnToGames();
+  });
   app.querySelector("#ra-next-question").addEventListener("click", () => {
     quizIndex += 1;
     renderQuestion();
@@ -364,4 +402,6 @@
     app.querySelector("#ra-puzzle-hint-text").hidden = false;
     app.querySelector("#ra-puzzle-status").textContent = "Pista disponible junto al tablero.";
   });
+
+  if (isGameState(window.history.state)) startGame(window.history.state.raGame);
 })();
